@@ -16,7 +16,7 @@ public class LoteriaNavidad {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //prueba para ver si va  
+        //prueba para ver si va  gfdgdfgf
     }
     
 }
