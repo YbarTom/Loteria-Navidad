@@ -8,22 +8,6 @@ import java.util.Scanner;
 public class LoteriaNavidad {
     public static Scanner scan = new Scanner(System.in);
 
-    public static void Entero(int numero) {
-
-        boolean correcte = false;
-
-        do {
-            if (scan.hasNextInt()) {
-                numero = scan.nextInt();
-                correcte = true;
-            } else {
-                scan.next();
-                System.out.println("El caracter introduit no es un numero,si us plau introduiu un numero: ");
-
-            }
-        } while (correcte == false);
-    }
-
     public static void main(String[] args) {
         // TODO code application logic here
 
