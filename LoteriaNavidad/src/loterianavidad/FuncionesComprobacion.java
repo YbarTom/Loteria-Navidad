@@ -26,6 +26,7 @@ public class FuncionesComprobacion {
         }
         
         return posicio;
+        int hola;
     }
 
 }
