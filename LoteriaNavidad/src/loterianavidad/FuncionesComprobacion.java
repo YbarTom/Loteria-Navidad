@@ -4,30 +4,28 @@
  */
 package loterianavidad;
 
-import static loterianavidad.LoteriaNavidad.scan;
-
 /**
  *
  * @author ausias
  */
 public class FuncionesComprobacion {
+    
     /**
-     * Funcion Comprobar si el numero es un entero
-     * @param numero 
+     * 
+     * @param numero
+     * @param vector
+     * @return tornarà a quina posició del vector de premis es troba el numero, -1 si no hi és
      */
-    public static void Entero(int numero) {
-
-        boolean correcte = false;
-
-        do {
-            if (scan.hasNextInt()) {
-                numero = scan.nextInt();
-                correcte = true;
-            } else {
-                scan.next();
-                System.out.println("El caracter introduit no es un numero,si us plau introduiu un numero: ");
-
+    public static int comprovarPremi(int numero, Class[] vector){
+        int posicio = -1;
+        
+        for(int i = 0; i < vector.length; ++i){
+            if(vector[i].numero == numero){
+                posicio = i;
             }
-        } while (correcte == false);
+        }
+        
+        return posicio;
     }
+
 }
