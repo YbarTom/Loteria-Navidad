@@ -6,7 +6,7 @@ package loterianavidad;
 
 import java.util.Scanner;
 public class LoteriaNavidad {
-    public static Scanner scan = new Scanner(Sysrtem.in);
+    public static Scanner scan = new Scanner(System.in);
 
     public static void Entero(int numero) {
 
