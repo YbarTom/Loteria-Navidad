@@ -44,6 +44,7 @@ public class LoteriaNavidad {
             }
             PremioAleatorio = (int) (Math.random() * TotPrems + 1);
         }
+        AssignarPremis(vector);
     }
 
     public static boolean RepetidosNumeros(int n, int contador, NumPremiat[] vector) {
@@ -69,6 +70,26 @@ public class LoteriaNavidad {
         }
 
         return comprovacio;
+    }
+
+    public static void AssignarPremis(NumPremiat[] vector) {
+        
+        for (int i = 0; i < TotPrems; i++) {
+            if (vector[i].premi == 0) {
+                vector[i].premi = 4000000;
+            } else if (vector[i].premi == 1) {
+                vector[i].premi = 1250000;
+            } else if (vector[i].premi == 2) {
+                vector[i].premi = 500000;
+            } else if (vector[i].premi == 3 || vector[i].premi == 4) {
+                vector[i].premi = 200000;
+            } else if (vector[i].premi >= 5 || vector[i].premi <= 12) {
+                vector[i].premi = 60000;
+            } else if (vector[i].premi >= 13 || vector[i].premi <= 1804) {
+                vector[i].premi = 60000;
+
+            }
+        }
     }
 
     public static void main(String[] args) {
