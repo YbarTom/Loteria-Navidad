@@ -16,10 +16,18 @@ public class LoteriaNavidad {
         int premi;
     }
    
-    public static int GeneradorNumeros(){
-        int NumeroAleatorio = (int) (Math.random()*TotNums+1);
-       
-        return NumeroAleatorio;
+    public static void GeneradorNumeros(NumPremiat[] vector){
+        int contador = 0;
+        int numeroAleatorio = (int) (Math.random()*TotNums+1);
+        
+        while(contador < TotPrems){
+            if(!ComprobarRepetidos(numeroAleatorio, contador, vector)){
+                vector[contador].numero = numeroAleatorio;
+                ++contador;
+            }
+            numeroAleatorio = (int) (Math.random()*TotNums+1);
+        }
+
     }
    
     public static int GeneradorPremis(){
@@ -28,16 +36,15 @@ public class LoteriaNavidad {
         return PremioAleatorio;
     }
    
-    public static boolean ComprobarRepetidos(int n){
-        int contador=1;
-        boolean comprovacio=true;
-       
-        int[] comprovar = new int[TotPrems];
-       
-       
-        for(int i=0;i<TotPrems;i++){
-             
+    public static boolean ComprobarRepetidos(int n, int contador, NumPremiat[] vector){
+        boolean comprovacio=false;
+
+        for(int i=0;i<=contador && !comprovacio;i++){
+             if(n == vector[i].numero){
+                 comprovacio = true;
+             }
         }
+        
         return comprovacio;
        
     }
