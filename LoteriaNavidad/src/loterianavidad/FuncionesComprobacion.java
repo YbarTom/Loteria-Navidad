@@ -10,12 +10,7 @@ package loterianavidad;
  */
 public class FuncionesComprobacion {
     
-    /**
-     * 
-     * @param numero
-     * @param vector
-     * @return tornarà a quina posició del vector de premis es troba el numero, -1 si no hi és
-     */
+    
     public static int comprovarPremi(int numero, Class[] vector){
         int posicio = -1;
         
@@ -28,71 +23,58 @@ public class FuncionesComprobacion {
         return posicio;
     }
     
+    
+    /**
+     * 
+     * @param numero
+     * @param premi1
+     * @param premi2
+     * @param premi3
+     * @return 
+     */
     public static int comprovarAproximacions(int numero, int premi1, int premi2, int premi3){
         int premi = 0;
-        final int PREMI_APROX1 = 40000;
-        final int PREMI_APROX2 = 25000;
-        final int PREMI_APROX3 = 19200;
         
-        if(AproximacioPrimer(numero, premi1)){
+        //Quantitats de premi per cada aproximació
+        final int PREMI_APROX1 = 20000;
+        final int PREMI_APROX2 = 12500;
+        final int PREMI_APROX3 = 9600;
+        
+        //Comprovem les aproximacions de cada premi individualment
+        //si coincideixen sumem el premi
+        if(Aproximacio(numero, premi1)){
             premi += PREMI_APROX1;
         }
-        else if(AproximacioSegon(numero, premi2)){
+        if(Aproximacio(numero, premi2)){
             premi += PREMI_APROX2;
         }
-        else if(AproximacioTercer(numero, premi3)){
+        if(Aproximacio(numero, premi3)){
             premi += PREMI_APROX3;
         }
         
         return premi;
     }
     
-    public static boolean AproximacioPrimer(int numero, int premi1){
+    /**
+     * 
+     * @param numero
+     * @param premi
+     * @return 
+     */
+    public static boolean Aproximacio(int numero, int premi){
         boolean acertat = false;
         
-        if(numero == premi1+1 || numero == premi1-1){
+        //Comprovem si el número anterior i posterior coincideixen amb el nostre
+        if(numero == premi+1 || numero == premi-1){
             acertat = true;
         }
-        else if(numero == 00000 && premi1 == 99999){
+        //Si el número és 00000 es considera 99999 el seu anterior
+        //Si el número és 99999 el 00000 es considera el posterior
+        else if((numero == 00000 && premi == 99999) || (numero == 99999 && premi == 00000)){
             acertat = true;
         }
         
         return acertat;
     }
-    
-    public static boolean AproximacioSegon(int numero, int premi2){
-        boolean acertat = false;
-        
-        if(numero == premi2+1 || numero == premi2-1){
-            acertat = true;
-        }
-        else if(numero == 00000 && premi2 == 99999){
-            acertat = true;
-        }
-        
-        return acertat;
-    }
-    
-    public static boolean AproximacioTercer(int numero, int premi3){
-        boolean acertat = false;
-        
-        if(numero == premi3+1 || numero == premi3-1){
-            acertat = true;
-        }
-        else if(numero == 00000 && premi3 == 99999){
-            acertat = true;
-        }
-        
-        return acertat;
-    }
-    
-    public static comprovarCentena(int numero){
-        
-    }
-    
-    public static boolean CentenaPrimer(int numero){
-        
-    }
-    
 
 }
