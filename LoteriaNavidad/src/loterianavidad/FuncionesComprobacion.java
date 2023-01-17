@@ -11,7 +11,9 @@ import java.util.Scanner;
  */
 public class FuncionesComprobacion {
 
-    public static int comprovarPremi(int numero, Class[] vector) {
+    public static Scanner scan = new Scanner(System.in);
+    
+    public static int comprovarPremi(int numero, LoteriaNavidad.NumPremiat[] vector) {
         int posicio = -1;
 
         for (int i = 0; i < vector.length; ++i) {
@@ -75,30 +77,4 @@ public class FuncionesComprobacion {
         return acertat;
     }
     
-   /* public static Scanner scan = new Scanner(System.in);
-    
-    public static int NumBoleto(int num){
-       
-        
-       System.out.print("Numero de tu boleto: ");
-       
-       int Boleto= scan.nextInt();
-       
-       return Boleto;
-    }*/
-    
-    public static boolean Reintegro(int premi, int boleto){
-        boolean acertat = false;
-        
-        
-        //Comprobamos si el ultimo numero de nuestro boleto es igual que el del numero premiado
-        if(boleto%10 == premi%10){
-            System.out.print("Te ha tocado el reintegro");
-            acertat= true;
-        }else{
-            System.out.print("No te ha tocado nada.");
-        }
-        
-        return acertat;
-    }
 }
