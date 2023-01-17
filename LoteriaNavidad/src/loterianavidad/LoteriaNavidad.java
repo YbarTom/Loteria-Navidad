@@ -35,7 +35,7 @@ public class LoteriaNavidad {
 
     }
 
-    public static void GeneradorPremis(NumPremiat[] vector) {
+    public static void GeneradorPremis(NumPremiat[] vector,int[] premis) {
         int contador = 0;
         int PremioAleatorio = (int) (Math.random() * TotPrems + 1);
 
@@ -46,7 +46,7 @@ public class LoteriaNavidad {
             }
             PremioAleatorio = (int) (Math.random() * TotPrems + 1);
         }
-        AssignarPremis(vector);
+        AssignarPremis(vector,premis);
     }
 
     public static boolean RepetidosNumeros(int n, int contador, NumPremiat[] vector) {
@@ -104,10 +104,18 @@ public class LoteriaNavidad {
     public static void main(String[] args) {
 
         NumPremiat VectorPremi[] = new NumPremiat[1807];
+        int []prueba=new int[5];
         
+        //sirve para comprobar el programa
+        /*
+        GeneradorNumeros(VectorPremi);
+        GeneradorPremis(VectorPremi,prueba);
         
-
-        //prueba para ver si va  gfdgdfgf ewrferferw
+        for(int i=0;i<VectorPremi.length;i++){
+            System.out.print(VectorPremi[i].numero+" ");
+            System.out.println(VectorPremi[i].premi);
+        }
+        */
         
         System.out.print("Numero de tu boleto: ");
         String Boleto= scan.nextLine();
