@@ -22,38 +22,38 @@ public class LoteriaNavidad {
 
     public static void GeneradorNumeros(NumPremiat[] vector) {
         int contador = 0;
-        int numeroAleatorio = (int) (Math.random() * TotNums + 1);
+        int numeroAleatorio = (int) (Math.random() * (TotNums+1) );
 
         while (contador < TotPrems) {
             if (!RepetidosNumeros(numeroAleatorio, contador, vector)) {
-                vector[contador]=new NumPremiat();
+                vector[contador] = new NumPremiat();
                 vector[contador].numero = numeroAleatorio;
                 ++contador;
             }
-            numeroAleatorio = (int) (Math.random() * TotNums + 1);
+            numeroAleatorio = (int) (Math.random() * (TotNums+1) );
         }
 
     }
 
-    public static void GeneradorPremis(NumPremiat[] vector,int[] premis) {
+    public static void GeneradorPremis(NumPremiat[] vector, int[] premis) {
         int contador = 0;
-        int PremioAleatorio = (int) (Math.random() * TotPrems + 1);
+        int PremioAleatorio = (int) (Math.random() * (TotPrems+1) );
 
         while (contador < TotPrems) {
             if (!RepetidosNumeros(PremioAleatorio, contador, vector)) {
                 vector[contador].premi = PremioAleatorio;
                 ++contador;
             }
-            PremioAleatorio = (int) (Math.random() * TotPrems + 1);
+            PremioAleatorio = (int) (Math.random() * (TotPrems+1) );
         }
-        AssignarPremis(vector,premis);
+        AssignarPremis(vector, premis);
     }
 
     public static boolean RepetidosNumeros(int n, int contador, NumPremiat[] vector) {
         boolean comprovacio = false;
 
         for (int i = 0; i <= contador && !comprovacio; i++) {
-            if (vector[i]!=null && n == vector[i].numero) {
+            if (vector[i] != null && n == vector[i].numero) {
                 comprovacio = true;
             }
         }
@@ -65,7 +65,7 @@ public class LoteriaNavidad {
     public static boolean RepetidosPremis(int n, int contador, NumPremiat[] vector) {
         boolean comprovacio = false;
 
-        for (int i = 0; i <= contador && !comprovacio; i++) {
+        for (int i = 0; i < contador && !comprovacio; i++) {
             if (n == vector[i].premi) {
                 comprovacio = true;
             }
@@ -75,27 +75,27 @@ public class LoteriaNavidad {
     }
 
     public static void AssignarPremis(NumPremiat[] vector, int[] premisGrans) {
-        
+
         for (int i = 0; i < TotPrems; i++) {
             if (vector[i].premi == 0) {
-                premisGrans[0]= vector[i].numero;
+                premisGrans[0] = vector[i].numero;
                 vector[i].premi = 4000000;
             } else if (vector[i].premi == 1) {
-                premisGrans[1]= vector[i].numero;
+                premisGrans[1] = vector[i].numero;
                 vector[i].premi = 1250000;
             } else if (vector[i].premi == 2) {
-                premisGrans[2]= vector[i].numero;
+                premisGrans[2] = vector[i].numero;
                 vector[i].premi = 500000;
             } else if (vector[i].premi == 3 || vector[i].premi == 4) {
-                if(vector[i].premi==3){
-                    premisGrans[3]= vector[i].numero;
-                }else{
-                    premisGrans[4]= vector[i].numero;
+                if (vector[i].premi == 3) {
+                    premisGrans[3] = vector[i].numero;
+                } else {
+                    premisGrans[4] = vector[i].numero;
                 }
                 vector[i].premi = 200000;
-            } else if (vector[i].premi >= 5 || vector[i].premi <= 12) {
+            } else if (vector[i].premi >= 5 && vector[i].premi <= 12) {
                 vector[i].premi = 60000;
-            } else if (vector[i].premi >= 13 || vector[i].premi <= 1804) {
+            } else if (vector[i].premi >= 13 && vector[i].premi <= 1804) {
                 vector[i].premi = 60000;
             }
         }
@@ -104,22 +104,28 @@ public class LoteriaNavidad {
     public static void main(String[] args) {
 
         NumPremiat VectorPremi[] = new NumPremiat[1807];
-        int []prueba=new int[5];
-        
-        //sirve para comprobar el programa
-        /*
+        int[] prueba = new int[5];
+
         GeneradorNumeros(VectorPremi);
-        GeneradorPremis(VectorPremi,prueba);
-        
-        for(int i=0;i<VectorPremi.length;i++){
+        GeneradorPremis(VectorPremi, prueba);
+
+        for (int i = 0; i < TotPrems; i++) {
+            if (VectorPremi[i].premi == 4000000 || VectorPremi[i].premi == 1250000
+                    || VectorPremi[i].premi == 500000 || VectorPremi[i].premi == 200000) {
+                System.out.print(VectorPremi[i].numero + " ");
+                System.out.println(VectorPremi[i].premi);
+            }
+
+        }
+
+        /*FuncionesUtilidades.CountingSort(VectorPremi);
+        for(int i=0;i<13;i++){
             System.out.print(VectorPremi[i].numero+" ");
             System.out.println(VectorPremi[i].premi);
-        }
-        */
-        
+        }*/
         System.out.print("Numero de tu boleto: ");
-        String Boleto= scan.nextLine();
-       
+        String Boleto = scan.nextLine();
+
     }
 
 }
