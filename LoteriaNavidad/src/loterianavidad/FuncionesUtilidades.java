@@ -1,3 +1,5 @@
+package loterianavidad;
+
 
 import static loterianavidad.LoteriaNavidad.scan;
 
