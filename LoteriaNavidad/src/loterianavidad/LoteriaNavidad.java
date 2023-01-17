@@ -5,6 +5,7 @@
 package loterianavidad;
 
 import java.util.Scanner;
+import static loterianavidad.FuncionesComprobacion.scan;
 
 public class LoteriaNavidad {
 
@@ -72,22 +73,29 @@ public class LoteriaNavidad {
         return comprovacio;
     }
 
-    public static void AssignarPremis(NumPremiat[] vector) {
+    public static void AssignarPremis(NumPremiat[] vector, int[] premisGrans) {
         
         for (int i = 0; i < TotPrems; i++) {
             if (vector[i].premi == 0) {
+                premisGrans[0]= vector[i].numero;
                 vector[i].premi = 4000000;
             } else if (vector[i].premi == 1) {
+                premisGrans[1]= vector[i].numero;
                 vector[i].premi = 1250000;
             } else if (vector[i].premi == 2) {
+                premisGrans[2]= vector[i].numero;
                 vector[i].premi = 500000;
             } else if (vector[i].premi == 3 || vector[i].premi == 4) {
+                if(vector[i].premi==3){
+                    premisGrans[3]= vector[i].numero;
+                }else{
+                    premisGrans[4]= vector[i].numero;
+                }
                 vector[i].premi = 200000;
             } else if (vector[i].premi >= 5 || vector[i].premi <= 12) {
                 vector[i].premi = 60000;
             } else if (vector[i].premi >= 13 || vector[i].premi <= 1804) {
                 vector[i].premi = 60000;
-
             }
         }
     }
@@ -97,6 +105,10 @@ public class LoteriaNavidad {
         NumPremiat VectorPremi[] = new NumPremiat[1807];
 
         //prueba para ver si va  gfdgdfgf ewrferferw
+        
+        System.out.print("Numero de tu boleto: ");
+        String Boleto= scan.nextLine();
+       
     }
 
 }
