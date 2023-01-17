@@ -13,7 +13,7 @@ public class LoteriaNavidad {
     static final int TotNums = 99999;
     static final int TotPrems = 1807;
 
-    class NumPremiat {
+    public static class NumPremiat {
 
         int numero;
         int premi;
@@ -25,6 +25,7 @@ public class LoteriaNavidad {
 
         while (contador < TotPrems) {
             if (!RepetidosNumeros(numeroAleatorio, contador, vector)) {
+                vector[contador]=new NumPremiat();
                 vector[contador].numero = numeroAleatorio;
                 ++contador;
             }
@@ -51,7 +52,7 @@ public class LoteriaNavidad {
         boolean comprovacio = false;
 
         for (int i = 0; i <= contador && !comprovacio; i++) {
-            if (n == vector[i].numero) {
+            if (vector[i]!=null && n == vector[i].numero) {
                 comprovacio = true;
             }
         }
@@ -95,6 +96,8 @@ public class LoteriaNavidad {
     public static void main(String[] args) {
 
         NumPremiat VectorPremi[] = new NumPremiat[1807];
+        
+        
 
         //prueba para ver si va  gfdgdfgf ewrferferw
     }
