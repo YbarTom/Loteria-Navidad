@@ -5,14 +5,13 @@
 package loterianavidad;
 
 import java.util.Scanner;
-import static loterianavidad.FuncionesComprobacion.scan;
 
 public class LoteriaNavidad {
 
     public static Scanner scan = new Scanner(System.in);
 
-    static final int TotNums = 99999;
-    static final int TotPrems = 1807;
+    static final int TOTNUMS = 99999;
+    static final int TOTPREMS = 1807;
 
     public static class NumPremiat {
 
@@ -22,29 +21,29 @@ public class LoteriaNavidad {
 
     public static void GeneradorNumeros(NumPremiat[] vector) {
         int contador = 0;
-        int numeroAleatorio = (int) (Math.random() * (TotNums+1) );
+        int numeroAleatorio = (int) (Math.random() * (TOTNUMS+1) );
 
-        while (contador < TotPrems) {
+        while (contador < TOTPREMS) {
             if (!RepetidosNumeros(numeroAleatorio, contador, vector)) {
                 vector[contador] = new NumPremiat();
                 vector[contador].numero = numeroAleatorio;
                 ++contador;
             }
-            numeroAleatorio = (int) (Math.random() * (TotNums+1) );
+            numeroAleatorio = (int) (Math.random() * (TOTNUMS+1) );
         }
 
     }
 
     public static void GeneradorPremis(NumPremiat[] vector, int[] premis) {
         int contador = 0;
-        int PremioAleatorio = (int) (Math.random() * (TotPrems+1) );
+        int PremioAleatorio = (int) (Math.random() * (TOTPREMS+1) );
 
-        while (contador < TotPrems) {
-            if (!RepetidosNumeros(PremioAleatorio, contador, vector)) {
+        while (contador < TOTPREMS) {
+            if (!RepetidosPremis(PremioAleatorio, contador, vector)) {
                 vector[contador].premi = PremioAleatorio;
                 ++contador;
             }
-            PremioAleatorio = (int) (Math.random() * (TotPrems+1) );
+            PremioAleatorio = (int) (Math.random() * (TOTPREMS+1) );
         }
         AssignarPremis(vector, premis);
     }
@@ -76,7 +75,7 @@ public class LoteriaNavidad {
 
     public static void AssignarPremis(NumPremiat[] vector, int[] premisGrans) {
 
-        for (int i = 0; i < TotPrems; i++) {
+        for (int i = 0; i < TOTPREMS; i++) {
             if (vector[i].premi == 0) {
                 premisGrans[0] = vector[i].numero;
                 vector[i].premi = 4000000;
@@ -109,7 +108,7 @@ public class LoteriaNavidad {
         GeneradorNumeros(VectorPremi);
         GeneradorPremis(VectorPremi, prueba);
 
-        for (int i = 0; i < TotPrems; i++) {
+        for (int i = 0; i < TOTPREMS; i++) {
             if (VectorPremi[i].premi == 4000000 || VectorPremi[i].premi == 1250000
                     || VectorPremi[i].premi == 500000 || VectorPremi[i].premi == 200000) {
                 System.out.print(VectorPremi[i].numero + " ");
