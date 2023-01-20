@@ -6,12 +6,12 @@ public class FuncionesComprobacion {
 
     public static Scanner scan = new Scanner(System.in);
 
-    public static int comprovacioGeneral(int numero, int[] premisGrans, NumPremiat[] llistaPremis) {
+    public static int comprovacioGeneral(int numero, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis) {
         int premi = 0;
 
         premi += comprovarGrossos(numero, llistaPremis);
 
-        if (comprovarAproximacions(numero, premisGrans[1], premisGrans[2], premisGrans[3]) != 0) {
+        if (comprovarAproximacions(numero, premisGrans[0], premisGrans[1], premisGrans[2]) != 0) {
             premi += comprovarAproximacions(numero, premisGrans[1], premisGrans[2], premisGrans[3]);
         } else {
             eliminarNumero(numero, premisGrans);
@@ -35,7 +35,7 @@ public class FuncionesComprobacion {
         return premi;
     }
 
-    public static int comprovarGrossos(int numero, NumPremiat[] llistaPremis) {
+    public static int comprovarGrossos(int numero, LoteriaNavidad.NumPremiat[] llistaPremis) {
         int premi = 0;
         boolean trobat = false;
 
@@ -113,14 +113,15 @@ public class FuncionesComprobacion {
     }
 
     public static String passarAString(int numero) {
-        String resultat = "";
         int nZerosAfegir = 5 - contarDigits(numero);
 
         //00010 10
         String numeroString = Integer.toString(numero);
 
+        String resultat = numeroString;
+        
         for (int i = 0; i < nZerosAfegir; ++i) {
-            resultat = "0" + numeroString;
+            resultat = "0" + resultat;
         }
         return resultat;
     }

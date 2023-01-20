@@ -123,8 +123,11 @@ public class LoteriaNavidad {
             System.out.println(VectorPremi[i].premi);
         }*/
         System.out.print("Numero de tu boleto: ");
-        String Boleto = scan.nextLine();
+        int boleto = scan.nextInt();
 
+        int premi = FuncionesComprobacion.comprovacioGeneral(boleto, prueba, VectorPremi);
+        
+        System.out.println("Premi: " + premi);
     }
 
 }
