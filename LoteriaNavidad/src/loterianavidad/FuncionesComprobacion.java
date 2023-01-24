@@ -35,6 +35,14 @@ public class FuncionesComprobacion {
         return premi;
     }
 
+    /**
+     * Comprovar premis exactes.
+     * Funció per comprovar si s'ha acertat de manera exacta un premi.
+     * @param numero El nostre número que volem comprovar
+     * @param llistaPremis La llista amb tots els números que han sigut premiats
+     * amb els seus respectius premis.
+     * @return La quantitat de diners guanyats.
+     */
     public static int comprovarGrossos(int numero, LoteriaNavidad.NumPremiat[] llistaPremis) {
         int premi = 0;
         boolean trobat = false;
@@ -48,6 +56,14 @@ public class FuncionesComprobacion {
         return premi;
     }
 
+    /**
+     * Comprovar si un número donat és una aproximació d'un altre.
+     * Comprovem si el número donat és anterior o posterior al premi.
+     * Es considera que l'anterior a 0 és 99999 i el posterior a 99999 és 0.
+     * @param numero El nostre número.
+     * @param premi El número premiat.
+     * @return true si és una aproximació i false si no ho és
+     */
     public static boolean Aproximacio(int numero, int premi) {
         boolean acertat = false;
 
@@ -63,6 +79,16 @@ public class FuncionesComprobacion {
         return acertat;
     }
 
+    /**
+     * Comprovar si un número donat és una aproximació d'un dels premis donats.
+     * Comprovem si el número donat és anterior o posterior a algun dels premis.
+     * Les aproximacions són només pel primer, segon i tercer premis.
+     * @param numero El nostre número que volem comprovar.
+     * @param premi1 El número que ha resultat com a primer premi.
+     * @param premi2 El número que ha resultat com a segon premi.
+     * @param premi3 El número que ha resultat com a tercer premi.
+     * @return La quantitat de diners guanyats.
+     */
     public static int comprovarAproximacions(int numero, int premi1, int premi2, int premi3) {
         int premi = 0;
 
@@ -86,36 +112,51 @@ public class FuncionesComprobacion {
         return premi;
     }
 
+    /**
+     * Eliminar un número específic del vector de premis grans.
+     * Substituir el número donat per -11111 per no afectar les comprovacions posteriors.
+     * Una vegada ens ha tocat un premi gros hem de comprovar si tenim un dels premis menors,
+     * però aquests premis menors obviament no poden ser del nostre propi número ja premiat.
+     * @param numero El nostre número que volem comprovar.
+     * @param premisGrans El vector que conté tots els números que han sigut premiats amb
+     * premis d'interès (el primer, el segon, el tercer i els dos quarts).
+     */
     public static void eliminarNumero(int numero, int[] premisGrans) {
         for (int i = 0; i < premisGrans.length; ++i) {
             if (premisGrans[i] == numero) {
+                //Nombre invàlid perquè no afecti
                 premisGrans[i] = -11111;
             }
         }
     }
 
+    /**
+     * Contar quants digits té un número.
+     * 
+     * @param numero El numero del qual volem saber els dígits.
+     * @return La quantitat de dígits que té el número.
+     */
     public static int contarDigits(int numero) {
-        int resultat;
-
-        if (numero < 10) {
-            resultat = 1;
-        } else if (numero < 100) {
-            resultat = 2;
-        } else if (numero < 1000) {
-            resultat = 3;
-        } else if (numero < 10000) {
-            resultat = 4;
-        } else {
-            resultat = 5;
+        int resultat = 0;
+           
+        while(numero > 10){
+            numero = numero/10;
+            ++resultat;
         }
-
+        ++resultat;
+        
         return resultat;
     }
 
+    /**
+     * Passar un número enter a String afegint els zeros inicials en cas que es necessitin.
+     * 
+     * @param numero El nostre número que volem passar a String.
+     * @return El número donat en format String amb els zeros anteriors que es necessitin.
+     */
     public static String passarAString(int numero) {
         int nZerosAfegir = 5 - contarDigits(numero);
 
-        //00010 10
         String numeroString = Integer.toString(numero);
 
         String resultat = numeroString;
@@ -126,6 +167,16 @@ public class FuncionesComprobacion {
         return resultat;
     }
 
+    /**
+     * 
+     * @param numero
+     * @param premi1
+     * @param premi2
+     * @param premi3
+     * @param premi4
+     * @param premi5
+     * @return 
+     */
     public static boolean comprovarCentenes(String numero, String premi1, String premi2, String premi3, String premi4, String premi5) {
         boolean premi = false;
 
@@ -146,7 +197,7 @@ public class FuncionesComprobacion {
         if (comprovarDigits(numero, premi1, 3, 5)
                 || comprovarDigits(numero, premi2, 3, 5)
                 || comprovarDigits(numero, premi3, 3, 5)) {
-            premi = false;
+            premi = true;
         }
 
         return premi;
