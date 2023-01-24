@@ -6,6 +6,7 @@ package loterianavidad;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -42,14 +43,15 @@ public class FuncionesComprobacionTest {
     @Test
     public void testComprovacioGeneral() {
         System.out.println("comprovacioGeneral");
-        int numero = 0;
-        int[] premisGrans = null;
-        LoteriaNavidad.NumPremiat[] llistaPremis = null;
-        int expResult = 0;
+        int numero = 41329;
+        int[] premisGrans = {41120, 63668, 56823, 70195, 44057};
+        LoteriaNavidad.NumPremiat[] llistaPremis = new LoteriaNavidad.NumPremiat[1];
+        llistaPremis[0] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[0].numero = 41329;
+        llistaPremis[0].premi = 1000;
+        int expResult = 1000;
         int result = FuncionesComprobacion.comprovacioGeneral(numero, premisGrans, llistaPremis);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -58,13 +60,14 @@ public class FuncionesComprobacionTest {
     @Test
     public void testComprovarGrossos() {
         System.out.println("comprovarGrossos");
-        int numero = 0;
-        LoteriaNavidad.NumPremiat[] llistaPremis = null;
-        int expResult = 0;
+        int numero = 38571;
+        LoteriaNavidad.NumPremiat[] llistaPremis = new LoteriaNavidad.NumPremiat[1];
+        llistaPremis[0] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[0].numero = 38571;
+        llistaPremis[0].premi = 4000000;
+        int expResult = 4000000;
         int result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -73,13 +76,11 @@ public class FuncionesComprobacionTest {
     @Test
     public void testAproximacio() {
         System.out.println("Aproximacio");
-        int numero = 0;
-        int premi = 0;
-        boolean expResult = false;
+        int numero = 12345;
+        int premi = 12346;
+        boolean expResult = true;
         boolean result = FuncionesComprobacion.Aproximacio(numero, premi);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,15 +89,23 @@ public class FuncionesComprobacionTest {
     @Test
     public void testComprovarAproximacions() {
         System.out.println("comprovarAproximacions");
-        int numero = 0;
-        int premi1 = 0;
-        int premi2 = 0;
-        int premi3 = 0;
-        int expResult = 0;
+        int numero = 37846;
+        int premi1 = 37847;
+        int premi2 = 96423;
+        int premi3 = 68511;
+        int expResult = 20000;
         int result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        numero = 96422;
+        expResult = 12500;
+        result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
+        assertEquals(expResult, result);
+        
+        numero = 68510;
+        expResult = 9600;
+        result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -105,11 +114,11 @@ public class FuncionesComprobacionTest {
     @Test
     public void testEliminarNumero() {
         System.out.println("eliminarNumero");
-        int numero = 0;
-        int[] premisGrans = null;
+        int numero = 70926;
+        int[] premisGrans = {70926, 40729, 47199, 1800, 33747};
         FuncionesComprobacion.eliminarNumero(numero, premisGrans);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int[] expResult = {-11111, 40729, 47199, 1800, 33747};
+        Assert.assertArrayEquals(expResult, premisGrans);
     }
 
     /**
@@ -158,17 +167,15 @@ public class FuncionesComprobacionTest {
     @Test
     public void testComprovarCentenes() {
         System.out.println("comprovarCentenes");
-        String numero = "";
-        String premi1 = "";
-        String premi2 = "";
-        String premi3 = "";
-        String premi4 = "";
-        String premi5 = "";
-        boolean expResult = false;
+        String numero = "98611";
+        String premi1 = "98622";
+        String premi2 = "83710";
+        String premi3 = "23473";
+        String premi4 = "76065";
+        String premi5 = "15124";
+        boolean expResult = true;
         boolean result = FuncionesComprobacion.comprovarCentenes(numero, premi1, premi2, premi3, premi4, premi5);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -177,15 +184,13 @@ public class FuncionesComprobacionTest {
     @Test
     public void testComprovarUltims() {
         System.out.println("comprovarUltims");
-        String numero = "";
-        String premi1 = "";
-        String premi2 = "";
-        String premi3 = "";
-        boolean expResult = false;
+        String numero = "14711";
+        String premi1 = "22611";
+        String premi2 = "87998";
+        String premi3 = "18223";
+        boolean expResult = true;
         boolean result = FuncionesComprobacion.comprovarUltims(numero, premi1, premi2, premi3);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -194,13 +199,11 @@ public class FuncionesComprobacionTest {
     @Test
     public void testReintegrament() {
         System.out.println("reintegrament");
-        String numero = "";
-        String premi1 = "";
-        boolean expResult = false;
+        String numero = "56296";
+        String premi1 = "34856";
+        boolean expResult = true;
         boolean result = FuncionesComprobacion.reintegrament(numero, premi1);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -209,15 +212,13 @@ public class FuncionesComprobacionTest {
     @Test
     public void testComprovarDigits() {
         System.out.println("comprovarDigits");
-        String numero = "";
-        String premi = "";
-        int inici = 0;
-        int finalNumero = 0;
-        boolean expResult = false;
+        String numero = "24167";
+        String premi = "84169";
+        int inici = 1;
+        int finalNumero = 4;
+        boolean expResult = true;
         boolean result = FuncionesComprobacion.comprovarDigits(numero, premi, inici, finalNumero);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
