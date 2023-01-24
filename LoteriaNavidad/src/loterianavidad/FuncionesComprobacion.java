@@ -168,14 +168,15 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * 
-     * @param numero
-     * @param premi1
-     * @param premi2
-     * @param premi3
-     * @param premi4
-     * @param premi5
-     * @return 
+     * Comprovar si un número donat és una centena d'un dels premis.
+     * Les centenes són la coincidencia dels 3 primers dígits del primer, segon i tercer premi.
+     * @param numero El nostre número que volem comprovar.
+     * @param premi1 El número que ha resultat com a primer premi.
+     * @param premi2 El número que ha resultat com a segon premi.
+     * @param premi3 El número que ha resultat com a tercer premi.
+     * @param premi4 El primer número del quart premi.
+     * @param premi5 El segon número del quart premi.
+     * @return true si coincideix una de les centenes i false si no coincideix cap
      */
     public static boolean comprovarCentenes(String numero, String premi1, String premi2, String premi3, String premi4, String premi5) {
         boolean premi = false;
@@ -191,6 +192,15 @@ public class FuncionesComprobacion {
         return premi;
     }
 
+    /**
+     * Comprovar si els dos últims dígits del nostre número coincideixen amb els d'algun premi.
+     * 
+     * @param numero El nostre número que volem comprovar.
+     * @param premi1 El número que ha resultat com a primer premi.
+     * @param premi2 El número que ha resultat com a segon premi.
+     * @param premi3 El número que ha resultat com a tercer premi.
+     * @return true si es troba una coincidencia dels dos últims dígits i false si no es troba
+     */
     public static boolean comprovarUltims(String numero, String premi1, String premi2, String premi3) {
         boolean premi = false;
 
@@ -203,6 +213,13 @@ public class FuncionesComprobacion {
         return premi;
     }
 
+    /**
+     * Comprovar el reintegrament.
+     * El reintegrament és la coincidencia de l'últim dígit amb el primer premi.
+     * @param numero El nostre número que volem comprovar.
+     * @param premi1 El número que ha resultat com a primer premi.
+     * @return true si l'últim dígit coincideix i false si no coincideix.
+     */
     public static boolean reintegrament(String numero, String premi1) {
         boolean premi = false;
 
@@ -213,6 +230,14 @@ public class FuncionesComprobacion {
         return premi;
     }
 
+    /**
+     * Comprovar si els dígits, en un interval determinat, de dos números, coincideixen.
+     * @param numero El nostre número que volem comprovar.
+     * @param premi El número amb el que volem comprovar les coincidencies que és un número premiat.
+     * @param inici L'indicador d'inici de l'interval.
+     * @param finalNumero
+     * @return 
+     */
     public static boolean comprovarDigits(String numero, String premi, int inici, int finalNumero) {
         boolean acertat = false;
 
