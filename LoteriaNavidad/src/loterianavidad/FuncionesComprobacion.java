@@ -25,7 +25,7 @@ public class FuncionesComprobacion {
             }
             if (comprovarCentenes(numeroString, premisStrings[0], premisStrings[1], premisStrings[2], premisStrings[3], premisStrings[4])) {
                 premi += 1000;
-            } else if (comprovarUltims(numeroString, premisStrings[0], premisStrings[1], premisStrings[2])) {
+            } else if (comprovarDosUltims(numeroString, premisStrings[0], premisStrings[1], premisStrings[2])) {
                 premi += 1000;
             } else if (reintegrament(numeroString, premisStrings[0])) {
                 premi += 200;
@@ -201,7 +201,7 @@ public class FuncionesComprobacion {
      * @param premi3 El número que ha resultat com a tercer premi.
      * @return true si es troba una coincidencia dels dos últims dígits i false si no es troba
      */
-    public static boolean comprovarUltims(String numero, String premi1, String premi2, String premi3) {
+    public static boolean comprovarDosUltims(String numero, String premi1, String premi2, String premi3) {
         boolean premi = false;
 
         if (comprovarDigits(numero, premi1, 3, 5)

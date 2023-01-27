@@ -31,6 +31,10 @@ public class FuncionesUtilidades {
         } while (correcte == false);
     }
 
+    /**
+     * 
+     * @param vector 
+     */
     public static void CountingSort(LoteriaNavidad.NumPremiat[] vector) {
 
         LoteriaNavidad.NumPremiat[] output = new LoteriaNavidad.NumPremiat[TOTPREMS + 1];
