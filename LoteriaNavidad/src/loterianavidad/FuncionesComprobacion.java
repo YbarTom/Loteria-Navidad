@@ -11,10 +11,10 @@ public class FuncionesComprobacion {
      * Crida a totes les altres funcions de comprovació i suma els premis.
      * Només es pot guanyar un premi per acertar un número de manera exacta i
      * un premi, el que sigui més gran, dels altres.
-     * @param numero
-     * @param premisGrans
-     * @param llistaPremis
-     * @return 
+     * @param numero El nostre número que volem comprovar
+     * @param premisGrans Un array que conté els numeros premiats del primer premi als dos quarts
+     * @param llistaPremis Un array amb tots els números amb el seu premi assignat.
+     * @return La quantita de diners que s'han guanyat amb el número donat.
      */
     public static int comprovacioGeneral(int numero, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis) {
         int premi = 0;
