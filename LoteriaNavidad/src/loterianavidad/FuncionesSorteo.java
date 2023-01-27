@@ -22,6 +22,7 @@ public class FuncionesSorteo {
         int numeroAleatorio = (int) (Math.random() * (TOTNUMS + 1));
 
         while (contador < TOTPREMS) {
+            
             if (!RepetidosNumeros(numeroAleatorio, contador, vector)) {
                 vector[contador] = new LoteriaNavidad.NumPremiat();
                 vector[contador].numero = numeroAleatorio;
@@ -37,6 +38,7 @@ public class FuncionesSorteo {
         int PremioAleatorio = (int) (Math.random() * (TOTPREMS + 1));
 
         while (contador < TOTPREMS) {
+            
             if (!RepetidosPremis(PremioAleatorio, contador, vector)) {
                 vector[contador].premi = PremioAleatorio;
                 ++contador;

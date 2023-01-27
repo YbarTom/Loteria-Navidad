@@ -32,10 +32,10 @@ public class LoteriaNavidad {
     public static void main(String[] args) {
 
         NumPremiat VectorPremi[] = new NumPremiat[1807];
-        int[] prueba = new int[5];
+        int[] premis = new int[5];
 
         GeneradorNumeros(VectorPremi);
-        GeneradorPremis(VectorPremi, prueba);
+        GeneradorPremis(VectorPremi, premis);
 
         for (int i = 0; i < TOTPREMS; i++) {
             if (VectorPremi[i].premi == PRIMERPREMI || VectorPremi[i].premi == SEGONPREMI
@@ -55,7 +55,7 @@ public class LoteriaNavidad {
         System.out.print("Numero de tu boleto: ");
         int boleto = scan.nextInt();
 
-        int premi = FuncionesComprobacion.comprovacioGeneral(boleto, prueba, VectorPremi);
+        int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
         
         System.out.println("Premi: " + premi);
     }
