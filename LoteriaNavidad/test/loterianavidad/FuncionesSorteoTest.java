@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
 /**
  *
  * @author ausias
@@ -43,7 +44,7 @@ public class FuncionesSorteoTest {
     public void testGeneradorNumeros() {
         System.out.println("GeneradorNumeros");
         LoteriaNavidad.NumPremiat[] vector = null;
-        LoteriaNavidad.GeneradorNumeros(vector);
+        FuncionesSorteo.GeneradorNumeros(vector);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -56,7 +57,7 @@ public class FuncionesSorteoTest {
         System.out.println("GeneradorPremis");
         LoteriaNavidad.NumPremiat[] vector = null;
         int[] premis = null;
-        LoteriaNavidad.GeneradorPremis(vector, premis);
+        FuncionesSorteo.GeneradorPremis(vector, premis);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -71,7 +72,7 @@ public class FuncionesSorteoTest {
         int contador = 0;
         LoteriaNavidad.NumPremiat[] vector = null;
         boolean expResult = false;
-        boolean result = LoteriaNavidad.RepetidosNumeros(n, contador, vector);
+        boolean result = FuncionesSorteo.RepetidosNumeros(n, contador, vector);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -87,7 +88,7 @@ public class FuncionesSorteoTest {
         int contador = 0;
         LoteriaNavidad.NumPremiat[] vector = null;
         boolean expResult = false;
-        boolean result = LoteriaNavidad.RepetidosPremis(n, contador, vector);
+        boolean result = FuncionesSorteo.RepetidosPremis(n, contador, vector);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -101,7 +102,7 @@ public class FuncionesSorteoTest {
         System.out.println("AssignarPremis");
         LoteriaNavidad.NumPremiat[] vector = null;
         int[] premisGrans = null;
-        LoteriaNavidad.AssignarPremis(vector, premisGrans);
+        FuncionesSorteo.AssignarPremis(vector, premisGrans);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
