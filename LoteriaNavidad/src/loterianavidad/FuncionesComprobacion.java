@@ -25,7 +25,7 @@ public class FuncionesComprobacion {
             }
             if (comprovarCentenes(numeroString, premisStrings[0], premisStrings[1], premisStrings[2], premisStrings[3], premisStrings[4])) {
                 premi += 1000;
-            } else if (comprovarUltims(numeroString, premisStrings[0], premisStrings[1], premisStrings[2])) {
+            } else if (comprovarDosUltims(numeroString, premisStrings[0], premisStrings[1], premisStrings[2])) {
                 premi += 1000;
             } else if (reintegrament(numeroString, premisStrings[0])) {
                 premi += 200;
