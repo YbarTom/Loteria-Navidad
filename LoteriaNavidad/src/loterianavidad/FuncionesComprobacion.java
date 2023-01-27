@@ -6,6 +6,16 @@ public class FuncionesComprobacion {
 
     public static Scanner scan = new Scanner(System.in);
 
+    /**
+     * Realitza totes les comprovacions i suma els premis corresponents.
+     * Crida a totes les altres funcions de comprovació i suma els premis.
+     * Només es pot guanyar un premi per acertar un número de manera exacta i
+     * un premi, el que sigui més gran, dels altres.
+     * @param numero El nostre número que volem comprovar
+     * @param premisGrans Un array que conté els numeros premiats del primer premi als dos quarts
+     * @param llistaPremis Un array amb tots els números amb el seu premi assignat.
+     * @return La quantita de diners que s'han guanyat amb el número donat.
+     */
     public static int comprovacioGeneral(int numero, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis) {
         int premi = 0;
 
@@ -234,9 +244,9 @@ public class FuncionesComprobacion {
      * Comprovar si els dígits, en un interval determinat, de dos números, coincideixen.
      * @param numero El nostre número que volem comprovar.
      * @param premi El número amb el que volem comprovar les coincidencies que és un número premiat.
-     * @param inici L'indicador d'inici de l'interval.
-     * @param finalNumero
-     * @return 
+     * @param inici L'indicador d'inici de l'interval (inclusiu).
+     * @param finalNumero L'indicador del final de l'interval (exclusiu).
+     * @return true si el mateix interval de dos strings coincideixen fals si no coincideixen
      */
     public static boolean comprovarDigits(String numero, String premi, int inici, int finalNumero) {
         boolean acertat = false;
