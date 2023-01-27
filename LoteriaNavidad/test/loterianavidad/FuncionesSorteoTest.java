@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author ausias
  */
-public class LoteriaNavidadTest {
+public class FuncionesSorteoTest {
     
-    public LoteriaNavidadTest() {
+    public FuncionesSorteoTest() {
     }
     
     @BeforeClass
