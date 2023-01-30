@@ -18,6 +18,9 @@ public class FuncionesComprobacion {
      */
     public static int comprovacioGeneral(int numero, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis) {
         int premi = 0;
+        final int PREMI_CENTENES = 1000;
+        final int PREMI_DOSULTIMS = 1000;
+        final int REINTEGRAMENT = 200;
 
         premi += comprovarGrossos(numero, llistaPremis);
 
@@ -34,11 +37,11 @@ public class FuncionesComprobacion {
                 premisStrings[i] = passarAString(premisGrans[i]);
             }
             if (comprovarCentenes(numeroString, premisStrings[0], premisStrings[1], premisStrings[2], premisStrings[3], premisStrings[4])) {
-                premi += 1000;
+                premi += PREMI_CENTENES;
             } else if (comprovarDosUltims(numeroString, premisStrings[0], premisStrings[1], premisStrings[2])) {
-                premi += 1000;
+                premi += PREMI_DOSULTIMS;
             } else if (reintegrament(numeroString, premisStrings[0])) {
-                premi += 200;
+                premi += REINTEGRAMENT;
             }
         }
 
@@ -76,13 +79,16 @@ public class FuncionesComprobacion {
      */
     public static boolean Aproximacio(int numero, int premi) {
         boolean acertat = false;
+        final int PRIMER_NUMERO = 0;
+        final int ULTIM_NUMERO = 99999;
 
         //Comprovem si el número anterior i posterior coincideixen amb el nostre
         if (numero == premi + 1 || numero == premi - 1) {
             acertat = true;
         } //Si el número és 00000 es considera 99999 el seu anterior
         //Si el número és 99999 el 00000 es considera el posterior
-        else if ((numero == 0 && premi == 99999) || (numero == 99999 && premi == 0)) {
+        else if ((numero == PRIMER_NUMERO && premi == ULTIM_NUMERO) || 
+                (numero == ULTIM_NUMERO && premi == PRIMER_NUMERO)) {
             acertat = true;
         }
 
@@ -165,7 +171,8 @@ public class FuncionesComprobacion {
      * @return El número donat en format String amb els zeros anteriors que es necessitin.
      */
     public static String passarAString(int numero) {
-        int nZerosAfegir = 5 - contarDigits(numero);
+        final int MAX_DIGITS = 5;
+        int nZerosAfegir = MAX_DIGITS - contarDigits(numero);
 
         String numeroString = Integer.toString(numero);
 
@@ -190,12 +197,14 @@ public class FuncionesComprobacion {
      */
     public static boolean comprovarCentenes(String numero, String premi1, String premi2, String premi3, String premi4, String premi5) {
         boolean premi = false;
+        final int INICI = 0;
+        final int FINAL = 3;
 
-        if (comprovarDigits(numero, premi1, 0, 3)
-                || comprovarDigits(numero, premi2, 0, 3)
-                || comprovarDigits(numero, premi3, 0, 3)
-                || comprovarDigits(numero, premi4, 0, 3)
-                || comprovarDigits(numero, premi5, 0, 3)) {
+        if (comprovarDigits(numero, premi1, INICI, FINAL)
+                || comprovarDigits(numero, premi2, INICI, FINAL)
+                || comprovarDigits(numero, premi3, INICI, FINAL)
+                || comprovarDigits(numero, premi4, INICI, FINAL)
+                || comprovarDigits(numero, premi5, INICI, FINAL)) {
             premi = true;
         }
 
@@ -213,10 +222,12 @@ public class FuncionesComprobacion {
      */
     public static boolean comprovarDosUltims(String numero, String premi1, String premi2, String premi3) {
         boolean premi = false;
+        final int INICI = 3;
+        final int FINAL = 5;
 
-        if (comprovarDigits(numero, premi1, 3, 5)
-                || comprovarDigits(numero, premi2, 3, 5)
-                || comprovarDigits(numero, premi3, 3, 5)) {
+        if (comprovarDigits(numero, premi1, INICI, FINAL)
+                || comprovarDigits(numero, premi2, INICI, FINAL)
+                || comprovarDigits(numero, premi3, INICI, FINAL)) {
             premi = true;
         }
 
@@ -233,7 +244,7 @@ public class FuncionesComprobacion {
     public static boolean reintegrament(String numero, String premi1) {
         boolean premi = false;
 
-        if (numero.charAt(4) == premi1.charAt(4)) {
+        if (numero.charAt(numero.length()-1) == premi1.charAt(numero.length()-1)) {
             premi = true;
         }
 
