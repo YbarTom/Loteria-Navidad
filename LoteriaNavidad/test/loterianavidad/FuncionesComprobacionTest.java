@@ -70,9 +70,12 @@ public class FuncionesComprobacionTest {
         assertEquals(expResult, result);
         
         numero = 43537;
-        llistaPremis[0] = new LoteriaNavidad.NumPremiat();
-        llistaPremis[0].numero = 43537;
-        llistaPremis[0].premi = 1250000;
+        llistaPremis[1] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[1].numero = 43537;
+        llistaPremis[1].premi = 1250000;
+        expResult = 1250000;
+        result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
+        assertEquals(expResult, result);
     }
 
     /**
