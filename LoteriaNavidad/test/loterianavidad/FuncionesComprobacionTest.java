@@ -68,10 +68,17 @@ public class FuncionesComprobacionTest {
         int expResult = 4000000;
         int result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
         assertEquals(expResult, result);
+        
+        numero = 43537;
+        llistaPremis[0] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[0].numero = 43537;
+        llistaPremis[0].premi = 1250000;
     }
 
     /**
      * Test of Aproximacio method, of class FuncionesComprobacion.
+     * 
+     * Donat un número i un premi comprovem si 
      */
     @Test
     public void testAproximacio() {
@@ -92,43 +99,51 @@ public class FuncionesComprobacionTest {
     /**
      * Test of comprovarAproximacions method, of class FuncionesComprobacion.
      * 
-     * Comprobem si les aproximacions son correctes i sus premios correspondientes
+     * Comprovem si les aproximacions de tots els premis són correctes i 
+     * retornen els premis corresponents. També comprovem en cas que el número sigui 0
+     * si l'anterior és 99999 i a l'inversa.
      */
     @Test
     public void testComprovarAproximacions() {
         System.out.println("comprovarAproximacions");
         
-        
         int numero = 37846;
         int premi1 = 37847;
         int premi2 = 96423;
         int premi3 = 68511;
+        
+        System.out.println("comprovar aproximació primer premi");
         int expResult = 20000;
         int result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
         assertEquals(expResult, result);
         
+        System.out.println("comprovar aproximació segon premi");
         numero = 96422;
         expResult = 12500;
         result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
         assertEquals(expResult, result);
         
+        System.out.println("comprovar aproximació tercer premi");
         numero = 68510;
         expResult = 9600;
         result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
         assertEquals(expResult, result);
         
+        System.out.println("comprovar aproximació del número 0 i premi 99999");
         premi1=99999;
         numero= 0;
         expResult =20000;
         result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
         assertEquals(expResult, result);
         
+        System.out.println("comprovar aproximació del número 99999 i premi 0");
         premi1=0;
         numero= 99999;
         expResult =20000;
         result = FuncionesComprobacion.comprovarAproximacions(numero, premi1, premi2, premi3);
         assertEquals(expResult, result);
         
+        System.out.println("comprovar aproximació no vàlida");
         premi1=0;
         numero= 02;
         expResult =0;
@@ -139,7 +154,7 @@ public class FuncionesComprobacionTest {
     /**
      * Test of eliminarNumero method, of class FuncionesComprobacion.
      * 
-     * Comprobem si una vegada surt el numero s'elimina i comprovem si no surt 
+     * Comprovem si una vegada surt el número s'elimina i comprovem si no surt 
      * que no s'elimini.
      */
     @Test
@@ -162,7 +177,8 @@ public class FuncionesComprobacionTest {
     /**
      * Test of contarDigits method, of class FuncionesComprobacion.
      * 
-     * Comprobem si conta correctament la quantitat de digits dels numeros.
+     * Comprovem si conta correctament la quantitat de digits dels numeros.
+     * Probem números amb tots els dígits possiblesi ens assegurem que el 0 conta com 1 dígit.
      */
     @Test
     public void testContarDigits() {
@@ -203,7 +219,7 @@ public class FuncionesComprobacionTest {
     /**
      * Test of passarAString method, of class FuncionesComprobacion.
      * 
-     * Comprobem si llegeix el numero i el torna a String amb els 0 necesaris
+     * Comprovem si llegeix el número i el torna a String amb els 0 necesaris
      */
     @Test
     public void testPassarAString() {
@@ -233,15 +249,17 @@ public class FuncionesComprobacionTest {
         result = FuncionesComprobacion.passarAString(numero);
         assertEquals(expResult, result);
         
-        
-        
-
+        System.out.println("passarAString con 5 numeros");
+        numero = 12345;
+        expResult = "12345";
+        result = FuncionesComprobacion.passarAString(numero);
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of comprovarCentenes method, of class FuncionesComprobacion.
      * 
-     * Comprobem si el numero esta dintre de les centenes
+     * Comprovem si les centenes del número coincideixen amb les dels premis.
      */
     @Test
     public void testComprovarCentenes() {
@@ -297,8 +315,8 @@ public class FuncionesComprobacionTest {
     /**
      * Test of comprovarDosUltims method, of class FuncionesComprobacion.
      * 
-     * Comprobem si els 2 ultim numeros del premi coincideixan amb els 2 ultims
-     * numeros del numero.
+     * Comprovem si els 2 últims números del premi coincideixan amb els 2 últims
+     * números del número.
      */
     @Test
     public void testComprovarDosUltims() {
@@ -341,7 +359,7 @@ public class FuncionesComprobacionTest {
     /**
      * Test of reintegrament method, of class FuncionesComprobacion.
      * 
-     * Comprobem si t'ha tocat el reintegrament
+     * Comprovem si t'ha tocat el reintegrament
      */
     @Test
     public void testReintegrament() {
@@ -369,6 +387,9 @@ public class FuncionesComprobacionTest {
 
     /**
      * Test of comprovarDigits method, of class FuncionesComprobacion.
+     * 
+     * Comprovem si els dígits en uns determinats intervals coincideixen.
+     * La posició inicial és inclusiva i la final és exclusiva.
      */
     @Test
     public void testComprovarDigits() {
@@ -379,6 +400,15 @@ public class FuncionesComprobacionTest {
         int finalNumero = 4;
         boolean expResult = true;
         boolean result = FuncionesComprobacion.comprovarDigits(numero, premi, inici, finalNumero);
+        assertEquals(expResult, result);
+        
+        System.out.println("comprovar cas fals");
+        numero = "39817";
+        premi = "12435";
+        inici = 0;
+        finalNumero = 5;
+        expResult = false;
+        result = FuncionesComprobacion.comprovarDigits(numero, premi, inici, finalNumero);
         assertEquals(expResult, result);
     }
     
