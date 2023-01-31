@@ -85,13 +85,27 @@ public class FuncionesSorteoTest {
     @Test
     public void testRepetidosNumeros() {
         System.out.println("RepetidosNumeros");
+        //caso donde hay repetido
         int n = 0;
-        int contador = 0;
-        LoteriaNavidad.NumPremiat[] vector = null;
-        boolean expResult = false;
+        int contador = 1;
+        LoteriaNavidad.NumPremiat[] vector = new LoteriaNavidad.NumPremiat[2];
+        //creem qwedewfdwe
+        vector[0] = new LoteriaNavidad.NumPremiat();
+        vector[1] = new LoteriaNavidad.NumPremiat();
+        vector[0].numero=0;
+        vector[1].numero=1;
+        boolean expResult = true;
         boolean result = FuncionesSorteo.RepetidosNumeros(n, contador, vector);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        //caso donde no hay repetido
+       
+        n = 2;
+        contador = 1;
+        vector[0].numero=0;
+        vector[1].numero=1;
+        expResult = false;
+        result = FuncionesSorteo.RepetidosNumeros(n, contador, vector);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -100,13 +114,27 @@ public class FuncionesSorteoTest {
     @Test
     public void testRepetidosPremis() {
         System.out.println("RepetidosPremis");
+        //caso donde hay repetido
         int n = 0;
-        int contador = 0;
-        LoteriaNavidad.NumPremiat[] vector = null;
-        boolean expResult = false;
+        int contador = 1;
+        LoteriaNavidad.NumPremiat[] vector = new LoteriaNavidad.NumPremiat[2];
+        //creem qwedewfdwe
+        vector[0] = new LoteriaNavidad.NumPremiat();
+        vector[1] = new LoteriaNavidad.NumPremiat();
+        vector[0].premi=0;
+        vector[1].premi=1;
+        boolean expResult = true;
         boolean result = FuncionesSorteo.RepetidosPremis(n, contador, vector);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        //caso donde no hay repetido
+        n=2;
+        contador=1;
+        vector[0].numero=0;
+        vector[1].numero=1;
+        expResult = false;
+        result = FuncionesSorteo.RepetidosNumeros(n, contador, vector);
+        assertEquals(expResult, result);
+        
 
     }
 
@@ -120,19 +148,10 @@ public class FuncionesSorteoTest {
         int[] premisGrans = null;
         FuncionesSorteo.AssignarPremis(vector, premisGrans);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of main method, of class LoteriaNavidad.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        LoteriaNavidad.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
+    
 
 }
