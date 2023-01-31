@@ -7,13 +7,16 @@ public class FuncionesComprobacion {
     public static Scanner scan = new Scanner(System.in);
 
     /**
-     * Realitza totes les comprovacions i suma els premis corresponents.
-     * Crida a totes les altres funcions de comprovació i suma els premis.
-     * Només es pot guanyar un premi per acertar un número de manera exacta i
-     * un premi, el que sigui més gran, dels altres.
+     * Realitza totes les comprovacions i suma els premis corresponents. Crida a
+     * totes les altres funcions de comprovació i suma els premis. Només es pot
+     * guanyar un premi per acertar un número de manera exacta i un premi, el
+     * que sigui més gran, dels altres.
+     *
      * @param numero El nostre número que volem comprovar
-     * @param premisGrans Un array que conté els numeros premiats del primer premi als dos quarts
-     * @param llistaPremis Un array amb tots els números amb el seu premi assignat.
+     * @param premisGrans Un array que conté els numeros premiats del primer
+     * premi als dos quarts
+     * @param llistaPremis Un array amb tots els números amb el seu premi
+     * assignat.
      * @return La quantita de diners que s'han guanyat amb el número donat.
      */
     public static int comprovacioGeneral(int numero, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis) {
@@ -49,8 +52,40 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Comprovar premis exactes.
-     * Funció per comprovar si s'ha acertat de manera exacta un premi.
+     * Demanem si volem comprovar un dècim o un número.
+     * Seguirem preguntant fins que ens donin una resposta vàlida.
+     * @return false si volem comprovar un dècim i true si volem comprovar un número
+     */
+    public static boolean demanarNumero() {
+        boolean numero = false;
+        boolean valid = false;
+
+        System.out.println("Introdueix 0 si vols comprovar un dècim i un 1 si vols comprovar un número");
+        int entrada = FuncionesUtilidades.Entero();
+        while (!valid) {
+            switch (entrada) {
+                case 0:
+                    numero = false;
+                    valid = true;
+                    break;
+                case 1:
+                    numero = true;
+                    valid = true;
+                    break;
+                default:
+                    System.out.println("ERROR, introdueix 0 o 1");
+                    entrada = FuncionesUtilidades.Entero();
+                    break;
+            }
+        }
+
+        return numero;
+    }
+
+    /**
+     * Comprovar premis exactes. Funció per comprovar si s'ha acertat de manera
+     * exacta un premi.
+     *
      * @param numero El nostre número que volem comprovar
      * @param llistaPremis La llista amb tots els números que han sigut premiats
      * amb els seus respectius premis.
@@ -70,9 +105,10 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Comprovar si un número donat és una aproximació d'un altre.
-     * Comprovem si el número donat és anterior o posterior al premi.
-     * Es considera que l'anterior a 0 és 99999 i el posterior a 99999 és 0.
+     * Comprovar si un número donat és una aproximació d'un altre. Comprovem si
+     * el número donat és anterior o posterior al premi. Es considera que
+     * l'anterior a 0 és 99999 i el posterior a 99999 és 0.
+     *
      * @param numero El nostre número.
      * @param premi El número premiat.
      * @return true si és una aproximació i false si no ho és
@@ -87,8 +123,8 @@ public class FuncionesComprobacion {
             acertat = true;
         } //Si el número és 00000 es considera 99999 el seu anterior
         //Si el número és 99999 el 00000 es considera el posterior
-        else if ((numero == PRIMER_NUMERO && premi == ULTIM_NUMERO) || 
-                (numero == ULTIM_NUMERO && premi == PRIMER_NUMERO)) {
+        else if ((numero == PRIMER_NUMERO && premi == ULTIM_NUMERO)
+                || (numero == ULTIM_NUMERO && premi == PRIMER_NUMERO)) {
             acertat = true;
         }
 
@@ -99,6 +135,7 @@ public class FuncionesComprobacion {
      * Comprovar si un número donat és una aproximació d'un dels premis donats.
      * Comprovem si el número donat és anterior o posterior a algun dels premis.
      * Les aproximacions són només pel primer, segon i tercer premis.
+     *
      * @param numero El nostre número que volem comprovar.
      * @param premi1 El número que ha resultat com a primer premi.
      * @param premi2 El número que ha resultat com a segon premi.
@@ -129,13 +166,16 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Eliminar un número específic del vector de premis grans.
-     * Substituir el número donat per -11111 per no afectar les comprovacions posteriors.
-     * Una vegada ens ha tocat un premi gros hem de comprovar si tenim un dels premis menors,
-     * però aquests premis menors obviament no poden ser del nostre propi número ja premiat.
+     * Eliminar un número específic del vector de premis grans. Substituir el
+     * número donat per -11111 per no afectar les comprovacions posteriors. Una
+     * vegada ens ha tocat un premi gros hem de comprovar si tenim un dels
+     * premis menors, però aquests premis menors obviament no poden ser del
+     * nostre propi número ja premiat.
+     *
      * @param numero El nostre número que volem comprovar.
-     * @param premisGrans El vector que conté tots els números que han sigut premiats amb
-     * premis d'interès (el primer, el segon, el tercer i els dos quarts).
+     * @param premisGrans El vector que conté tots els números que han sigut
+     * premiats amb premis d'interès (el primer, el segon, el tercer i els dos
+     * quarts).
      */
     public static void eliminarNumero(int numero, int[] premisGrans) {
         for (int i = 0; i < premisGrans.length; ++i) {
@@ -148,27 +188,29 @@ public class FuncionesComprobacion {
 
     /**
      * Contar quants digits té un número.
-     * 
+     *
      * @param numero El numero del qual volem saber els dígits.
      * @return La quantitat de dígits que té el número.
      */
     public static int contarDigits(int numero) {
         int resultat = 0;
-           
-        while(numero > 10){
-            numero = numero/10;
+
+        while (numero > 10) {
+            numero = numero / 10;
             ++resultat;
         }
         ++resultat;
-        
+
         return resultat;
     }
 
     /**
-     * Passar un número enter a String afegint els zeros inicials en cas que es necessitin.
-     * 
+     * Passar un número enter a String afegint els zeros inicials en cas que es
+     * necessitin.
+     *
      * @param numero El nostre número que volem passar a String.
-     * @return El número donat en format String amb els zeros anteriors que es necessitin.
+     * @return El número donat en format String amb els zeros anteriors que es
+     * necessitin.
      */
     public static String passarAString(int numero) {
         final int MAX_DIGITS = 5;
@@ -177,7 +219,7 @@ public class FuncionesComprobacion {
         String numeroString = Integer.toString(numero);
 
         String resultat = numeroString;
-        
+
         for (int i = 0; i < nZerosAfegir; ++i) {
             resultat = "0" + resultat;
         }
@@ -185,15 +227,18 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Comprovar si un número donat és una centena d'un dels premis.
-     * Les centenes són la coincidencia dels 3 primers dígits del primer, segon i tercer premi.
+     * Comprovar si un número donat és una centena d'un dels premis. Les
+     * centenes són la coincidencia dels 3 primers dígits del primer, segon i
+     * tercer premi.
+     *
      * @param numero El nostre número que volem comprovar.
      * @param premi1 El número que ha resultat com a primer premi.
      * @param premi2 El número que ha resultat com a segon premi.
      * @param premi3 El número que ha resultat com a tercer premi.
      * @param premi4 El primer número del quart premi.
      * @param premi5 El segon número del quart premi.
-     * @return true si coincideix una de les centenes i false si no coincideix cap
+     * @return true si coincideix una de les centenes i false si no coincideix
+     * cap
      */
     public static boolean comprovarCentenes(String numero, String premi1, String premi2, String premi3, String premi4, String premi5) {
         boolean premi = false;
@@ -212,13 +257,15 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Comprovar si els dos últims dígits del nostre número coincideixen amb els d'algun premi.
-     * 
+     * Comprovar si els dos últims dígits del nostre número coincideixen amb els
+     * d'algun premi.
+     *
      * @param numero El nostre número que volem comprovar.
      * @param premi1 El número que ha resultat com a primer premi.
      * @param premi2 El número que ha resultat com a segon premi.
      * @param premi3 El número que ha resultat com a tercer premi.
-     * @return true si es troba una coincidencia dels dos últims dígits i false si no es troba
+     * @return true si es troba una coincidencia dels dos últims dígits i false
+     * si no es troba
      */
     public static boolean comprovarDosUltims(String numero, String premi1, String premi2, String premi3) {
         boolean premi = false;
@@ -235,8 +282,9 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Comprovar el reintegrament.
-     * El reintegrament és la coincidencia de l'últim dígit amb el primer premi.
+     * Comprovar el reintegrament. El reintegrament és la coincidencia de
+     * l'últim dígit amb el primer premi.
+     *
      * @param numero El nostre número que volem comprovar.
      * @param premi1 El número que ha resultat com a primer premi.
      * @return true si l'últim dígit coincideix i false si no coincideix.
@@ -244,7 +292,7 @@ public class FuncionesComprobacion {
     public static boolean reintegrament(String numero, String premi1) {
         boolean premi = false;
 
-        if (numero.charAt(numero.length()-1) == premi1.charAt(numero.length()-1)) {
+        if (numero.charAt(numero.length() - 1) == premi1.charAt(numero.length() - 1)) {
             premi = true;
         }
 
@@ -252,12 +300,16 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Comprovar si els dígits, en un interval determinat, de dos números, coincideixen.
+     * Comprovar si els dígits, en un interval determinat, de dos números,
+     * coincideixen.
+     *
      * @param numero El nostre número que volem comprovar.
-     * @param premi El número amb el que volem comprovar les coincidencies que és un número premiat.
+     * @param premi El número amb el que volem comprovar les coincidencies que
+     * és un número premiat.
      * @param inici L'indicador d'inici de l'interval (inclusiu).
      * @param finalNumero L'indicador del final de l'interval (exclusiu).
-     * @return true si el mateix interval de dos strings coincideixen fals si no coincideixen
+     * @return true si el mateix interval de dos strings coincideixen fals si no
+     * coincideixen
      */
     public static boolean comprovarDigits(String numero, String premi, int inici, int finalNumero) {
         boolean acertat = false;

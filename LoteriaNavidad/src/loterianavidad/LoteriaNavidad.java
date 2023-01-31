@@ -48,15 +48,16 @@ public class LoteriaNavidad {
 
         }
 
-        /*FuncionesUtilidades.CountingSort(VectorPremi);
-        for(int i=0;i<13;i++){
-            System.out.print(VectorPremi[i].numero+" ");
-            System.out.println(VectorPremi[i].premi);
-        }*/
+        boolean numero = FuncionesComprobacion.demanarNumero();
+        
         System.out.print("Numero de tu boleto: ");
-        int boleto = scan.nextInt();
-
+        int boleto = FuncionesUtilidades.Entero();
+        
         int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
+        
+        if(!numero){
+            premi = premi/10;
+        }
         
         System.out.println("Premi: " + premi);
     }

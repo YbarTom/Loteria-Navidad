@@ -414,5 +414,16 @@ public class FuncionesComprobacionTest {
         result = FuncionesComprobacion.comprovarDigits(numero, premi, inici, finalNumero);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of demanarNumero method, of class FuncionesComprobacion.
+     */
+    @Test
+    public void testDemanarNumero() {
+        System.out.println("demanarNumero");
+        boolean expResult = false;
+        boolean result = FuncionesComprobacion.demanarNumero();
+        assertEquals(expResult, result);
+    }
     
 }
