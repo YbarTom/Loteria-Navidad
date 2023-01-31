@@ -21,6 +21,7 @@ public class LoteriaNavidad {
     static final int TERCERPREMI = 500000;
     static final int QUARTPREMI = 200000;
     static final int CINQUEPREMI = 60000;
+    static final int SISEPREMI = 1000;
 
     public static class NumPremiat {
 

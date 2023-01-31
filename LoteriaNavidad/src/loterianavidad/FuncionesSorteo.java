@@ -5,9 +5,11 @@
 package loterianavidad;
 
 import static loterianavidad.LoteriaNavidad.PRIMERPREMI;
-import static loterianavidad.LoteriaNavidad.QUARTPREMI;
 import static loterianavidad.LoteriaNavidad.SEGONPREMI;
 import static loterianavidad.LoteriaNavidad.TERCERPREMI;
+import static loterianavidad.LoteriaNavidad.QUARTPREMI;
+import static loterianavidad.LoteriaNavidad.CINQUEPREMI;
+import static loterianavidad.LoteriaNavidad.SISEPREMI;
 import static loterianavidad.LoteriaNavidad.TOTNUMS;
 import static loterianavidad.LoteriaNavidad.TOTPREMS;
 
@@ -16,13 +18,13 @@ import static loterianavidad.LoteriaNavidad.TOTPREMS;
  * @author ausias
  */
 public class FuncionesSorteo {
-    
+
     public static void GeneradorNumeros(LoteriaNavidad.NumPremiat[] vector) {
         int contador = 0;
         int numeroAleatorio = (int) (Math.random() * (TOTNUMS + 1));
 
         while (contador < TOTPREMS) {
-            
+
             if (!RepetidosNumeros(numeroAleatorio, contador, vector)) {
                 vector[contador] = new LoteriaNavidad.NumPremiat();
                 vector[contador].numero = numeroAleatorio;
@@ -38,7 +40,7 @@ public class FuncionesSorteo {
         int PremioAleatorio = (int) (Math.random() * (TOTPREMS + 1));
 
         while (contador < TOTPREMS) {
-            
+
             if (!RepetidosPremis(PremioAleatorio, contador, vector)) {
                 vector[contador].premi = PremioAleatorio;
                 ++contador;
@@ -93,9 +95,12 @@ public class FuncionesSorteo {
                 }
                 vector[i].premi = QUARTPREMI;
             } else if (vector[i].premi >= 5 && vector[i].premi <= 12) {
-                vector[i].premi = 60000;
-            } else if (vector[i].premi >= 13 && vector[i].premi <= (TOTPREMS-3)) {
-                vector[i].premi = 1000;
+                vector[i].premi = CINQUEPREMI;
+            } else if (vector[i].premi >= 13 && vector[i].premi <= (TOTPREMS - 3)) {
+                vector[i].premi = SISEPREMI;
+            }
+            else{
+                vector[i].premi=0;
             }
         }
     }

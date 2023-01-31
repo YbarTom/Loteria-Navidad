@@ -10,6 +10,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static loterianavidad.LoteriaNavidad.PRIMERPREMI;
+import static loterianavidad.LoteriaNavidad.SEGONPREMI;
+import static loterianavidad.LoteriaNavidad.TERCERPREMI;
+import static loterianavidad.LoteriaNavidad.QUARTPREMI;
+import static loterianavidad.LoteriaNavidad.CINQUEPREMI;
+import static loterianavidad.LoteriaNavidad.SISEPREMI;
+import static loterianavidad.LoteriaNavidad.TOTNUMS;
+import static loterianavidad.LoteriaNavidad.TOTPREMS;
 
 /**
  *
@@ -92,17 +100,17 @@ public class FuncionesSorteoTest {
         //creem qwedewfdwe
         vector[0] = new LoteriaNavidad.NumPremiat();
         vector[1] = new LoteriaNavidad.NumPremiat();
-        vector[0].numero=0;
-        vector[1].numero=1;
+        vector[0].numero = 0;
+        vector[1].numero = 1;
         boolean expResult = true;
         boolean result = FuncionesSorteo.RepetidosNumeros(n, contador, vector);
         assertEquals(expResult, result);
         //caso donde no hay repetido
-       
+
         n = 2;
         contador = 1;
-        vector[0].numero=0;
-        vector[1].numero=1;
+        vector[0].numero = 0;
+        vector[1].numero = 1;
         expResult = false;
         result = FuncionesSorteo.RepetidosNumeros(n, contador, vector);
         assertEquals(expResult, result);
@@ -121,20 +129,19 @@ public class FuncionesSorteoTest {
         //creem qwedewfdwe
         vector[0] = new LoteriaNavidad.NumPremiat();
         vector[1] = new LoteriaNavidad.NumPremiat();
-        vector[0].premi=0;
-        vector[1].premi=1;
+        vector[0].premi = 0;
+        vector[1].premi = 1;
         boolean expResult = true;
         boolean result = FuncionesSorteo.RepetidosPremis(n, contador, vector);
         assertEquals(expResult, result);
         //caso donde no hay repetido
-        n=2;
-        contador=1;
-        vector[0].numero=0;
-        vector[1].numero=1;
+        n = 2;
+        contador = 1;
+        vector[0].numero = 0;
+        vector[1].numero = 1;
         expResult = false;
         result = FuncionesSorteo.RepetidosNumeros(n, contador, vector);
         assertEquals(expResult, result);
-        
 
     }
 
@@ -144,14 +151,55 @@ public class FuncionesSorteoTest {
     @Test
     public void testAssignarPremis() {
         System.out.println("AssignarPremis");
-        LoteriaNavidad.NumPremiat[] vector = null;
-        int[] premisGrans = null;
-        FuncionesSorteo.AssignarPremis(vector, premisGrans);
-        // TODO review the generated test code and remove the default call to fail.
-        
-    }
+        LoteriaNavidad.NumPremiat[] vector = new LoteriaNavidad.NumPremiat[TOTPREMS];
+        int[] premisGrans = new int[5];
 
-    
-    
+        for (int i = 0; i < TOTPREMS; i++) {
+            vector[i] = new LoteriaNavidad.NumPremiat();
+        }
+        int contador = 0;
+        vector[0].premi = 0;
+        vector[1].premi = 1;
+        vector[2].premi = 2;
+        vector[3].premi = 3;
+        vector[4].premi = 5;
+        vector[5].premi = 12;
+        vector[6].premi = 13;
+        vector[7].premi = 1700;
+        FuncionesSorteo.AssignarPremis(vector, premisGrans);
+        if (vector[0].premi == PRIMERPREMI) {
+            contador++;
+        }
+        if (vector[1].premi == SEGONPREMI) {
+            contador++;
+        }
+        if (vector[2].premi == TERCERPREMI) {
+            contador++;
+        }
+        if (vector[3].premi == QUARTPREMI) {
+            contador++;
+        }
+        if (vector[4].premi == CINQUEPREMI) {
+            contador++;
+        }
+        if (vector[5].premi == CINQUEPREMI) {
+            contador++;
+        }
+        if (vector[6].premi == SISEPREMI) {
+            contador++;
+        }
+        if (vector[7].premi == SISEPREMI) {
+            contador++;
+        }
+
+        int expResult = 8;
+        assertEquals(expResult, contador);
+        
+        
+        
+        
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
 
 }
