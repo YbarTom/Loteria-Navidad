@@ -18,6 +18,13 @@ import static loterianavidad.LoteriaNavidad.TOTPREMS;
  * @author ausias
  */
 public class FuncionesSorteo {
+    
+    /**
+     * Funcio que genera els numeros Guanyadors aleatoriament del concurs (del 0 al nombre de numeros), 
+     * i els insereix dintre del vector(NumPremiat) a la secció de numeros.
+     * 
+     * @param vector vector(s'utilitza el .numero) on estan els numeros premiats
+     */
 
     public static void GeneradorNumeros(LoteriaNavidad.NumPremiat[] vector) {
         int contador = 0;
@@ -34,6 +41,14 @@ public class FuncionesSorteo {
         }
 
     }
+    
+    /**
+     * Genera un numero aleatori entre 0 i (Numero de premis), el 0 es el premi amb el valor mes gran
+     * i aixi respectivament.
+     * @param vector vector(s'utilitza el .premi) on estan els premis
+     * cada premi va asignat a un numero, s'assignen per ordre de sortida
+     * @param premis (vector amb els premis per sobre o igual a 200000 euros)
+     */
 
     public static void GeneradorPremis(LoteriaNavidad.NumPremiat[] vector, int[] premis) {
         int contador = 0;
@@ -49,7 +64,14 @@ public class FuncionesSorteo {
         }
         AssignarPremis(vector, premis);
     }
-
+    /**
+     * Comprova l'ultim numero generat amb els que estan situats a .numero(dintre del vector de 
+     * NumPremiat) per veure si aquest numero ja existeix
+     * @param n numero a comprovar
+     * @param contador numero de comprovacions
+     * @param vector vector(s'utilitza el .numero) on estan els numeros premiats
+     * @return true si esta el numero repetit, false si no ho està.
+     */
     public static boolean RepetidosNumeros(int n, int contador, LoteriaNavidad.NumPremiat[] vector) {
         boolean comprovacio = false;
 
@@ -62,7 +84,14 @@ public class FuncionesSorteo {
         return comprovacio;
 
     }
-
+    /**
+     * Comprova l'ultim premi generat amb els que estan situats a .premi(dintre del vector de 
+     * NumPremiat) per veure si aquest premi ja existeix
+     * @param n premi a mirar
+     * @param contador numero de comprovacions
+     * @param vector vector(s'utilitza el .premi) on estan els premis
+     * @return true si esta el numero repetit, false si no ho està.
+     */
     public static boolean RepetidosPremis(int n, int contador, LoteriaNavidad.NumPremiat[] vector) {
         boolean comprovacio = false;
 
@@ -74,7 +103,12 @@ public class FuncionesSorteo {
 
         return comprovacio;
     }
-
+    /**
+     * Assigna el valor monetari als premis respectivament, el 0 va amb el mes gran i aixi successivament
+     * @param vector vector on estan els premis i els numeros, cadascun d'ells al seu lloc respectiu de
+     * la clase
+     * @param premisGrans vector que conte els premis per sobre o igual al valor 200000
+     */
     public static void AssignarPremis(LoteriaNavidad.NumPremiat[] vector, int[] premisGrans) {
 
         for (int i = 0; i < TOTPREMS; i++) {
@@ -104,7 +138,10 @@ public class FuncionesSorteo {
             }
         }
     }
-    
+    /**
+     * Imprimeix els premis superiors o iguals a 6000 euros ja que son els "importants"
+     * @param VectorPremi vector on estan els premis (vector de clase NumPremi al .premi)
+     */
     public static void mostrarPremisGrans(LoteriaNavidad.NumPremiat[] VectorPremi){
         for (int i = 0; i < TOTPREMS; i++) {
             if (VectorPremi[i].premi == PRIMERPREMI || VectorPremi[i].premi == SEGONPREMI
