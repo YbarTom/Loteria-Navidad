@@ -11,15 +11,17 @@ public class FuncionesUtilidades {
 
     /**
      * Demana entrades per consola fins que se li dona un número enter.
+     * @param missatge Un missatge per demanar el número
      * @return El número enter en qüestió
      */
-    public static int Entero() {
+    public static int Entero(String missatge) {
         int numero = 0;
         
         boolean correcte = false;
 
         do {
             if (scan.hasNextInt()) {
+                System.out.println(missatge);
                 numero = scan.nextInt();
                 correcte = true;
             } else {

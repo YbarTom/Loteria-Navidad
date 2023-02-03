@@ -14,6 +14,8 @@ public class LoteriaNavidad {
 
     static final int TOTNUMS = 99999;
     static final int TOTPREMS = 1807;
+    //Considerem importants els que utilitzem per aproximacions i altres càlculs
+    static final int PREMISIMPORTANTS = 5;
 
     //constantes dinero premio
     static final int PRIMERPREMI = 4000000;
@@ -32,34 +34,19 @@ public class LoteriaNavidad {
     
     public static void main(String[] args) {
 
-        NumPremiat VectorPremi[] = new NumPremiat[1807];
-        int[] premis = new int[5];
+        NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
+        int[] premis = new int[PREMISIMPORTANTS];
 
         GeneradorNumeros(VectorPremi);
         GeneradorPremis(VectorPremi, premis);
 
-        for (int i = 0; i < TOTPREMS; i++) {
-            if (VectorPremi[i].premi == PRIMERPREMI || VectorPremi[i].premi == SEGONPREMI
-                    || VectorPremi[i].premi == TERCERPREMI || VectorPremi[i].premi == QUARTPREMI
-                    || VectorPremi[i].premi == CINQUEPREMI) {
-                System.out.print(VectorPremi[i].numero + " ");
-                System.out.println(VectorPremi[i].premi);
-            }
-
-        }
-
-        boolean numero = FuncionesComprobacion.demanarNumero();
+        FuncionesSorteo.mostrarPremisGrans(VectorPremi);
         
-        System.out.print("Numero de tu boleto: ");
-        int boleto = FuncionesUtilidades.Entero();
+        int boleto = FuncionesUtilidades.Entero("Numero de tu boleto: ");
         
         int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
         
-        if(!numero){
-            premi = premi/10;
-        }
-        
-        System.out.println("Premi: " + premi);
+        System.out.println("Premi: " + FuncionesComprobacion.premiFinal(premi));
     }
 
 }

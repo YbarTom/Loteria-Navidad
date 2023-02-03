@@ -104,4 +104,16 @@ public class FuncionesSorteo {
             }
         }
     }
+    
+    public static void mostrarPremisGrans(LoteriaNavidad.NumPremiat[] VectorPremi){
+        for (int i = 0; i < TOTPREMS; i++) {
+            if (VectorPremi[i].premi == PRIMERPREMI || VectorPremi[i].premi == SEGONPREMI
+                    || VectorPremi[i].premi == TERCERPREMI || VectorPremi[i].premi == QUARTPREMI
+                    || VectorPremi[i].premi == CINQUEPREMI) {
+                System.out.print(VectorPremi[i].numero + " ");
+                System.out.println(VectorPremi[i].premi);
+            }
+
+        }
+    }
 }

@@ -44,24 +44,37 @@ public class FuncionesComprobacionTest {
     public void testComprovacioGeneral() {
         System.out.println("comprovacioGeneral");
         int numero = 41329;
-        int[] premisGrans = {41120, 63668, 56823, 70195, 44057};
-        LoteriaNavidad.NumPremiat[] llistaPremis = new LoteriaNavidad.NumPremiat[1];
+        int[] premisGrans = {41120, 35320, 56823, 70195, 44057};
+        LoteriaNavidad.NumPremiat[] llistaPremis = new LoteriaNavidad.NumPremiat[2];
         llistaPremis[0] = new LoteriaNavidad.NumPremiat();
         llistaPremis[0].numero = 41329;
         llistaPremis[0].premi = 1000;
         int expResult = 1000;
         int result = FuncionesComprobacion.comprovacioGeneral(numero, premisGrans, llistaPremis);
         assertEquals(expResult, result);
+        
+        numero = 35320;
+        llistaPremis[1] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[1].numero = 35320;
+        llistaPremis[1].premi = 1250000;
+        expResult = 1251000;
+        result = FuncionesComprobacion.comprovacioGeneral(numero, premisGrans, llistaPremis);
+        assertEquals(expResult, result);
+        
     }
 
     /**
      * Test of comprovarGrossos method, of class FuncionesComprobacion.
+     * 
+     * Comprovem si ens ha tocat un premi gros. Considerem premi gros el
+     * coincidir exactament de número amb un dels 1807 números premiats.
      */
     @Test
     public void testComprovarGrossos() {
         System.out.println("comprovarGrossos");
+        System.out.println("Comprovació del primer premi");
         int numero = 38571;
-        LoteriaNavidad.NumPremiat[] llistaPremis = new LoteriaNavidad.NumPremiat[1];
+        LoteriaNavidad.NumPremiat[] llistaPremis = new LoteriaNavidad.NumPremiat[6];
         llistaPremis[0] = new LoteriaNavidad.NumPremiat();
         llistaPremis[0].numero = 38571;
         llistaPremis[0].premi = 4000000;
@@ -69,11 +82,48 @@ public class FuncionesComprobacionTest {
         int result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
         assertEquals(expResult, result);
         
+        System.out.println("Comprovació del segon premi");
         numero = 43537;
         llistaPremis[1] = new LoteriaNavidad.NumPremiat();
         llistaPremis[1].numero = 43537;
         llistaPremis[1].premi = 1250000;
         expResult = 1250000;
+        result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
+        assertEquals(expResult, result);
+        
+        System.out.println("Comprovació del tercer premi");
+        numero = 25337;
+        llistaPremis[2] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[2].numero = 25337;
+        llistaPremis[2].premi = 500000;
+        expResult = 500000;
+        result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
+        assertEquals(expResult, result);
+        
+        System.out.println("Comprovació del quart premi");
+        numero = 74325;
+        llistaPremis[3] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[3].numero = 74325;
+        llistaPremis[3].premi = 200000;
+        expResult = 200000;
+        result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
+        assertEquals(expResult, result);
+        
+        System.out.println("Comprovació del cinquè premi");
+        numero = 24255;
+        llistaPremis[4] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[4].numero = 24255;
+        llistaPremis[4].premi = 60000;
+        expResult = 60000;
+        result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
+        assertEquals(expResult, result);
+        
+        System.out.println("Comprovació de la pedrea");
+        numero = 64283;
+        llistaPremis[5] = new LoteriaNavidad.NumPremiat();
+        llistaPremis[5].numero = 64283;
+        llistaPremis[5].premi = 1000;
+        expResult = 1000;
         result = FuncionesComprobacion.comprovarGrossos(numero, llistaPremis);
         assertEquals(expResult, result);
     }

@@ -50,7 +50,7 @@ public class FuncionesComprobacion {
 
         return premi;
     }
-
+    
     /**
      * Demanem si volem comprovar un dècim o un número.
      * Seguirem preguntant fins que ens donin una resposta vàlida.
@@ -59,9 +59,8 @@ public class FuncionesComprobacion {
     public static boolean demanarNumero() {
         boolean numero = false;
         boolean valid = false;
-
-        System.out.println("Introdueix 0 si vols comprovar un dècim i un 1 si vols comprovar un número");
-        int entrada = FuncionesUtilidades.Entero();
+        
+        int entrada = FuncionesUtilidades.Entero("Introdueix 0 si vols comprovar un dècim i un 1 si vols comprovar un número");
         while (!valid) {
             switch (entrada) {
                 case 0:
@@ -73,13 +72,25 @@ public class FuncionesComprobacion {
                     valid = true;
                     break;
                 default:
-                    System.out.println("ERROR, introdueix 0 o 1");
-                    entrada = FuncionesUtilidades.Entero();
+                    entrada = FuncionesUtilidades.Entero("ERROR, introdueix 0 o 1");
                     break;
             }
         }
 
         return numero;
+    }
+    
+    /**
+     * Calcula el premi final segons si tenim un número o un dècim.
+     * @param premi El premi sense canvis
+     * @return El premi segons si és número o dècim
+     */
+    public static int premiFinal (int premi){
+        boolean numero = demanarNumero();
+        if(!numero){
+            premi = premi/10;
+        }
+        return premi;
     }
 
     /**
