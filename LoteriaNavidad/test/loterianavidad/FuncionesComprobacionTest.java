@@ -39,6 +39,7 @@ public class FuncionesComprobacionTest {
 
     /**
      * Test of comprovacioGeneral method, of class FuncionesComprobacion.
+     * Provem que es poden guanyar només un premi per acertar un número i un dels altres premis
      */
     @Test
     public void testComprovacioGeneral() {
@@ -53,6 +54,7 @@ public class FuncionesComprobacionTest {
         int result = FuncionesComprobacion.comprovacioGeneral(numero, premisGrans, llistaPremis);
         assertEquals(expResult, result);
         
+        System.out.println("Segon premi i aproximació del primer alhora");
         numero = 35320;
         llistaPremis[1] = new LoteriaNavidad.NumPremiat();
         llistaPremis[1].numero = 35320;
@@ -475,5 +477,23 @@ public class FuncionesComprobacionTest {
         boolean result = FuncionesComprobacion.demanarNumero();
         assertEquals(expResult, result);
     }
-    
+
+    /**
+     * Test of premiFinal method, of class FuncionesComprobacion.
+     */
+    @Test
+    public void testPremiFinal() {
+        System.out.println("premiFinal");
+        int premi = 4000000;
+        boolean esNumero = true;
+        int expResult = 4000000;
+        int result = FuncionesComprobacion.premiFinal(premi, esNumero);
+        assertEquals(expResult, result);
+        
+        premi = 4000000;
+        esNumero = false;
+        expResult = 400000;
+        result = FuncionesComprobacion.premiFinal(premi, esNumero);
+        assertEquals(expResult, result);
+    }
 }

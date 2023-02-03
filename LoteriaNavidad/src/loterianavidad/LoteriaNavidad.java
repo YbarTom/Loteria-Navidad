@@ -46,7 +46,9 @@ public class LoteriaNavidad {
         
         int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
         
-        System.out.println("Premi: " + FuncionesComprobacion.premiFinal(premi));
+        boolean esNum = FuncionesComprobacion.demanarNumero();
+        
+        System.out.println("Premi: " + FuncionesComprobacion.premiFinal(premi, esNum));
     }
 
 }

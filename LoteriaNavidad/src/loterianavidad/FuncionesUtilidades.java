@@ -18,10 +18,10 @@ public class FuncionesUtilidades {
         int numero = 0;
         
         boolean correcte = false;
+        System.out.println(missatge);
 
         do {
             if (scan.hasNextInt()) {
-                System.out.println(missatge);
                 numero = scan.nextInt();
                 correcte = true;
             } else {
