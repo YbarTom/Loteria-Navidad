@@ -31,7 +31,6 @@ public class LoteriaNavidad {
         int premi;
     }
 
-    
     public static void main(String[] args) {
 
         NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
@@ -41,14 +40,18 @@ public class LoteriaNavidad {
         GeneradorPremis(VectorPremi, premis);
 
         FuncionesSorteo.mostrarPremisGrans(VectorPremi);
+
+        int boleto = FuncionesUtilidades.Entero("Numero de tu boleto (introdueix -1 per sortir): ");
+        while (boleto != -1) {
+            int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
+
+            boolean esNum = FuncionesComprobacion.demanarNumero();
+
+            System.out.println("Premi: " + FuncionesComprobacion.premiFinal(premi, esNum));
+
+            boleto = FuncionesUtilidades.Entero("Introduce el seiguiente boleto (introdueix -1 per sortir): ");
+        }
         
-        int boleto = FuncionesUtilidades.Entero("Numero de tu boleto: ");
-        
-        int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
-        
-        boolean esNum = FuncionesComprobacion.demanarNumero();
-        
-        System.out.println("Premi: " + FuncionesComprobacion.premiFinal(premi, esNum));
     }
 
 }

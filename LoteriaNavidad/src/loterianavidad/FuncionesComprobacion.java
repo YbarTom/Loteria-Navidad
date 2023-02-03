@@ -26,9 +26,9 @@ public class FuncionesComprobacion {
         final int REINTEGRAMENT = 200;
 
         premi += comprovarGrossos(numero, llistaPremis);
-
-        if (comprovarAproximacions(numero, premisGrans[0], premisGrans[1], premisGrans[2]) != 0) {
-            premi += comprovarAproximacions(numero, premisGrans[1], premisGrans[2], premisGrans[3]);
+        int aproximacions = comprovarAproximacions(numero, premisGrans[0], premisGrans[1], premisGrans[2]);
+        if (aproximacions != 0) {
+            premi += aproximacions;
         } else {
             eliminarNumero(numero, premisGrans);
 
@@ -83,11 +83,13 @@ public class FuncionesComprobacion {
     /**
      * Calcula el premi final segons si tenim un número o un dècim.
      * @param premi El premi sense canvis
+     * @param esNumero True si és un número false si és un dècim
      * @return El premi segons si és número o dècim
      */
     public static int premiFinal (int premi, boolean esNumero){
+        final int QUANTITAT_DECIMS = 10;
         if(!esNumero){
-            premi = premi/10;
+            premi = premi/QUANTITAT_DECIMS;
         }
         return premi;
     }
@@ -204,9 +206,10 @@ public class FuncionesComprobacion {
      */
     public static int contarDigits(int numero) {
         int resultat = 0;
+        final int BASE_DIGITOS = 10;
 
-        while (numero > 10) {
-            numero = numero / 10;
+        while (numero > BASE_DIGITOS) {
+            numero = numero / BASE_DIGITOS;
             ++resultat;
         }
         ++resultat;
