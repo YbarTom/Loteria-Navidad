@@ -86,7 +86,6 @@ public class FuncionesComprobacion {
      * @return El premi segons si és número o dècim
      */
     public static int premiFinal (int premi, boolean esNumero){
-        boolean numero = demanarNumero();
         if(!esNumero){
             premi = premi/10;
         }
