@@ -101,7 +101,6 @@ public class FuncionesSorteoTest {
         int n = 0;
         int contador = 1;
         LoteriaNavidad.NumPremiat[] vector = new LoteriaNavidad.NumPremiat[2];
-        //creem qwedewfdwe
         vector[0] = new LoteriaNavidad.NumPremiat();
         vector[1] = new LoteriaNavidad.NumPremiat();
         vector[0].numero = 0;
@@ -132,7 +131,6 @@ public class FuncionesSorteoTest {
         int n = 0;
         int contador = 1;
         LoteriaNavidad.NumPremiat[] vector = new LoteriaNavidad.NumPremiat[2];
-        //creem qwedewfdwe
         vector[0] = new LoteriaNavidad.NumPremiat();
         vector[1] = new LoteriaNavidad.NumPremiat();
         vector[0].premi = 0;

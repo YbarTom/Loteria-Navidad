@@ -54,8 +54,8 @@ public class FuncionesSorteo {
     }
     
     /**
-     * Genera un numero aleatori entre 0 i (Numero de premis), el 0 es el premi amb el valor mes gran
-     * i aixi respectivament.
+     * Genera un numero aleatori entre 0 i (Numero de premis), el 0 es el premi amb el valor mes gran,
+     * l'1 amb el segon més gran i aixi respectivament.
      * @param vector vector(s'utilitza el .premi) on estan els premis
      * cada premi va asignat a un numero, s'assignen per ordre de sortida
      * @param premis (vector amb els premis per sobre o igual a 200000 euros)
@@ -97,7 +97,9 @@ public class FuncionesSorteo {
     }
     /**
      * Comprova l'ultim premi generat amb els que estan situats a .premi(dintre del vector de 
-     * NumPremiat) per veure si aquest premi ja existeix
+     * NumPremiat) per veure si aquest premi ja existeix.
+     * Aquests premis es comproven seguint la idea que el premi 0 és el primer premi,
+     * l'1 és el segon premi, etc.
      * @param n premi a mirar
      * @param contador numero de comprovacions
      * @param vector vector(s'utilitza el .premi) on estan els premis
@@ -115,7 +117,8 @@ public class FuncionesSorteo {
         return comprovacio;
     }
     /**
-     * Assigna el valor monetari als premis respectivament, el 0 va amb el mes gran i aixi successivament
+     * Assigna el valor monetari als premis respectivament, el 0 va amb el mes gran, 
+     * l'1 el segon més gran i aixi successivament
      * @param vector vector on estan els premis i els numeros, cadascun d'ells al seu lloc respectiu de
      * la clase
      * @param premisGrans vector que conte els premis per sobre o igual al valor 200000

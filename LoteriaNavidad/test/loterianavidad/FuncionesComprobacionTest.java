@@ -469,8 +469,10 @@ public class FuncionesComprobacionTest {
 
     /**
      * Test of demanarNumero method, of class FuncionesComprobacion.
-     * No la podem probar perquè demana dades
+     * No la podem probar amb les nostres eines i coneixements actuals perquè demana dades pel teclat
      */
+    /*
+    Oculta per evitar l'error de testing
     @Test
     public void testDemanarNumero() {
         System.out.println("demanarNumero");
@@ -479,7 +481,8 @@ public class FuncionesComprobacionTest {
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
-
+    */
+    
     /**
      * Test of premiFinal method, of class FuncionesComprobacion.
      * Provem si el premi és correcte tant amb un número com un dècim
