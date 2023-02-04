@@ -38,7 +38,7 @@ public class FuncionesUtilidadesTest {
 
     /**
      * Test of Entero method, of class FuncionesUtilidades.
-     * No la podem probar perquè demana dades
+     * No la podem probar perquè demana dades 
      */
     @Test
     public void testEntero() {

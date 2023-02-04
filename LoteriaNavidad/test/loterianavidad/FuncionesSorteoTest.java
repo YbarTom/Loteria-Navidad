@@ -46,6 +46,7 @@ public class FuncionesSorteoTest {
 
     /**
      * Test of GeneradorNumeros method, of class FuncionesSorteo.
+     * Mirem si la funcio GeneradorNumeros omple el vector de clase NumPremi al .numero amb 1807 numeros
      */
     @Test
     public void testGeneradorNumeros() {
@@ -67,6 +68,7 @@ public class FuncionesSorteoTest {
 
     /**
      * Test of GeneradorPremis method, of class FuncionesSorteo.
+     * Mirem si la funcio GeneradorNumeros omple el vector de clase NumPremi al .premi amb 1807 premis
      */
     @Test
     public void testGeneradorPremis() {
@@ -89,6 +91,8 @@ public class FuncionesSorteoTest {
 
     /**
      * Test of RepetidosNumeros method, of class FuncionesSorteo.
+     * Comprovem que la funció RepetidosNumeros, el primer cas hi ha un repetit, llavors la funcio haura de tornar true
+     * (de que si està repetit) i el segon cas no hi ha cap numero repetit, llavors ha de retornar false.
      */
     @Test
     public void testRepetidosNumeros() {
@@ -118,6 +122,8 @@ public class FuncionesSorteoTest {
 
     /**
      * Test of RepetidosPremis method, of class FuncionesSorteo.
+     * Comprovem que la funció RepetidosPremis, el primer cas hi ha un repetit, llavors la funcio haura de tornar true
+     * (de que si està repetit) i el segon cas no hi ha cap numero repetit, llavors ha de retornar false.
      */
     @Test
     public void testRepetidosPremis() {
@@ -147,6 +153,7 @@ public class FuncionesSorteoTest {
 
     /**
      * Test of AssignarPremis method, of class FuncionesSorteo.
+     * Li donem un vector de 5 posicions per mirar si assigna els valors monetaris corresponets als premis
      */
     @Test
     public void testAssignarPremis() {

@@ -17,7 +17,18 @@ import static loterianavidad.LoteriaNavidad.TOTPREMS;
  *
  * @author ausias
  */
+
 public class FuncionesSorteo {
+    
+    static final int POSICIOPRIMERPREMI=0;
+    static final int POSICIOSEGONPREMI=1;
+    static final int POSICIOTERCERPREMI=2;
+    static final int INICIQUARTPREMI=3;
+    static final int FINALQUARTPREMI=4;
+    static final int INICICINQUEPREMI=5;
+    static final int FINALCINQUEPREMI=12;
+    static final int INICISISEPREMI=13;
+    
     
     /**
      * Funcio que genera els numeros Guanyadors aleatoriament del concurs (del 0 al nombre de numeros), 
@@ -112,25 +123,25 @@ public class FuncionesSorteo {
     public static void AssignarPremis(LoteriaNavidad.NumPremiat[] vector, int[] premisGrans) {
 
         for (int i = 0; i < TOTPREMS; i++) {
-            if (vector[i].premi == 0) {
-                premisGrans[0] = vector[i].numero;
+            if (vector[i].premi == POSICIOPRIMERPREMI) {
+                premisGrans[POSICIOPRIMERPREMI] = vector[i].numero;
                 vector[i].premi = PRIMERPREMI;
-            } else if (vector[i].premi == 1) {
-                premisGrans[1] = vector[i].numero;
+            } else if (vector[i].premi == POSICIOSEGONPREMI) {
+                premisGrans[POSICIOSEGONPREMI] = vector[i].numero;
                 vector[i].premi = SEGONPREMI;
-            } else if (vector[i].premi == 2) {
-                premisGrans[2] = vector[i].numero;
+            } else if (vector[i].premi == POSICIOTERCERPREMI) {
+                premisGrans[POSICIOTERCERPREMI] = vector[i].numero;
                 vector[i].premi = TERCERPREMI;
-            } else if (vector[i].premi == 3 || vector[i].premi == 4) {
-                if (vector[i].premi == 3) {
-                    premisGrans[3] = vector[i].numero;
+            } else if (vector[i].premi == INICIQUARTPREMI || vector[i].premi == FINALQUARTPREMI) {
+                if (vector[i].premi == INICIQUARTPREMI) {
+                    premisGrans[INICIQUARTPREMI] = vector[i].numero;
                 } else {
-                    premisGrans[4] = vector[i].numero;
+                    premisGrans[FINALQUARTPREMI] = vector[i].numero;
                 }
                 vector[i].premi = QUARTPREMI;
-            } else if (vector[i].premi >= 5 && vector[i].premi <= 12) {
+            } else if (vector[i].premi >= INICICINQUEPREMI && vector[i].premi <= FINALCINQUEPREMI) {
                 vector[i].premi = CINQUEPREMI;
-            } else if (vector[i].premi >= 13 && vector[i].premi <= (TOTPREMS - 3)) {
+            } else if (vector[i].premi >= INICISISEPREMI && vector[i].premi <= (TOTPREMS - 3)) {
                 vector[i].premi = SISEPREMI;
             }
             else{
