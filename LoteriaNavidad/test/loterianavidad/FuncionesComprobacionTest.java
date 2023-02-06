@@ -39,7 +39,7 @@ public class FuncionesComprobacionTest {
 
     /**
      * Test of comprovacioGeneral method, of class FuncionesComprobacion.
-     * Provem que es poden guanyar només un premi per acertar un número i un dels altres premis
+     * Provem que es poden guanyar només un premi per acertar un número i un dels altres premis.
      */
     @Test
     public void testComprovacioGeneral() {
