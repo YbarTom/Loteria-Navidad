@@ -29,37 +29,40 @@ public class FuncionesComprobacion {
         int aproximacions = comprovarAproximacions(numero, premisGrans[0], premisGrans[1], premisGrans[2]);
         if (aproximacions != 0) {
             premi += aproximacions;
-        } else {
-            eliminarNumero(numero, premisGrans);
+        }
+        eliminarNumero(numero, premisGrans);
 
-            String numeroString = passarAString(numero);
+        String numeroString = passarAString(numero);
 
-            String[] premisStrings = new String[premisGrans.length];
+        String[] premisStrings = new String[premisGrans.length];
 
-            for (int i = 0; i < premisGrans.length; ++i) {
-                premisStrings[i] = passarAString(premisGrans[i]);
-            }
-            if (comprovarCentenes(numeroString, premisStrings[0], premisStrings[1], premisStrings[2], premisStrings[3], premisStrings[4])) {
-                premi += PREMI_CENTENES;
-            } else if (comprovarDosUltims(numeroString, premisStrings[0], premisStrings[1], premisStrings[2])) {
-                premi += PREMI_DOSULTIMS;
-            } else if (reintegrament(numeroString, premisStrings[0])) {
-                premi += REINTEGRAMENT;
-            }
+        for (int i = 0; i < premisGrans.length; ++i) {
+            premisStrings[i] = passarAString(premisGrans[i]);
+        }
+        if (comprovarCentenes(numeroString, premisStrings[0], premisStrings[1], premisStrings[2], premisStrings[3], premisStrings[4])) {
+            premi += PREMI_CENTENES;
+        }
+        if (comprovarDosUltims(numeroString, premisStrings[0], premisStrings[1], premisStrings[2])) {
+            premi += PREMI_DOSULTIMS;
+        }
+        if (reintegrament(numeroString, premisStrings[0])) {
+            premi += REINTEGRAMENT;
         }
 
         return premi;
     }
-    
+
     /**
-     * Demanem si volem comprovar un dècim o un número.
-     * Seguirem preguntant fins que ens donin una resposta vàlida.
-     * @return false si volem comprovar un dècim i true si volem comprovar un número
+     * Demanem si volem comprovar un dècim o un número. Seguirem preguntant fins
+     * que ens donin una resposta vàlida.
+     *
+     * @return false si volem comprovar un dècim i true si volem comprovar un
+     * número
      */
     public static boolean demanarNumero() {
         boolean numero = false;
         boolean valid = false;
-        
+
         int entrada = FuncionesUtilidades.Entero("Introdueix 0 si vols comprovar un dècim i un 1 si vols comprovar un número");
         while (!valid) {
             switch (entrada) {
@@ -79,17 +82,18 @@ public class FuncionesComprobacion {
 
         return numero;
     }
-    
+
     /**
      * Calcula el premi final segons si tenim un número o un dècim.
+     *
      * @param premi El premi sense canvis
      * @param esNumero True si és un número false si és un dècim
      * @return El premi segons si és número o dècim
      */
-    public static int premiFinal (int premi, boolean esNumero){
+    public static int premiFinal(int premi, boolean esNumero) {
         final int QUANTITAT_DECIMS = 10;
-        if(!esNumero){
-            premi = premi/QUANTITAT_DECIMS;
+        if (!esNumero) {
+            premi = premi / QUANTITAT_DECIMS;
         }
         return premi;
     }
