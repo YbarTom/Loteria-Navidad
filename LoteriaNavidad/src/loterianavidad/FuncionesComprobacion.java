@@ -8,9 +8,7 @@ public class FuncionesComprobacion {
 
     /**
      * Realitza totes les comprovacions i suma els premis corresponents. Crida a
-     * totes les altres funcions de comprovació i suma els premis. Només es pot
-     * guanyar un premi per acertar un número de manera exacta i un premi, el
-     * que sigui més gran, dels altres.
+     * totes les altres funcions de comprovació i suma els premis.
      *
      * @param numero El nostre número que volem comprovar
      * @param premisGrans Un array que conté els numeros premiats del primer
