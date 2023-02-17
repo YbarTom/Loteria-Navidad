@@ -46,8 +46,24 @@ public class FuncionesComprobacion {
         if (reintegrament(numeroString, premisStrings[0])) {
             premi += REINTEGRAMENT;
         }
+        restaurarNumero(numero, premisGrans);
 
         return premi;
+    }
+    
+    /**
+     * Restaurar un número no vàlid del array de premis grans per un número donat.
+     * @param numero El número que volem restaurar al array.
+     * @param premisGrans L'array amb els números.
+     */
+    public static void restaurarNumero(int numero, int[] premisGrans){
+        boolean trobat = false;
+        for(int i = 0; i < premisGrans.length && !trobat; ++i){
+            if(premisGrans[i] == -11111){
+                premisGrans[i] = numero;
+                trobat = true;
+            }
+        }
     }
 
     /**
@@ -201,25 +217,6 @@ public class FuncionesComprobacion {
     }
 
     /**
-     * Contar quants digits té un número.
-     *
-     * @param numero El numero del qual volem saber els dígits.
-     * @return La quantitat de dígits que té el número.
-     */
-    public static int contarDigits(int numero) {
-        int resultat = 0;
-        final int BASE_DIGITOS = 10;
-
-        while (numero > BASE_DIGITOS) {
-            numero = numero / BASE_DIGITOS;
-            ++resultat;
-        }
-        ++resultat;
-
-        return resultat;
-    }
-
-    /**
      * Passar un número enter a String afegint els zeros inicials en cas que es
      * necessitin.
      *
@@ -228,16 +225,8 @@ public class FuncionesComprobacion {
      * necessitin.
      */
     public static String passarAString(int numero) {
-        final int MAX_DIGITS = 5;
-        int nZerosAfegir = MAX_DIGITS - contarDigits(numero);
+        String resultat = String.format("%05d", numero);
 
-        String numeroString = Integer.toString(numero);
-
-        String resultat = numeroString;
-
-        for (int i = 0; i < nZerosAfegir; ++i) {
-            resultat = "0" + resultat;
-        }
         return resultat;
     }
 
