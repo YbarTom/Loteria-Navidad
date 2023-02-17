@@ -4,6 +4,7 @@
  */
 package loterianavidad;
 
+import java.io.BufferedReader;
 import java.util.Scanner;
 import static loterianavidad.FuncionesSorteo.GeneradorNumeros;
 import static loterianavidad.FuncionesSorteo.GeneradorPremis;
@@ -32,7 +33,21 @@ public class LoteriaNavidad {
     }
 
     public static void main(String[] args) {
-
+        
+        int opcio;
+        String idioma;
+        //llamada de funciones idioma
+        opcio=FuncionsIdiomes.MenuIdiomes();
+        idioma=FuncionsIdiomes.SelectorFitxer(opcio);
+        BufferedReader buf = FuncionsIdiomes.ObrirArxiu(idioma);
+        
+        
+        
+        
+        
+        
+        
+        
         NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
         int[] premis = new int[PREMISIMPORTANTS];
 
@@ -40,8 +55,11 @@ public class LoteriaNavidad {
         GeneradorPremis(VectorPremi, premis);
 
         FuncionesSorteo.mostrarPremisGrans(VectorPremi);
-
-        int boleto = FuncionesUtilidades.Entero("Numero de tu boleto (introdueix -1 per sortir): ");
+        //para los mensajes, usar una funcion que lea lineas, i donde tiene que imprimir un mensaje llamar
+        //a la funcion con el indice de la linea donde esta localizado el mensaje
+        String missatge=FuncionsIdiomes.LlegirLineas(buf, 1);
+        int boleto = FuncionesUtilidades.Entero(missatge);
+        
         while (boleto != -1) {
             int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
 
