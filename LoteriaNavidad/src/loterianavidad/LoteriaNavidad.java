@@ -32,13 +32,15 @@ public class LoteriaNavidad {
         int premi;
     }
 
+    static BufferedReader buf;
+    
     public static void main(String[] args) {
         
         String opcio;
         String idioma;
         //llamada de funciones idioma
         opcio=FuncionsIdiomes.MenuIdiomes();
-        BufferedReader buf = FuncionsIdiomes.ObrirArxiu(opcio);
+        buf = FuncionsIdiomes.ObrirArxiu(opcio);
         
         
         
@@ -64,9 +66,9 @@ public class LoteriaNavidad {
 
             boolean esNum = FuncionesComprobacion.demanarNumero();
 
-            System.out.println("Premi: " + FuncionesComprobacion.premiFinal(premi, esNum));
+            System.out.println(FuncionsIdiomes.LlegirLineas(buf, 3) + FuncionesComprobacion.premiFinal(premi, esNum));
 
-            boleto = FuncionesUtilidades.Entero("Introduce el seiguiente boleto (introdueix -1 per sortir): ");
+            boleto = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 2));
         }
         
     }

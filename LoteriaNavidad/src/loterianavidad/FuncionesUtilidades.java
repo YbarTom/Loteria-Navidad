@@ -26,7 +26,7 @@ public class FuncionesUtilidades {
             if (scan.hasNextInt()) {
                 numero = scan.nextInt();
                 if(numero > NUMERO_MAX || NUMERO_MIN < -1){
-                    System.out.println("El número introduit no és vàlid, ha de ser més gran que 99999 i més petit que -1, torna a introduir-lo: ");
+                    System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 4));
                 }
                 else{
                     correcte = true;

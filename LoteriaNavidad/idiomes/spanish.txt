@@ -1,0 +1,3 @@
+Numero de tu boleto (introdueix -1 per sortir): 
+Introduce el siguiente boleto (introdueix -1 per sortir): 
+Premio:
