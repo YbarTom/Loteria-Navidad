@@ -27,6 +27,7 @@ public class FuncionesUtilidades {
                 numero = scan.nextInt();
                 if(numero > NUMERO_MAX || NUMERO_MIN < -1){
                     System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 4));
+                    
                 }
                 else{
                     correcte = true;
