@@ -18,42 +18,22 @@ public class FuncionsIdiomes {
     /**
      * Funció menu per a mostar la selecció d'idioma
      */
-    public static int MenuIdiomes() {
-        int opcio;
-
-        System.out.println("1-Català");
-        System.out.println("2-Español");
-        System.out.println("3-English");
-        System.out.println("Introdueix el numero de l'idioma que vols: ");
-        opcio = scan.nextInt();
-
-        return opcio;
-    }
-
-    /**
-     * Funció per a seleccionar el fitxer on estan els missatges amb l'idioma
-     * seleccionat
-     *
-     * @param opcio opcio seleccionada
-     */
-    public static String SelectorFitxer(int opcio) {
-
-        String idioma = "";
-
-        switch (opcio) {
-            case 1:
-                //nom del fitxer
-                idioma = "./catala.txt";
-                break;
-            case 2:
-                //nom del fitxer
-                idioma = "./espanol.txt";
-                break;
-            case 3:
-                //nom del fitxer
-                idioma = "./english.txt";
-                break;
+    public static String MenuIdiomes() {
+        
+        String nomFitxer, idioma="./idiomes/";
+        
+        File carpeta = new File("./idiomes");
+        String [] llista = carpeta.list();
+        
+        for(int i=0;i<llista.length;i++){
+            System.out.println(llista[i]);
         }
+        
+        System.out.println("Introdueix el nom de l'idioma que vols: ");
+        nomFitxer = scan.nextLine();
+        
+        idioma+=nomFitxer;
+        
         return idioma;
     }
 

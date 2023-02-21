@@ -34,12 +34,11 @@ public class LoteriaNavidad {
 
     public static void main(String[] args) {
         
-        int opcio;
+        String opcio;
         String idioma;
         //llamada de funciones idioma
         opcio=FuncionsIdiomes.MenuIdiomes();
-        idioma=FuncionsIdiomes.SelectorFitxer(opcio);
-        BufferedReader buf = FuncionsIdiomes.ObrirArxiu(idioma);
+        BufferedReader buf = FuncionsIdiomes.ObrirArxiu(opcio);
         
         
         
