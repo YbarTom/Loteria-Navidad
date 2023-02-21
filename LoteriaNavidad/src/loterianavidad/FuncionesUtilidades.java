@@ -34,7 +34,7 @@ public class FuncionesUtilidades {
                 }
             } else {
                 scan.next();
-                System.out.println("El caracter introduit no es un numero,si us plau introduiu un numero: ");
+                System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 5));
             }
         } while (correcte == false);
         return numero;

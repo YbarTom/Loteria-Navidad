@@ -77,7 +77,7 @@ public class FuncionesComprobacion {
         boolean numero = false;
         boolean valid = false;
 
-        int entrada = FuncionesUtilidades.Entero("Introdueix 0 si vols comprovar un dècim i un 1 si vols comprovar un número");
+        int entrada = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 6));
         while (!valid) {
             switch (entrada) {
                 case 0:
@@ -89,7 +89,7 @@ public class FuncionesComprobacion {
                     valid = true;
                     break;
                 default:
-                    entrada = FuncionesUtilidades.Entero("ERROR, introdueix 0 o 1");
+                    entrada = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 7));
                     break;
             }
         }
