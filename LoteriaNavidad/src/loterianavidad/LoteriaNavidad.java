@@ -37,18 +37,10 @@ public class LoteriaNavidad {
     public static void main(String[] args) {
         
         String opcio;
-        String idioma;
         //llamada de funciones idioma
         opcio=FuncionsIdiomes.MenuIdiomes();
         buf = FuncionsIdiomes.ObrirArxiu(opcio);
-        
-        
-        
-        
-        
-        
-        
-        
+       
         NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
         int[] premis = new int[PREMISIMPORTANTS];
 

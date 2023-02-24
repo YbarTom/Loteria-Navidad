@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package loterianavidad;
 
 import java.io.*;
@@ -9,18 +5,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static loterianavidad.LoteriaNavidad.scan;
 
+
+
 /**
  *
  * @author ausias
  */
 public class FuncionsIdiomes {
+    
+    static String idioma="./idiomes/";
 
     /**
      * Funció menu per a mostar la selecció d'idioma
      */
     public static String MenuIdiomes() {
         
-        String nomFitxer, idioma="./idiomes/";
+        String nomFitxer;
         
         File carpeta = new File("./idiomes");
         String [] llista = carpeta.list();
@@ -51,11 +51,13 @@ public class FuncionsIdiomes {
 
         return buffer;
     }
+    
 
     public static String  LlegirLineas(BufferedReader buf, int linea) {
+      
         String linia="";
         try {
-            
+            buf=TancarObrirBuf(buf);
             
             
             if (linea == 1) {
@@ -74,5 +76,12 @@ public class FuncionsIdiomes {
         }
         
         return linia;
+    }
+    
+    public static BufferedReader TancarObrirBuf(BufferedReader buf) throws IOException{
+        buf.close();
+        buf=ObrirArxiu(idioma);
+        
+        return buf;
     }
 }
