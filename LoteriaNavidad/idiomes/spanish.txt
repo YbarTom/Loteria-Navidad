@@ -1,0 +1,7 @@
+Numero de tu boleto (introdueix -1 per sortir): 
+Introduce el siguiente boleto (introdueix -1 per sortir): 
+Premio:
+El número introducido no es válido, ha de ser más pequeño que 99999 y más grande que -1, por favor vuelve a introducirlo:
+El caracter introducido no es un número, por favor vuelve a introducirlo: 
+Introduce 0 si quieres comprobar un décimo y 1 si quieres comprobar un número:
+ERROR, introduce 0 o 1:
