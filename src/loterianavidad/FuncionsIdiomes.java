@@ -18,9 +18,12 @@ public class FuncionsIdiomes {
     /**
      * Funció menu per a mostar la selecció d'idioma
      */
+    
+    static String nomFitxer, idioma="./idiomes/";
+    
     public static String MenuIdiomes() {
 
-        String nomFitxer, idioma="./idiomes/";
+        String nomFitxer;
 
         File carpeta = new File("./idiomes");
         String [] llista = carpeta.list();
@@ -56,7 +59,7 @@ public class FuncionsIdiomes {
         String linia="";
         try {
             
-            
+            buf=TancarObrirBuf(buf);
             
             if (linea == 1) {
                 linia = buf.readLine();
@@ -74,5 +77,12 @@ public class FuncionsIdiomes {
         }
         
         return linia;
+    }
+    
+    public static BufferedReader TancarObrirBuf(BufferedReader buf) throws IOException{
+        buf.close();
+        buf=ObrirArxiu(idioma);
+
+        return buf;
     }
 }

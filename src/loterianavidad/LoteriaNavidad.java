@@ -81,19 +81,17 @@ public class LoteriaNavidad {
                     if(f.exists()){
                         //para los mensajes, usar una funcion que lea lineas, i donde tiene que imprimir un mensaje llamar
                         //a la funcion con el indice de la linea donde esta localizado el mensaje
-                        //String missatge=FuncionsIdiomes.LlegirLineas(buf, 1);
+                        String missatge=FuncionsIdiomes.LlegirLineas(buf, 1);
                         
                         FuncionesGuardar.leerSorteo(anySorteig, VectorPremi, premis);
                         FuncionesSorteo.mostrarPremisGrans(VectorPremi);
-                        int boleto = FuncionesUtilidades.Entero("Introduce el boleto: ", NUMERO_MIN, NUMERO_MAX);
+                        int boleto = FuncionesUtilidades.Entero(missatge, NUMERO_MIN, NUMERO_MAX);
                         while (boleto != -1) {
                             int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
 
                             boolean esNum = FuncionesComprobacion.demanarNumero();
-
-                            System.out.println("Premi: " + FuncionesComprobacion.premiFinal(premi, esNum));
                             
-                            //System.out.println(FuncionsIdiomes.LlegirLineas(buf, 3) + FuncionesComprobacion.premiFinal(premi, esNum));
+                            System.out.println(FuncionsIdiomes.LlegirLineas(buf, 3) + FuncionesComprobacion.premiFinal(premi, esNum));
 
                             boleto = FuncionesUtilidades.Entero("Introduce el siguiente boleto: ");
                         }
