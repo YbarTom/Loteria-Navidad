@@ -1,0 +1,7 @@
+Número del teu bitllet (introdueix -1 per sortir):
+Introdueix el següent bitllet (introdueix -1 per sortir):
+Premi:
+El número introduït no és vàlid, ha de ser inferior a 100000 i superior a -1, si us plau torneu a introduir-lo:
+El caràcter introduït no és un número, si us plau torneu a introduir-lo:
+Introdueix 0 si vols comprovar un dècim i 1 si vols comprovar un número:
+ERROR, introdueix 0 o 1:
