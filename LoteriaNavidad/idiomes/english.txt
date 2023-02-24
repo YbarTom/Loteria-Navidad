@@ -1,7 +1,0 @@
-Enter your ticket number (enter -1 to exit):
-Enter the next ticket (enter -1 to exit):
-Prize:
-The number entered is not valid, it must be smaller than 100000 and bigger than -1, please enter it again:
-The character entered is not a number, pleas enter it again:
-Enter 0 if you want to check a tenth and 1 if you want to check a number:
-ERROR, enter 0 or 1:
