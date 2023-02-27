@@ -30,6 +30,7 @@ public class Colles {
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 17));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 18));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 19));
+        System.out.println("3. Afegir un membre a una colla");
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 20));
     }
     
@@ -42,7 +43,7 @@ public class Colles {
                 case 1:
                     crearColla();
                     break;
-                case 2:
+                case 3:
                     afegirMembre();
                     break;
                 default:
@@ -67,7 +68,7 @@ public class Colles {
         String nom = scan.nextLine();
         String nomFitxer = NOM_CARPETA + "/" + nom + ".bin";
         if(!existeixColla(nomFitxer)){
-            Colla coll = demanarDades();
+            Colla coll = demanarDadesColla();
             afegirDades(coll, nomFitxer);
         }
         else{
@@ -75,7 +76,7 @@ public class Colles {
         }
     }
     
-    public static Colla demanarDades(){
+    public static Colla demanarDadesColla(){
         Colla coll = new Colla();
         coll.nMembres = 0;
         coll.anySorteig = FuncionesUtilidades.Entero("Introdueix l'any de la colla: ");
@@ -107,6 +108,38 @@ public class Colles {
     }
     
     public static void afegirMembre(){
-        
+        System.out.println("Introdueix el nom de la colla a la que pertany: ");
+        String nomColla = scan.nextLine();
+        String nomFitxer = NOM_CARPETA + "/" + nomColla + ".bin";
+        if(existeixColla(nomFitxer)){
+            Membre mem = demanarDadesMembre();
+            afegirDadesMembre(mem, nomFitxer);
+        }
+        else{
+            System.out.println("La colla no existeix");
+        }
     }
+    
+    public static void afegirDadesMembre(Membre mem, String nomFitx){
+        DataOutputStream dos = FuncionesUtilidades.AbrirFicheroEscrituraBinario(nomFitx, true, true);
+        try {
+            dos.writeUTF(mem.nom);
+            dos.writeInt(mem.numero);
+            dos.writeFloat(mem.diners);
+            dos.writeFloat(mem.premi);
+        } catch (IOException ex) {
+            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static Membre demanarDadesMembre(){
+        Membre mem = new Membre(); 
+        System.out.print("Introdueix el nom: ");
+        mem.nom = scan.nextLine();
+        mem.numero = FuncionesUtilidades.Entero("Introdueix el numero que juga: ", LoteriaNavidad.NUMERO_MIN, LoteriaNavidad.NUMERO_MAX);
+        mem.diners = FuncionesUtilidades.LeerFloat("Introdueix els diners que juga");
+        mem.premi = 0;
+        
+        return mem;
+    }   
 }

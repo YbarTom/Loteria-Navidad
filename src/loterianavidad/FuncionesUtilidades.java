@@ -16,6 +16,50 @@ import static loterianavidad.LoteriaNavidad.scan;
  */
 public class FuncionesUtilidades {
 
+    public static float LeerFloat(String missatge) {
+        float numero = 0;
+        
+        boolean correcte = false;
+        System.out.println(missatge);
+
+        do {
+            if (scan.hasNextFloat()) {
+                numero = scan.nextFloat();
+                correcte = true;
+            } else {
+                scan.next();
+                System.out.println("El número no és un decimal, torna a introduir-lo: ");
+            }
+        } while (correcte == false);
+        return numero;
+    }
+    
+    public static float LeerDinero(String missatge) {
+        float numero = 0;
+        final float DINERS_MIN = 5;
+        final float DINERS_MAX = 60;
+
+        boolean correcte = false;
+        System.out.println(missatge);
+
+        do {
+            if (scan.hasNextFloat()) {
+                numero = scan.nextFloat();
+                if(numero > DINERS_MAX || numero < DINERS_MIN || numero % 5 != 0){
+                    System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 4));
+                    
+                }
+                else{
+                    correcte = true;
+                }
+            } else {
+                scan.next();
+                System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 5));
+            }
+        } while (correcte == false);
+        return numero;
+    }
+    
     /**
      * Demana entrades per consola fins que se li dona un número enter que estigui dins del nostre interval.
      *
@@ -57,7 +101,7 @@ public class FuncionesUtilidades {
         do {
             if (scan.hasNextInt()) {
                 numero = scan.nextInt();
-                if(numero > max || min < -1){
+                if(numero > max || numero < min){
                     System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 4));
                     
                 }
