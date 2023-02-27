@@ -53,9 +53,9 @@ public class LoteriaNavidad {
     }
     
     public static void mostrarMenu(){
-        System.out.println("0. Sortir");
-        System.out.println("1. Fer sorteig");
-        System.out.println("2. Fer comprovacions");
+        System.out.println(FuncionsIdiomes.LlegirLineas(buf, 8));
+        System.out.println(FuncionsIdiomes.LlegirLineas(buf, 9));
+        System.out.println(FuncionsIdiomes.LlegirLineas(buf, 10));
     }
     
     public static void gestionarMenu(int opcio){
@@ -68,14 +68,14 @@ public class LoteriaNavidad {
         while(opcio != 0){
             switch (opcio) {
                 case 1:
-                    any = FuncionesUtilidades.Entero("Introdueix l'any del sorteig: ");
+                    any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 11));
                     GeneradorNumeros(VectorPremi);
                     GeneradorPremis(VectorPremi, premis);
                     anySorteig = any + ".bin";
                     FuncionesGuardar.escribirSorteo(VectorPremi, anySorteig);
                     break;
                 case 2:
-                    any = FuncionesUtilidades.Entero("Introdueix l'any del sorteig: ");
+                    any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 10));
                     anySorteig = any + ".bin";
                     File f = new File(anySorteig);
                     if(f.exists()){
@@ -93,20 +93,20 @@ public class LoteriaNavidad {
                             
                             System.out.println(FuncionsIdiomes.LlegirLineas(buf, 3) + FuncionesComprobacion.premiFinal(premi, esNum));
 
-                            boleto = FuncionesUtilidades.Entero("Introduce el siguiente boleto: ");
+                            boleto = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 2));
                         }
                     }
                     else{
-                        System.out.println("No s'ha realitzat un sorteig d'aquest any");
+                        System.out.println(FuncionsIdiomes.LlegirLineas(buf, 12));
                     }
                     
                     
                     break;
                 default:
-                    System.out.println("ERROR! Opció no vàlida");
+                    System.out.println(FuncionsIdiomes.LlegirLineas(buf, 13));
                     break;
             }
-            opcio = FuncionesUtilidades.Entero("Introdueix la següent opció: ");
+            opcio = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 14));
         }
     }
 

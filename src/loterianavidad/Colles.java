@@ -17,14 +17,14 @@ public class Colles {
     }
     
     public static void menuColles(){
-        System.out.println("0. Sortir del menu colles");
-        System.out.println("1. Afegir colla");
-        System.out.println("2. Eliminar colla");
-        System.out.println("3. Consultar premis");
+        System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 17));
+        System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 18));
+        System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 19));
+        System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 20));
     }
     
     public static void gestionarOpcions(){
-        int opcio = FuncionesUtilidades.Entero("Selecciona una opció: ");
+        int opcio = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 16));
         while(opcio != 0){
             if(opcio == 1){
                 
@@ -33,7 +33,7 @@ public class Colles {
                 
             }
             else{
-                System.out.println("ERROR! Opció no vàlida");
+                System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 13));
             }
         }
     }

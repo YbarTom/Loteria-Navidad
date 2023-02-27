@@ -5,3 +5,16 @@ El número introduït no és vàlid, ha de ser inferior a 100000 i superior a -1
 El caràcter introduït no és un número, si us plau torneu a introduir-lo:
 Introdueix 0 si vols comprovar un dècim i 1 si vols comprovar un número:
 ERROR, introdueix 0 o 1:
+0. Sortir
+1. Fer sorteig
+2. Fer comprovacions
+Introdueix l'any del sorteig: 
+No s'ha realitzat un sorteig d'aquest any
+ERROR! Opció no vàlida
+Introdueix la següent opció: 
+El caracter introduit no es un numero,si us plau introduiu un numero: 
+Selecciona una opció: 
+0. Sortir del menu colles
+1. Afegir colla
+2. Eliminar colla
+3. Consultar premis

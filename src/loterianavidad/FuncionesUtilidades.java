@@ -26,7 +26,7 @@ public class FuncionesUtilidades {
                 correcte = true;
             } else {
                 scan.next();
-                System.out.println("El caracter introduit no es un numero,si us plau introduiu un numero: ");
+                System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 15));
             }
         } while (correcte == false);
         return numero;
