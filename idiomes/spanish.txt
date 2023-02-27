@@ -1,7 +1,20 @@
-Numero de tu boleto (introdueix -1 per sortir): 
-Introduce el siguiente boleto (introdueix -1 per sortir): 
+Número de tu billete (introduce -1 para salir):
+Introduce el siguiente billete (introduce -1 para salir):
 Premio:
-El número introducido no es válido, ha de ser más pequeño que 99999 y más grande que -1, por favor vuelve a introducirlo:
-El caracter introducido no es un número, por favor vuelve a introducirlo: 
+El número introducido no es válido, debe ser inferior a 100000 y superior a -1, por favor vuelve a introducirlo:
+El carácter introducido no es un número, por favor vuelve a introducirlo:
 Introduce 0 si quieres comprobar un décimo y 1 si quieres comprobar un número:
 ERROR, introduce 0 o 1:
+0.Salir
+1.Hacer sorteo
+2.Hacer comprobaciones
+Introduce el año del sorteo:
+No se ha realizado un sorteo de este año
+ERROR! Opción no válida
+Introduce la siguiente opción:
+El caracter introducido no es un número, por favor introduce un número:
+Selecciona una opción:
+0.Salir del menú collas
+1.Añadir colla
+2.Eliminar colla
+3.Consultar premios
