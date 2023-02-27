@@ -4,8 +4,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static loterianavidad.LoteriaNavidad.scan;
@@ -173,4 +175,14 @@ public class FuncionesUtilidades {
         return dis;
     }
 
+    public static RandomAccessFile AbrirAccesoDirecto(String nomFitxer, String mode){
+        RandomAccessFile raf = null;
+        try {
+            raf = new RandomAccessFile(nomFitxer, mode);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FuncionesUtilidades.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return raf;
+    }
+    
 }

@@ -29,6 +29,8 @@ public class LoteriaNavidad {
     
     static final int NUMERO_MAX = 99999;
     static final int NUMERO_MIN = -1;
+    
+    static final String CARPETA = "./sorteos/";
 
     public static class NumPremiat {
 
@@ -63,6 +65,8 @@ public class LoteriaNavidad {
         NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
         int[] premis = new int[PREMISIMPORTANTS];
         
+        FuncionesGuardar.crearCarpetaSorteos();
+        
         int any;
         String anySorteig;
         
@@ -72,12 +76,12 @@ public class LoteriaNavidad {
                     any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 11));
                     GeneradorNumeros(VectorPremi);
                     GeneradorPremis(VectorPremi, premis);
-                    anySorteig = any + ".bin";
+                    anySorteig = CARPETA + any + ".bin";
                     FuncionesGuardar.escribirSorteo(VectorPremi, anySorteig);
                     break;
                 case 2:
                     any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 10));
-                    anySorteig = any + ".bin";
+                    anySorteig = CARPETA + any + ".bin";
                     File f = new File(anySorteig);
                     if(f.exists()){
                         //para los mensajes, usar una funcion que lea lineas, i donde tiene que imprimir un mensaje llamar

@@ -2,11 +2,19 @@ package loterianavidad;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FuncionesGuardar {
+    
+    public static void crearCarpetaSorteos(){
+        File f = new File(LoteriaNavidad.CARPETA);
+        if(!f.exists()){
+            f.mkdir();
+        }
+    }
     
     public static void leerSorteo(String nomFitxer, LoteriaNavidad.NumPremiat[] vector, int[] premisGrans){
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxer, true);

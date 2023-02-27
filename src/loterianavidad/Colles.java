@@ -1,15 +1,18 @@
 package loterianavidad;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static loterianavidad.LoteriaNavidad.CARPETA;
 import static loterianavidad.LoteriaNavidad.scan;
 
 public class Colles {
     
-    static final String NOM_CARPETA = "./colles";
+    static final String NOM_CARPETA = "./colles/";
     
     
     public static class Colla{
@@ -30,7 +33,7 @@ public class Colles {
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 17));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 18));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 19));
-        System.out.println("3. Afegir un membre a una colla");
+        System.out.println("4. Afegir un membre a una colla");
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 20));
     }
     
@@ -43,7 +46,9 @@ public class Colles {
                 case 1:
                     crearColla();
                     break;
-                case 3:
+                case 2:
+                    break;
+                case 4:
                     afegirMembre();
                     break;
                 default:
@@ -66,7 +71,7 @@ public class Colles {
         crearCarpetaColles();
         System.out.print("Introdueix el nom de la colla: ");
         String nom = scan.nextLine();
-        String nomFitxer = NOM_CARPETA + "/" + nom + ".bin";
+        String nomFitxer = NOM_CARPETA + nom + ".bin";
         if(!existeixColla(nomFitxer)){
             Colla coll = demanarDadesColla();
             afegirDades(coll, nomFitxer);
@@ -79,9 +84,17 @@ public class Colles {
     public static Colla demanarDadesColla(){
         Colla coll = new Colla();
         coll.nMembres = 0;
-        coll.anySorteig = FuncionesUtilidades.Entero("Introdueix l'any de la colla: ");
-        coll.importTotal = 0;
-        coll.premiTotal = 0;
+        
+        int any = FuncionesUtilidades.Entero("Introdueix l'any de la colla: ");
+        String anySorteig = CARPETA + any + ".bin";
+        File f = new File(anySorteig);
+        if(f.exists()){
+            coll.anySorteig = any;
+            coll.importTotal = 0;
+            coll.premiTotal = 0;
+        } else {
+            System.out.println("ERROR! No s'ha fet sorteig d'aquest any, primer l'has de fer");
+        }
         
         return coll;
     }
@@ -114,11 +127,41 @@ public class Colles {
         if(existeixColla(nomFitxer)){
             Membre mem = demanarDadesMembre();
             afegirDadesMembre(mem, nomFitxer);
+            
         }
         else{
             System.out.println("La colla no existeix");
         }
     }
+    
+    public static void sumarMembre(String nomFitxerColla){
+        RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
+        try {
+            raf.seek(4);
+            int nMembres = raf.readInt();
+            ++nMembres;
+            raf.seek(4);
+            raf.writeInt(nMembres);
+        } catch (IOException ex) {
+            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /*
+    public static Colla leerColla(String nomFitxerColla){
+        Colla coll = new Colla();
+        DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxerColla, true);
+        try {
+            coll.anySorteig = dis.readInt();
+            coll.nMembres = dis.readInt();
+            coll.importTotal = dis.readFloat();
+            coll.premiTotal = dis.readFloat();
+        } catch (IOException ex) {
+            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return coll;
+    }
+*/
     
     public static void afegirDadesMembre(Membre mem, String nomFitx){
         DataOutputStream dos = FuncionesUtilidades.AbrirFicheroEscrituraBinario(nomFitx, true, true);
@@ -141,5 +184,20 @@ public class Colles {
         mem.premi = 0;
         
         return mem;
-    }   
+    }
+    
+    public static void comprovarPremisColla(){
+        
+    }
+    
+    public static void demanarDadesComprovar(){
+        System.out.print("Introdueix la colla que vols comprovar: ");
+        String nomColla = scan.nextLine();
+        if(existeixColla(nomColla)){
+            
+        }
+        else{
+            System.out.println("ERROR! Aquesta colla no existeix");
+        }
+    }
 }
