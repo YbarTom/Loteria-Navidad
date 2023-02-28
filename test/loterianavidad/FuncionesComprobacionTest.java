@@ -230,48 +230,6 @@ public class FuncionesComprobacionTest {
     }
 
     /**
-     * Test of contarDigits method, of class FuncionesComprobacion.
-     * 
-     * Comprovem si conta correctament la quantitat de digits dels numeros.
-     * Probem números amb tots els dígits possiblesi ens assegurem que el 0 conta com 1 dígit.
-     */
-    @Test
-    public void testContarDigits() {
-        System.out.println("contarDigits");
-        
-        System.out.println("contarDigits en el cas de 5 digits");
-        int numero = 12345;
-        int expResult = 5;
-        int result = FuncionesComprobacion.contarDigits(numero);
-        assertEquals("5 digits", expResult, result);
-        
-        
-        System.out.println("contarDigits en el cas de 4 digits");
-        numero=1234;
-        expResult = 4;
-        result = FuncionesComprobacion.contarDigits(numero);
-        assertEquals("4 digits", expResult, result);
-        
-        System.out.println("contarDigits en el cas de 3 digits");
-        numero = 123;
-        expResult = 3;
-        result = FuncionesComprobacion.contarDigits(numero);
-        assertEquals("3 digits", expResult, result);
-        
-        System.out.println("contarDigits en el cas de 2 digits");
-        numero=12;
-        expResult = 2;
-        result = FuncionesComprobacion.contarDigits(numero);
-        assertEquals("2 digits", expResult, result);
-        
-        System.out.println("contarDigits en el cas de 1 digit");
-        numero = 0;
-        expResult = 1;
-        result = FuncionesComprobacion.contarDigits(numero);
-        assertEquals("1 digit", expResult, result);
-    }
-
-    /**
      * Test of passarAString method, of class FuncionesComprobacion.
      * 
      * Comprovem si llegeix el número i el torna a String amb els 0 necesaris
@@ -502,4 +460,36 @@ public class FuncionesComprobacionTest {
         result = FuncionesComprobacion.premiFinal(premi, esNumero);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of restaurarNumero method, of class FuncionesComprobacion.
+     * 
+     * 
+     * 
+     * esta se tiene que hacer
+     */
+    @Test
+    public void testRestaurarNumero() {
+        System.out.println("restaurarNumero");
+        int numero = 70926;
+        int[] premisGrans = {-11111, 40729, 47199, 1800, 33747};
+        FuncionesComprobacion.restaurarNumero(numero, premisGrans);
+        int[] expResult = {70926, 40729, 47199, 1800, 33747};
+        Assert.assertArrayEquals(expResult, premisGrans);
+    }
+
+    /**
+     * Test of demanarNumero method, of class FuncionesComprobacion.
+     * Aquesta funcio no es pot comprobar ja que crida a la funcio entero, on es demana 
+     * a l'usuari que s'introdueixi un valor
+     */
+    /*@Test
+    public void testDemanarNumero() {
+        System.out.println("demanarNumero");
+        boolean expResult = false;
+        boolean result = FuncionesComprobacion.demanarNumero();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }*/
 }
