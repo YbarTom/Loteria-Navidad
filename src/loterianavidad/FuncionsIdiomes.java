@@ -79,9 +79,16 @@ public class FuncionsIdiomes {
         return linia;
     }
     
-    public static BufferedReader TancarObrirBuf(BufferedReader buf) throws IOException{
-        buf.close();
-        buf=ObrirArxiu(idioma);
+    public static BufferedReader TancarObrirBuf(BufferedReader buf){
+        try {
+            
+            buf.close();
+            buf=ObrirArxiu(idioma);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FuncionsIdiomes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
         return buf;
     }

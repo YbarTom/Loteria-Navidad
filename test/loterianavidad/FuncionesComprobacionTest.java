@@ -502,4 +502,30 @@ public class FuncionesComprobacionTest {
         result = FuncionesComprobacion.premiFinal(premi, esNumero);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of restaurarNumero method, of class FuncionesComprobacion.
+     */
+    @Test
+    public void testRestaurarNumero() {
+        System.out.println("restaurarNumero");
+        int numero = 0;
+        int[] premisGrans = null;
+        FuncionesComprobacion.restaurarNumero(numero, premisGrans);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of demanarNumero method, of class FuncionesComprobacion.
+     */
+    @Test
+    public void testDemanarNumero() {
+        System.out.println("demanarNumero");
+        boolean expResult = false;
+        boolean result = FuncionesComprobacion.demanarNumero();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }
