@@ -18,6 +18,12 @@ import static loterianavidad.LoteriaNavidad.scan;
  */
 public class FuncionesUtilidades {
 
+    /**
+     * Demana entrades per consola fins que se li dona un número decimal que estigui dins del nostre interval.
+     * 
+     * @param missatge Missatge per demanar un numero Decimal
+     * @return  El numero decimal aprtat per l'usuari
+     */
     public static float LeerFloat(String missatge) {
         float numero = 0;
         
@@ -35,6 +41,13 @@ public class FuncionesUtilidades {
         } while (correcte == false);
         return numero;
     }
+    
+    /**
+     * Demana entrades per consola fins que se li dona un número decimal que estigui dins del interval i multiple de 5.
+     * 
+     * @param missatge Missatge per demanar el Diner
+     * @return El diner aportat per l'usuari
+     */
     
     public static float LeerDinero(String missatge) {
         float numero = 0;
