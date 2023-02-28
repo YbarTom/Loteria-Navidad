@@ -41,8 +41,10 @@ public class FuncionesUtilidadesTest {
 
     /**
      * Test of LeerFloat method, of class FuncionesUtilidades.
+     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
+     * un valor
      */
-    @Test
+    /*@Test
     public void testLeerFloat() {
         System.out.println("LeerFloat");
         String missatge = "";
@@ -51,12 +53,14 @@ public class FuncionesUtilidadesTest {
         assertEquals(expResult, result, 0);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
 
     /**
      * Test of LeerDinero method, of class FuncionesUtilidades.
+     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
+     * un valor
      */
-    @Test
+    /*@Test
     public void testLeerDinero() {
         System.out.println("LeerDinero");
         String missatge = "";
@@ -65,12 +69,14 @@ public class FuncionesUtilidadesTest {
         assertEquals(expResult, result, 0);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
 
     /**
      * Test of Entero method, of class FuncionesUtilidades.
+     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
+     * un valor
      */
-    @Test
+    /*@Test
     public void testEntero_String() {
         System.out.println("Entero");
         String missatge = "";
@@ -79,12 +85,14 @@ public class FuncionesUtilidadesTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
 
     /**
      * Test of Entero method, of class FuncionesUtilidades.
+     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
+     * un valor
      */
-    @Test
+    /*@Test
     public void testEntero_3args() {
         System.out.println("Entero");
         String missatge = "";
@@ -95,7 +103,7 @@ public class FuncionesUtilidadesTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
 
     /**
      * Test of AbrirFichero method, of class FuncionesUtilidades.

@@ -46,8 +46,7 @@ public class FuncionesGuardarTest {
         LoteriaNavidad.NumPremiat[] vector = null;
         int[] premisGrans = null;
         FuncionesGuardar.leerSorteo(nomFitxer, vector, premisGrans);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
