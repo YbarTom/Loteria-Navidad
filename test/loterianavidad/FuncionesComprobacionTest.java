@@ -471,23 +471,19 @@ public class FuncionesComprobacionTest {
     @Test
     public void testRestaurarNumero() {
         System.out.println("restaurarNumero");
-        int numero = 0;
-        int[] premisGrans = null;
+        int numero = 70926;
+        int[] premisGrans = {-11111, 40729, 47199, 1800, 33747};
         FuncionesComprobacion.restaurarNumero(numero, premisGrans);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int[] expResult = {70926, 40729, 47199, 1800, 33747};
+        Assert.assertArrayEquals(expResult, premisGrans);
     }
 
     /**
      * Test of demanarNumero method, of class FuncionesComprobacion.
-     * 
-     * 
-     * 
-     * 
-     * 
-     * esta se tiene que hacer
+     * Aquesta funcio no es pot comprobar ja que crida a la funcio entero, on es demana 
+     * a l'usuari que s'introdueixi un valor
      */
-    @Test
+    /*@Test
     public void testDemanarNumero() {
         System.out.println("demanarNumero");
         boolean expResult = false;
@@ -495,5 +491,5 @@ public class FuncionesComprobacionTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
 }
