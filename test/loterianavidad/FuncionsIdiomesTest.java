@@ -79,7 +79,6 @@ public class FuncionsIdiomesTest {
             BufferedReader buf2 = FuncionsIdiomes.ObrirArxiu(idioma);
             String result = FuncionsIdiomes.LlegirLineas(buf2, 3);
             assertEquals(expResult, result);
-            // TODO review the generated test code and remove the default call to fail.
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FuncionsIdiomesTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,22 +88,30 @@ public class FuncionsIdiomesTest {
 
     /**
      * Test of LlegirLineas method, of class FuncionsIdiomes.
+     * Per a comprobar que la funcio llegeix la linea desitjada el que fem es 
+     * cridar a la funció ObrirArxiu per a conseguir el BufferReader, llavors cridem
+     * a la funcio LlegirLineas amb la linea 3 i comparem el resultat que llegeix amb
+     * el text que sabem que està a la linea.
      */
     @Test
     public void testLlegirLineas() {
         System.out.println("LlegirLineas");
         FuncionsIdiomes.idioma = "./idiomes/catala.txt";
         String idioma = "./idiomes/catala.txt";
+        //creem el buffer reader amb obrir arxiu
         BufferedReader buf = FuncionsIdiomes.ObrirArxiu(idioma);
-        int linea = 3;
-        String expResult = "Premi:";
+        int linea = 3;//linea a llegir
+        String expResult = "Premi:";//contingut de la linea 3 a l'arxiu catala.txt
         String result = FuncionsIdiomes.LlegirLineas(buf, linea);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
      * Test of TancarObrirBuf method, of class FuncionsIdiomes.
+     * Per a comprobar que la funció tanca i obra el BufferReader 
+     * Obrim un BufferReader i llegim la linea 3, despres creem un segon BufferReader
+     * Cridem a la funcio TacarObrir i llavords llegim la linea 3, 
+     * el que comparem es el contingut de la linea que llegeixen cada BufferReader
      */
     @Test
     public void testTancarObrirBuf() {
