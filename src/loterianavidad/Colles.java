@@ -30,7 +30,8 @@ public class Colles {
         String nom;
         int numero;
         float diners;
-        float premi;
+        float premiGuanyat;
+        float premiCorresponent;
     }
     
     public static void menuColles(){
@@ -39,6 +40,7 @@ public class Colles {
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 19));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 20));
         System.out.println("4. Afegir un membre a una colla");
+        System.out.println("5. Mostrar dades de la colla");
     }
     
     public static void gestionarOpcions(){
@@ -54,11 +56,12 @@ public class Colles {
                     break;
                 case 3:
                     demanarDadesComprovar();
-                    
                     break;
                 case 4:
                     afegirMembre();
                     break;
+                case 5:
+                    mostrarDadesColla();
                 default:
                     System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 13));
                     break;
@@ -89,6 +92,48 @@ public class Colles {
         }
     }
     
+    public static void mostrarDadesColla(){
+        System.out.println("Introdueix el nom de la colla: ");
+        String nomColla = scan.nextLine();
+        String nomFitxer = NOM_CARPETA + nomColla + ".bin";
+        
+        DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxer, true);
+        try {
+            mostrarInfoColla(dis);
+            System.out.println("Info Membres: ");
+            while(dis.available() > 0){
+                mostrarInfoMembre(dis);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        FuncionesUtilidades.CerrarLecturaBinario(dis);
+    }
+    
+    public static void mostrarInfoColla(DataInputStream dis){
+        try {
+            System.out.println("Info Colla: ");
+            System.out.println("Any: " + dis.readInt());
+            System.out.println("Membres: " + dis.readInt());
+            System.out.println("Diners: " + dis.readFloat());
+            System.out.println("Premi: " + dis.readFloat());
+        } catch (IOException ex) {
+            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void mostrarInfoMembre(DataInputStream dis){
+        try {
+            System.out.println("Nom: " + dis.readUTF());
+            System.out.println("Numero: " + dis.readInt());
+            System.out.println("Diners: " + dis.readFloat());
+            System.out.println("Premi del seu número: " + dis.readFloat());
+            System.out.println("Premi corresponent per la colla: " + dis.readFloat());
+        } catch (IOException ex) {
+            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static void demanarDadesColla(String nomFitxer){
         Colla coll = new Colla();
         coll.nMembres = 0;
@@ -116,6 +161,7 @@ public class Colles {
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.CerrarEscrituraBinario(dos);
     }
     
     public static boolean existeixColla(String nom){
@@ -152,6 +198,7 @@ public class Colles {
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
     public static void sumarMembre(String nomFitxerColla){
@@ -165,6 +212,7 @@ public class Colles {
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
     public static void afegirDadesMembre(Membre mem, String nomFitx){
@@ -175,10 +223,12 @@ public class Colles {
             raf.writeUTF(mem.nom);
             raf.writeInt(mem.numero);
             raf.writeFloat(mem.diners);
-            raf.writeFloat(mem.premi);
+            raf.writeFloat(mem.premiGuanyat);
+            raf.writeFloat(mem.premiCorresponent);
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
     public static void afegirMembreIndex(RandomAccessFile raf, String nomFitx){
@@ -189,6 +239,7 @@ public class Colles {
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.CerrarEscrituraBinario(dos);
     }   
     
     public static Membre demanarDadesMembre(){
@@ -197,7 +248,8 @@ public class Colles {
         mem.nom = scan.nextLine();
         mem.numero = FuncionesUtilidades.Entero("Introdueix el numero que juga: ", LoteriaNavidad.NUMERO_MIN, LoteriaNavidad.NUMERO_MAX);
         mem.diners = FuncionesUtilidades.LeerFloat("Introdueix els diners que juga");
-        mem.premi = 0;
+        mem.premiGuanyat = 0;
+        mem.premiCorresponent = 0;
         
         return mem;
     }
@@ -221,6 +273,7 @@ public class Colles {
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.CerrarLecturaBinario(dis);
     }
     
     public static int comprovarPremi(String nomFitxAny, int numero){
@@ -255,10 +308,39 @@ public class Colles {
                 numeroJugador = numeroJugador(raf, rafIndex);
             }
             acumularPremisColla(nomFitxerIndex, nomFitxerColla);
+            assignarPremisCorresponents(nomFitxerIndex, nomFitxerColla);
         }
         else{
             System.out.println("ERROR! Aquesta colla no existeix");
         }
+        FuncionesUtilidades.cerrarAccesoDirecto(raf);
+        FuncionesUtilidades.cerrarAccesoDirecto(rafIndex);
+    }
+    
+    public static void assignarPremisCorresponents(String nomFitxIndex, String nomFitxColla){
+        DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxIndex, true);
+        RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxColla, "rw");
+        
+        try {
+            raf.seek(8);
+            float dinersJugatsTotals = raf.readFloat();
+            float premiTotal = raf.readFloat();
+            float premiPerEuro = premiTotal/dinersJugatsTotals;
+            while(dis.available() > 0){
+                long posicio = dis.readLong();
+                raf.seek(posicio);
+                raf.readUTF();
+                raf.seek(raf.getFilePointer()+4);
+                float importJugat = raf.readFloat();
+                float premiCorresponent = premiPerEuro*importJugat;
+                raf.seek(raf.getFilePointer()+4);
+                raf.writeFloat(premiCorresponent);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        FuncionesUtilidades.CerrarLecturaBinario(dis);
+        FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
     public static void acumularPremisColla(String nomFitxIndex, String nomFitxColla){
@@ -273,12 +355,15 @@ public class Colles {
                 raf.readUTF();
                 raf.seek(raf.getFilePointer()+8);
                 premiTotal += raf.readFloat();
+                raf.seek(raf.getFilePointer()+4);
             }
             raf.seek(12);
             raf.writeFloat(premiTotal);
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.CerrarLecturaBinario(dis);
+        FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
     public static void escribirPremio(RandomAccessFile raf, float premi){
@@ -327,6 +412,8 @@ public class Colles {
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        FuncionesUtilidades.CerrarLecturaBinario(dis);
         
         return anyFinal;
     }

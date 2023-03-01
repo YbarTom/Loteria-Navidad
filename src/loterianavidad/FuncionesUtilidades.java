@@ -185,4 +185,29 @@ public class FuncionesUtilidades {
         return raf;
     }
     
+    public static void CerrarEscrituraBinario(DataOutputStream dos) {
+        try {
+            dos.flush();
+            dos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FuncionesUtilidades.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void CerrarLecturaBinario(DataInputStream dis) {
+        try {
+            dis.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FuncionesUtilidades.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void cerrarAccesoDirecto(RandomAccessFile raf){
+        try {
+            raf.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FuncionesUtilidades.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
