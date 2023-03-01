@@ -34,15 +34,20 @@ public class Colles {
         float premiCorresponent;
     }
     
+    /**
+     * Menu d'opcions de colles.
+     */
     public static void menuColles(){
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 17));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 18));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 19));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 20));
         System.out.println("4. Afegir un membre a una colla");
-        System.out.println("5. Mostrar dades de la colla");
     }
     
+    /**
+     * Demana una opció i la realitza. Demanarà opcions fins introduir 0.
+     */
     public static void gestionarOpcions(){
         menuColles();
         int opcio = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 16));
@@ -61,8 +66,6 @@ public class Colles {
                 case 4:
                     afegirMembre();
                     break;
-                case 5:
-                    mostrarDadesColla();
                 default:
                     System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 13));
                     break;
@@ -73,6 +76,10 @@ public class Colles {
         }
     }
     
+    /**
+     * Comprova que la carpeta on es guarden les colles no existeix i la crea, 
+     * si ja existeix no fa res.
+     */
     public static void crearCarpetaColles(){
         File f = new File(NOM_CARPETA);
         if(!f.exists()){
@@ -80,6 +87,10 @@ public class Colles {
         }
     }
     
+    /**
+     * Demana el nom de la colla i crea el seu arxiu corresponent amb la informació bàsica necessària.
+     * Si la colla ja existeix mostra un missatge d'error i no fa res.
+     */
     public static void crearColla(){
         crearCarpetaColles();
         System.out.print("Introdueix el nom de la colla: ");
@@ -93,6 +104,10 @@ public class Colles {
         }
     }
     
+    /**
+     * Demana el nom d'una colla i la esborra. Si la colla introduida no existeix
+     * mostra un missatge d'error i no fa res.
+     */
     public static void esborrarColla(){
         System.out.print("Introdueix el nom de la colla: ");
         String nom = scan.nextLine();
@@ -109,11 +124,11 @@ public class Colles {
         }
     }
     
-    public static void mostrarDadesColla(){
-        System.out.println("Introdueix el nom de la colla: ");
-        String nomColla = scan.nextLine();
-        String nomFitxer = NOM_CARPETA + nomColla + ".bin";
-        
+    /**
+     * Mostra tota la informació d'una colla.
+     * @param nomFitxer El path al fitxer que conté la informació de la colla
+     */
+    public static void mostrarDadesColla(String nomFitxer){   
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxer, true);
         try {
             mostrarInfoColla(dis);
@@ -127,6 +142,11 @@ public class Colles {
         FuncionesUtilidades.CerrarLecturaBinario(dis);
     }
     
+    /**
+     * Mostra la informació bàsica de la colla.
+     * @param dis El canal de lectura de dades, estarà vinculat a l'arxiu que 
+     * conté la informació de la colla.
+     */
     public static void mostrarInfoColla(DataInputStream dis){
         try {
             System.out.println("Info Colla: ");
@@ -139,6 +159,11 @@ public class Colles {
         }
     }
     
+    /**
+     * Mostra l'informació d'un membre.
+     * @param dis El canal de lectura de dades, estarà vinculat a l'arxiu que 
+     * conté la informació de la colla.
+     */
     public static void mostrarInfoMembre(DataInputStream dis){
         try {
             System.out.println("Nom: " + dis.readUTF());
@@ -151,6 +176,10 @@ public class Colles {
         }
     }
     
+    /**
+     * Demana les dades de la colla i les guarda a un arxiu binari.
+     * @param nomFitxer El path de l'arxiu on guardarem la informació de la colla.
+     */
     public static void demanarDadesColla(String nomFitxer){
         Colla coll = new Colla();
         coll.nMembres = 0;
@@ -168,6 +197,11 @@ public class Colles {
         }
     }
     
+    /**
+     * Escriu les dades d'un registre Colla a un fitxer binari.
+     * @param coll El registre amb la informació.
+     * @param nomFitx El path a l'arxiu on guardarem les dades.
+     */
     public static void afegirDades(Colla coll, String nomFitx){
         DataOutputStream dos = FuncionesUtilidades.AbrirFicheroEscrituraBinario(nomFitx, true, true);
         try {
@@ -181,15 +215,23 @@ public class Colles {
         FuncionesUtilidades.CerrarEscrituraBinario(dos);
     }
     
-    public static boolean existeixColla(String nom){
+    /**
+     * Comprova si existeix una colla.
+     * @param nomFitxer El path a on buscarem si l'arxiu existeix.
+     * @return true si existeix i false si no existeix.
+     */
+    public static boolean existeixColla(String nomFitxer){
         boolean existeix = false;
-        File f = new File(nom);
+        File f = new File(nomFitxer);
         if(f.exists()){
             existeix = true;
         }
         return existeix;
     }
     
+    /**
+     * Demana la informació d'un membre i l'introdueix a la colla seleccionada.
+     */
     public static void afegirMembre(){
         System.out.println("Introdueix el nom de la colla a la que pertany: ");
         String nomColla = scan.nextLine();
@@ -205,6 +247,11 @@ public class Colles {
         }
     }
     
+    /**
+     * Suma l'import jugat d'un membre al total de la colla.
+     * @param nomFitxer El path al fitxer on tenim la informació de la colla.
+     * @param mem El registre que conté la informació del membre.
+     */
     public static void sumarImport(String nomFitxer, Membre mem){
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxer, "rw");
         try {
@@ -218,6 +265,10 @@ public class Colles {
         FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
+    /**
+     * Suma un membre a la quantitat de membres que té una colla.
+     * @param nomFitxerColla El path a l'arxiu on tenim la informació de la colla.
+     */
     public static void sumarMembre(String nomFitxerColla){
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
         try {
@@ -232,6 +283,11 @@ public class Colles {
         FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
+    /**
+     * Escriu les dades d'un membre al fitxer de la colla corresponent.
+     * @param mem El registre que conté la informació del membre.
+     * @param nomFitx El path a l'arxiu on tenim la informació de la colla.
+     */
     public static void afegirDadesMembre(Membre mem, String nomFitx){
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitx, "rw");
         try {
@@ -311,10 +367,10 @@ public class Colles {
         String nomColla = scan.nextLine();
         String nomFitxerColla = NOM_CARPETA + nomColla + ".bin";
         String nomFitxerIndex = nomFitxerColla + ".index";
-        
-        RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
-        RandomAccessFile rafIndex = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerIndex, "r");    
+            
         if(existeixColla(nomFitxerColla)){
+            RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
+            RandomAccessFile rafIndex = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerIndex, "r");
             int any = anySorteigColla(nomFitxerColla);
             String nomFitxAny = LoteriaNavidad.CARPETA + any + ".bin";
             int numeroJugador = numeroJugador(raf, rafIndex);
@@ -326,12 +382,14 @@ public class Colles {
             }
             acumularPremisColla(nomFitxerIndex, nomFitxerColla);
             assignarPremisCorresponents(nomFitxerIndex, nomFitxerColla);
+            FuncionesUtilidades.cerrarAccesoDirecto(raf);
+            FuncionesUtilidades.cerrarAccesoDirecto(rafIndex);
+            
+            mostrarDadesColla(nomFitxerColla);
         }
         else{
             System.out.println("ERROR! Aquesta colla no existeix");
         }
-        FuncionesUtilidades.cerrarAccesoDirecto(raf);
-        FuncionesUtilidades.cerrarAccesoDirecto(rafIndex);
     }
     
     public static void assignarPremisCorresponents(String nomFitxIndex, String nomFitxColla){
