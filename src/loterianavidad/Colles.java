@@ -53,6 +53,7 @@ public class Colles {
                     crearColla();
                     break;
                 case 2:
+                    esborrarColla();
                     break;
                 case 3:
                     demanarDadesComprovar();
@@ -89,6 +90,22 @@ public class Colles {
         }
         else{
             System.out.println("ERROR! La colla ja existeix");
+        }
+    }
+    
+    public static void esborrarColla(){
+        System.out.print("Introdueix el nom de la colla: ");
+        String nom = scan.nextLine();
+        String nomFitxer = NOM_CARPETA + nom + ".bin";
+        String nomIndex = nomFitxer + ".index";
+        if(existeixColla(nomFitxer)){
+            File f = new File(nomFitxer);
+            File index = new File(nomIndex);
+            f.delete();
+            index.delete();
+        }
+        else{
+            System.out.println("ERROR! La colla no existeix");
         }
     }
     
@@ -218,7 +235,7 @@ public class Colles {
     public static void afegirDadesMembre(Membre mem, String nomFitx){
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitx, "rw");
         try {
-            raf.seek(raf.length()-1);
+            raf.seek(raf.length());
             afegirMembreIndex(raf, nomFitx);
             raf.writeUTF(mem.nom);
             raf.writeInt(mem.numero);
@@ -232,7 +249,7 @@ public class Colles {
     }
     
     public static void afegirMembreIndex(RandomAccessFile raf, String nomFitx){
-        String nomFitxIndex = nomFitx + "index";
+        String nomFitxIndex = nomFitx + ".index";
         DataOutputStream dos = FuncionesUtilidades.AbrirFicheroEscrituraBinario(nomFitxIndex, true, true);
         try {
             dos.writeLong(raf.getFilePointer());
@@ -293,7 +310,7 @@ public class Colles {
         System.out.print("Introdueix la colla que vols comprovar: ");
         String nomColla = scan.nextLine();
         String nomFitxerColla = NOM_CARPETA + nomColla + ".bin";
-        String nomFitxerIndex = nomFitxerColla + "index";
+        String nomFitxerIndex = nomFitxerColla + ".index";
         
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
         RandomAccessFile rafIndex = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerIndex, "r");    
