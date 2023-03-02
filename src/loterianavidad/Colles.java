@@ -304,6 +304,11 @@ public class Colles {
         FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
+    /**
+     * Escriu la posició d'un membre al fitxer d'indexs.
+     * @param raf Canal d'escritura/lectura que ens permetrà saber la posició per guardarla.
+     * @param nomFitx El path a l'arxiu d'indexs on tenim la posició dels diferents membres.
+     */
     public static void afegirMembreIndex(RandomAccessFile raf, String nomFitx){
         String nomFitxIndex = nomFitx + ".index";
         DataOutputStream dos = FuncionesUtilidades.AbrirFicheroEscrituraBinario(nomFitxIndex, true, true);
@@ -315,6 +320,10 @@ public class Colles {
         FuncionesUtilidades.CerrarEscrituraBinario(dos);
     }   
     
+    /**
+     * Demana i llegeix les dades d'un membre nou.
+     * @return Un registre tipus Membre amb les dades introduides.
+     */
     public static Membre demanarDadesMembre(){
         Membre mem = new Membre(); 
         System.out.print("Introdueix el nom: ");
@@ -327,6 +336,12 @@ public class Colles {
         return mem;
     }
     
+    /**
+     * Llegeix els premis d'un sorteig i els carrega als arrays corresponents.
+     * @param nomFitxAny El path al arxiu on tenim guardats els premis que ens interessen.
+     * @param premisGrans L'array on guardarem els premis grans (premis >= 60000) 
+     * @param llistaPremis Array on guardarem tots els números premiats amb el seu corresponent premi.
+     */
     public static void llegirPremis(String nomFitxAny, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis){
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxAny, true);
         for(int i = 0; i < LoteriaNavidad.TOTPREMS; ++i){
@@ -349,6 +364,12 @@ public class Colles {
         FuncionesUtilidades.CerrarLecturaBinario(dis);
     }
     
+    /**
+     * Comprova la quantitat guanyada de premi d'un cert número.
+     * @param nomFitxAny El path al fitxer on es contenen els premis que volem.
+     * @param numero El número que volem comprovar.
+     * @return Un enter que representa la quantitat de diners guanyats amb el número donat.
+     */
     public static int comprovarPremi(String nomFitxAny, int numero){
         int premi;
         
