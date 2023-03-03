@@ -346,7 +346,13 @@ public class CollesTest {
      */
     @Test
     public void testImportJugat() {
-        RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto("./colles/rupamito.bin", "rw");
+        String nomFitxerColla = NOM_CARPETA + "rupamito" + ".bin";
+        String nomFitxerIndex = nomFitxerColla + ".index";
+        RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
+        RandomAccessFile rafIndex = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerIndex, "r");
+        int any = anySorteigColla(nomFitxerColla);
+        String nomFitxAny = LoteriaNavidad.CARPETA + any + ".bin";
+        int numeroJugador = numeroJugador(raf, rafIndex);
         float expResult = 60;
         float result = importJugat(raf);
         assertEquals(expResult, result, 0);
