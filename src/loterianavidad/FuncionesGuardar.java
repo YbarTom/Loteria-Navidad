@@ -9,6 +9,11 @@ import java.util.logging.Logger;
 
 public class FuncionesGuardar {
     
+    
+    /**
+     * Crea una carpeta para los Sorteos en el caso de que no exista
+     * 
+     */
     public static void crearCarpetaSorteos(){
         File f = new File(LoteriaNavidad.CARPETA);
         if(!f.exists()){
@@ -16,6 +21,14 @@ public class FuncionesGuardar {
         }
     }
     
+    
+    /**
+     * Lleig un arxiu binari amb els números premiats amb el sorteig de la Loteria de Nadal
+     * 
+     * @param nomFitxer Nom del arxiu binari que es vol llegir
+     * @param vector Un array d'objectes NumPremiat en el que s'emmagatzemarà els números premiats llegits de l'arxiu
+     * @param premisGrans Un array en el que es registraran els premis de la sèrie de meros guanyadors.
+     */
     public static void leerSorteo(String nomFitxer, LoteriaNavidad.NumPremiat[] vector, int[] premisGrans){
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxer, true);
         for(int i = 0; i < LoteriaNavidad.TOTPREMS; ++i){
@@ -36,6 +49,14 @@ public class FuncionesGuardar {
         FuncionesUtilidades.CerrarLecturaBinario(dis);
     }
     
+    
+    /**
+     * Metode per guardar els numeros dels premis grans de la loteria de Nadal en un array
+     * 
+     * @param numero Numero premiat que es vol guardar
+     * @param premi Tipus de premi Guardat 
+     * @param premisGrans Array on es guardan els numeros premiats
+     */
     public static void guardarGrans(int numero, int premi, int[] premisGrans){
         switch (premi) {
             case LoteriaNavidad.PRIMERPREMI:
@@ -59,6 +80,13 @@ public class FuncionesGuardar {
         }
     }
     
+    
+    /**
+     * Escriu els numero premiat en l'arxiu Binari
+     * 
+     * @param vector Array d'objectes NumPremiat que conté els números premiats
+     * @param nomFitxer Nom del Fitxer on es vol escriure els numeros premiats
+     */
     public static void escribirSorteo(LoteriaNavidad.NumPremiat[] vector, String nomFitxer){
         DataOutputStream dos = FuncionesUtilidades.AbrirFicheroEscrituraBinario(nomFitxer, true, true);
         for(int i = 0; i < vector.length; ++i){
