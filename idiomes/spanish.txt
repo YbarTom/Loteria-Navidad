@@ -1,8 +1,8 @@
 Número de tu billete (introduce -1 para salir):
 Introduce el siguiente billete (introduce -1 para salir):
 Premio:
-El número introducido no es válido, debe ser inferior a 100000 y superior a -1, por favor vuelve a introducirlo:
-El carácter introducido no es un número, por favor vuelve a introducirlo:
+El número introducido no es válido, debe ser inferior a 100000 y superior a -1, por favor vuelva a introducirlo:
+El carácter introducido no es un número, por favor vuelva a introducirlo:
 Introduce 0 si quieres comprobar un décimo y 1 si quieres comprobar un número:
 ERROR, introduce 0 o 1:
 0.Salir
@@ -18,3 +18,25 @@ Selecciona una opción:
 1.Añadir colla
 2.Eliminar colla
 3.Consultar premios
+3.Gestionar collas
+El número no es un decimal, vuelve a introducirlo: 
+4.Añadir un miembro a una colla
+Introduce el nombre de la colla:
+ERROR! La colla ya existe
+ERROR! La colla no existe
+Info Miembros:
+Info Colla:
+Año:
+Miembros:
+Dinero:
+Nombre:
+Número:
+Premio de su número:
+Premio correspondiente por la colla:
+Introduce el año de la colla:
+ERROR! No se ha hecho sorteo de este año, primero tienes que hacerlo
+Introduce el nombre de la colla a la que pertenece:
+Introduce el número que juega:
+Introduce el dinero que juega
+Introduce el nombre:
+Introduce la colla que quieres comprobar:

@@ -1,1 +1,42 @@
-aupa
+Zure txartelaren zenbakia (irteneko -1 sartu): 
+Hurrengo txartela sartu (irteneko -1 sartu): 
+Sariak: 
+Sartutako zenbakia baliogabea da, 100000 baino txikiagoa eta -1 baino handiagoa izan behar da, mesedez sartu berriro:
+Sartutako karakterea ez da zenbaki bat, mesedez sartu berriro: 
+0 sartu zenbakia aztertzeko eta 1 zenbakia aztertzeko: 
+ERROREA, sartu 0 edo 1: 
+0.Atera
+1.Zozketa egin
+2.Egiaztatzeak egiteko
+Sartu zozketaren urtea:
+Urte honetako zozketarik ez da gauzatu
+ERROREA! Aukera baliogabea
+Hurrengo aukera sartu:
+Sartutako karakterea ez da zenbaki bat, mesedez zenbaki bat sartu:
+Aukeratu bat:
+0.Colla menuatik irten
+1.Colla gehitu
+2.Colla ezabatu
+3.Sariak ikusi
+3.Collak kudeatu
+Zenbakia erdia ez da, sartu berriro: 
+4.Mutil bat collari gehitu
+Sartu collaren izena: 
+ERROREA! Colla dagoeneko existitzen da
+ERROREA! Colla ez da existitzen
+Mendekideen informazioa: 
+Collaren informazioa: 
+Urtea: 
+Mendekideak: 
+Dirua: 
+Izena: 
+Zenbakia: 
+Zenbakiaren saria: 
+Collaren arabera dagoen saria: 
+Sartu collaren urtea: 
+ERROREA! Urte horretan ez da zozketarik egin, lehenago egin behar duzu
+Sartu collaren izena: 
+Sartu jokatzen duen zenbakia: 
+Sartu jokatzen duen dirua: 
+Sartu izena: 
+Sartu egiaztatu nahi duzun colla: 

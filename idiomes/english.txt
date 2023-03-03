@@ -5,3 +5,38 @@ The number entered is not valid, it must be smaller than 100000 and bigger than 
 The character entered is not a number, pleas enter it again:
 Enter 0 if you want to check a tenth and 1 if you want to check a number:
 ERROR, enter 0 or 1:
+0.Exit
+1.Make draw
+2.Make checks
+Enter the year of the draw:
+No draw has been made this year
+ERROR! Invalid option
+Enter the next option:
+The character entered is not a number, please enter a number:
+Select an option: 
+0.Exit the groups menu
+1.Add group
+2.Delete group
+3.Consult prizes
+3.Manage groups
+The number is not a decimal, enter it again: 
+4.Add a member to a group
+Enter the name of the group: 
+ERROR! The group already exists
+ERROR! The group does not exist
+Members info: 
+group info: 
+Year: 
+Members: 
+Money: 
+Name: 
+Number: 
+Prize for their number: 
+Corresponding prize for the group: 
+Enter the year of the group: 
+ERROR! No draw has been made for this year, you must do it first
+Enter the name of the group it belongs to:
+Enter the number they play: 
+Enter the money they play: 
+Enter the name: 
+Enter the group you want to check: 
