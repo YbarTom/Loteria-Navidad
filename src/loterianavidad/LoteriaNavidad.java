@@ -51,7 +51,10 @@ public class LoteriaNavidad {
         int opcion = FuncionesUtilidades.Entero(" ");
         gestionarMenu(opcion);
     }
-    
+
+    /**
+     * Mostrar menú d'opcions.
+     */
     public static void mostrarMenu(){
         System.out.println(FuncionsIdiomes.LlegirLineas(buf, 8));
         System.out.println(FuncionsIdiomes.LlegirLineas(buf, 9));
@@ -59,6 +62,10 @@ public class LoteriaNavidad {
         System.out.println(FuncionsIdiomes.LlegirLineas(buf,21));
     }
     
+    /**
+     * Gestionar opcions del menú.
+     * @param opcio La opció seleccionada per l'usuari.
+     */
     public static void gestionarMenu(int opcio){
         FuncionesGuardar.crearCarpetaSorteos();
         while(opcio != 0){
@@ -76,10 +83,14 @@ public class LoteriaNavidad {
                     System.out.println(FuncionsIdiomes.LlegirLineas(buf, 13));
                     break;
             }
+            mostrarMenu();
             opcio = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 14));
         }
     }
     
+    /**
+     * Demana un any, realitza un sorteig, crea un arxiu corresponent i guarda els premis a l'arxiu creat.
+     */
     public static void generarSorteig(){
         NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
         int[] premis = new int[PREMISIMPORTANTS];
@@ -91,6 +102,10 @@ public class LoteriaNavidad {
         FuncionesGuardar.escribirSorteo(VectorPremi, anySorteig);
     }
     
+    /**
+     * Demana un any del que es faran les comprovacions, 
+     * després demana números i mostra el premi guanyat.
+     */
     public static void comprovarNumero(){
         NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
         int[] premis = new int[PREMISIMPORTANTS];
