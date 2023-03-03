@@ -8,6 +8,9 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.RandomAccessFile;
 import static loterianavidad.Colles.NOM_CARPETA;
+import static loterianavidad.Colles.anySorteigColla;
+import static loterianavidad.Colles.importJugat;
+import static loterianavidad.Colles.numeroJugador;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,30 +23,30 @@ import static org.junit.Assert.*;
  * @author ausias
  */
 public class CollesTest {
-    
+
     public CollesTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of menuColles method, of class Colles.
-     * Aquest procediment no es pot comprobar ja que l'unic que fa es imprimir,
-     * i no modifica cap valor que poguem mirar si s'ha cambiat.
+     * Test of menuColles method, of class Colles. Aquest procediment no es pot
+     * comprobar ja que l'unic que fa es imprimir, i no modifica cap valor que
+     * poguem mirar si s'ha cambiat.
      */
     /*@Test
     public void testMenuColles() {
@@ -52,11 +55,10 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of gestionarOpcions method, of class Colles.
-     * Aquest procediment no es pot comprobar ja que crida a una funcio que requereix 
-     * que l'usuari introdueixi valor per teclat.
+     * Test of gestionarOpcions method, of class Colles. Aquest procediment no
+     * es pot comprobar ja que crida a una funcio que requereix que l'usuari
+     * introdueixi valor per teclat.
      */
     /*@Test
     public void testGestionarOpcions() {
@@ -65,30 +67,29 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of crearCarpetaColles method, of class Colles.
-     * El que fem a aquest test es cridar al procediment crearCarpetaColles
-     * per mirar si la carpeta està creada, si no ho està la creara. Llavors 
-     * declarem un boolean a false, si la carpeta està creada despres de la crida a la funcio
-     * el boolean es posara true.
+     * Test of crearCarpetaColles method, of class Colles. El que fem a aquest
+     * test es cridar al procediment crearCarpetaColles per mirar si la carpeta
+     * està creada, si no ho està la creara. Llavors declarem un boolean a
+     * false, si la carpeta està creada despres de la crida a la funcio el
+     * boolean es posara true.
      */
     @Test
     public void testCrearCarpetaColles() {
         File f = new File(NOM_CARPETA);
-        boolean result=false;
-        boolean expResult=true;
+        boolean result = false;
+        boolean expResult = true;
         System.out.println("crearCarpetaColles");
         Colles.crearCarpetaColles();
-        if(f.exists()){
+        if (f.exists()) {
             result = true;
         }
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of crearColla method, of class Colles.
-     * Aquest procediment requereix que l'usuari introdueixi dades per teclat, per aixo no es pot comprobar
+     * Test of crearColla method, of class Colles. Aquest procediment requereix
+     * que l'usuari introdueixi dades per teclat, per aixo no es pot comprobar
      */
     /*@Test
     public void testCrearColla() {
@@ -97,10 +98,10 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of esborrarColla method, of class Colles.
-     * Aquest procediment requereix que l'usuari introdueixi dades per teclat, per aixo no es pot comprobar
+     * Test of esborrarColla method, of class Colles. Aquest procediment
+     * requereix que l'usuari introdueixi dades per teclat, per aixo no es pot
+     * comprobar
      */
     /*@Test
     public void testEsborrarColla() {
@@ -109,10 +110,9 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of mostrarDadesColla method, of class Colles.
-     * Al ser un procediment que imprimeix dades per pantalla, no la podem comprobar
+     * Test of mostrarDadesColla method, of class Colles. Al ser un procediment
+     * que imprimeix dades per pantalla, no la podem comprobar
      */
     /*@Test
     public void testMostrarDadesColla() {
@@ -122,10 +122,9 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of mostrarInfoColla method, of class Colles.
-     * Al ser un procediment que imprimeix dades per pantalla, no la podem comprobar
+     * Test of mostrarInfoColla method, of class Colles. Al ser un procediment
+     * que imprimeix dades per pantalla, no la podem comprobar
      */
     /*@Test
     public void testMostrarInfoColla() {
@@ -135,10 +134,9 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of mostrarInfoMembre method, of class Colles.
-     * Al ser un procediment que imprimeix dades per pantalla, no la podem comprobar
+     * Test of mostrarInfoMembre method, of class Colles. Al ser un procediment
+     * que imprimeix dades per pantalla, no la podem comprobar
      */
     /*@Test
     public void testMostrarInfoMembre() {
@@ -148,11 +146,10 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of demanarDadesColla method, of class Colles.
-     * Aquest procediment crida a una funcio que demana dades per teclat a l'usuari, 
-     * no ho podem comprobar
+     * Test of demanarDadesColla method, of class Colles. Aquest procediment
+     * crida a una funcio que demana dades per teclat a l'usuari, no ho podem
+     * comprobar
      */
     /*@Test
     public void testDemanarDadesColla() {
@@ -162,12 +159,11 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of afegirDades method, of class Colles.
-     * no podem comprobar aquest procediment ja que hauriem de crear dos fitxers binaris nomes
-     * per a aquesta funcio i cridar a funcions que requereixen de que l'usuari introdueixi
-     * dades
+     * Test of afegirDades method, of class Colles. no podem comprobar aquest
+     * procediment ja que hauriem de crear dos fitxers binaris nomes per a
+     * aquesta funcio i cridar a funcions que requereixen de que l'usuari
+     * introdueixi dades
      */
     /*@Test
     public void testAfegirDades() {
@@ -177,12 +173,11 @@ public class CollesTest {
         Colles.afegirDades(coll, nomFitx);
         // TODO review the generated test code and remove the default call to fail.
     }*/
-
     /**
-     * Test of existeixColla method, of class Colles.
-     * Cridem a la funcio existeix colla per a que retorni true si
-     * el fitxer que li diem que comprobi exiseix, previament ja sabem que el fitxer existeix 
-     * llavors declarem el expResult coma true
+     * Test of existeixColla method, of class Colles. Cridem a la funcio
+     * existeix colla per a que retorni true si el fitxer que li diem que
+     * comprobi exiseix, previament ja sabem que el fitxer existeix llavors
+     * declarem el expResult coma true
      */
     @Test
     public void testExisteixColla() {
@@ -191,13 +186,12 @@ public class CollesTest {
         boolean expResult = true;
         boolean result = Colles.existeixColla(nomFitxer);
         assertEquals(expResult, result);
-        
+
     }
 
     /**
-     * Test of afegirMembre method, of class Colles.
-     * no podem comprobar el procediment ja que requereix que l'usuari
-     * introdueixi dades per teclat
+     * Test of afegirMembre method, of class Colles. no podem comprobar el
+     * procediment ja que requereix que l'usuari introdueixi dades per teclat
      */
     /*@Test
     public void testAfegirMembre() {
@@ -206,11 +200,11 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of sumarImport method, of class Colles.
-     * no podem comprobar el procediment ja que hauriem de crear un fitxer per a simular tot
-     * i llavors necesitariem accedir a funcions que demanen a l'usuari introduir dades per teclat
+     * Test of sumarImport method, of class Colles. no podem comprobar el
+     * procediment ja que hauriem de crear un fitxer per a simular tot i llavors
+     * necesitariem accedir a funcions que demanen a l'usuari introduir dades
+     * per teclat
      */
     /*@Test
     public void testSumarImport() {
@@ -221,11 +215,11 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of sumarMembre method, of class Colles.
-     * no podem comprobar el procediment ja que hauriem de crear un fitxer per a simular tot
-     * i llavors necesitariem accedir a funcions que demanen a l'usuari introduir dades per teclat
+     * Test of sumarMembre method, of class Colles. no podem comprobar el
+     * procediment ja que hauriem de crear un fitxer per a simular tot i llavors
+     * necesitariem accedir a funcions que demanen a l'usuari introduir dades
+     * per teclat
      */
     /*@Test
     public void testSumarMembre() {
@@ -235,11 +229,11 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of afegirDadesMembre method, of class Colles.
-     * no podem comprobar el procediment ja que hauriem de crear un fitxer per a simular tot
-     * i llavors necesitariem accedir a funcions que demanen a l'usuari introduir dades per teclat
+     * Test of afegirDadesMembre method, of class Colles. no podem comprobar el
+     * procediment ja que hauriem de crear un fitxer per a simular tot i llavors
+     * necesitariem accedir a funcions que demanen a l'usuari introduir dades
+     * per teclat
      */
     /*@Test
     public void testAfegirDadesMembre() {
@@ -250,11 +244,11 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of afegirMembreIndex method, of class Colles.
-     * no podem comprobar el procediment ja que hauriem de crear un fitxer per a simular tot
-     * i llavors necesitariem accedir a funcions que demanen a l'usuari introduir dades per teclat
+     * Test of afegirMembreIndex method, of class Colles. no podem comprobar el
+     * procediment ja que hauriem de crear un fitxer per a simular tot i llavors
+     * necesitariem accedir a funcions que demanen a l'usuari introduir dades
+     * per teclat
      */
     /*@Test
     public void testAfegirMembreIndex() {
@@ -265,10 +259,9 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of demanarDadesMembre method, of class Colles.
-     * No podem comprobar aquest procediment ja que el que fa es imprimir. 
+     * Test of demanarDadesMembre method, of class Colles. No podem comprobar
+     * aquest procediment ja que el que fa es imprimir.
      */
     /*@Test
     public void testDemanarDadesMembre() {
@@ -279,38 +272,36 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
-
     /**
      * Test of comprovarPremi method, of class Colles.
      */
     @Test
     public void testComprovarPremi() {
-        System.out.println("comprovarPremi");
-        String nomFitxAny = "";
-        int numero = 0;
-        int expResult = 0;
+        String nomFitxAny = "./sorteos/2000.bin";
+        int numero = 31347;
+        int expResult = 4000000;
         int result = Colles.comprovarPremi(nomFitxAny, numero);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of demanarDadesComprovar method, of class Colles.
+     * Test of demanarDadesComprovar method, of class Colles. Aquesta funció no
+     * es pot comprovar perquè l'usuari ha d'introduïr dades
      */
-    @Test
+    /*@Test
     public void testDemanarDadesComprovar() {
         System.out.println("demanarDadesComprovar");
         Colles.demanarDadesComprovar();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of assignarPremisCorresponents method, of class Colles.
      */
-    @Test
+    /**
+     * Test of assignarPremisCorresponents method, of class Colles. Aquesta
+     * funció no es pot comprovar perquè simplement imprimieix el que ha llegit
+     * després d'algunes operacions, no retorna res ni modifica un objecte
+     */
+    /*@Test
     public void testAssignarPremisCorresponents() {
         System.out.println("assignarPremisCorresponents");
         String nomFitxIndex = "";
@@ -322,8 +313,10 @@ public class CollesTest {
 
     /**
      * Test of acumularPremisColla method, of class Colles.
+     * Aquesta funció no es pot comprovar perquè simplement imprimieix el que ha llegit
+     * després d'algunes operacions, no retorna res ni modifica un objecte
      */
-    @Test
+ /*@Test
     public void testAcumularPremisColla() {
         System.out.println("acumularPremisColla");
         String nomFitxIndex = "";
@@ -332,11 +325,13 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of escribirPremio method, of class Colles.
      */
-    @Test
+    /**
+     * Test of escribirPremio method, of class Colles. Aquesta funció no es pot
+     * comprovar perquè simplement imprimieix el que li entra no retorna res ni
+     * modifica un objecte
+     */
+    /*@Test
     public void testEscribirPremio() {
         System.out.println("escribirPremio");
         RandomAccessFile raf = null;
@@ -345,19 +340,16 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+     */
     /**
      * Test of importJugat method, of class Colles.
      */
     @Test
     public void testImportJugat() {
-        System.out.println("importJugat");
-        RandomAccessFile raf = null;
-        float expResult = 0.0F;
-        float result = Colles.importJugat(raf);
+        RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto("./colles/rupamito.bin", "rw");
+        float expResult = 60;
+        float result = importJugat(raf);
         assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -376,9 +368,9 @@ public class CollesTest {
     }
 
     /**
-     * Test of anySorteigColla method, of class Colles.
-     * no la podem comprobar ja que necessitariem un fitxer per a testejar funcions.
-     * i llavors cridariem a funcions que demanen dades per teclat a l'usuari
+     * Test of anySorteigColla method, of class Colles. no la podem comprobar ja
+     * que necessitariem un fitxer per a testejar funcions. i llavors cridariem
+     * a funcions que demanen dades per teclat a l'usuari
      */
     /*@Test
     public void testAnySorteigColla() {
@@ -390,5 +382,4 @@ public class CollesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-    
 }
