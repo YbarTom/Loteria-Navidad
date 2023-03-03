@@ -18,3 +18,20 @@ Selecciona una opció:
 1. Afegir colla
 2. Eliminar colla
 3. Consultar premis
+3. Gestionar colles
+El número no és un decimal, torna a introduir-lo: 
+4. Afegir un membre a una colla
+Introdueix el nom de la colla: 
+ERROR! La colla ja existeix
+ERROR! La colla no existeix
+Info Membres: 
+Info Colla: 
+Any: 
+Membres: 
+Diners: 
+Nom: 
+Numero: 
+Premi del seu número: 
+Premi corresponent per la colla: 
+Introdueix l'any de la colla: 
+ERROR! No s'ha fet sorteig d'aquest any, primer l'has de fer

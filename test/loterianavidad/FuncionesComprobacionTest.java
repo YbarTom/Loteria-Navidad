@@ -465,8 +465,8 @@ public class FuncionesComprobacionTest {
      * Test of restaurarNumero method, of class FuncionesComprobacion.
      * 
      * 
-     * 
-     * esta se tiene que hacer
+     * Funcio per a "restaurar" un numero d'un vector, sabent el numero a restaurar,
+     * es busca un espai que tingui -11111 on haura d'anar el numero a restaurar.
      */
     @Test
     public void testRestaurarNumero() {

@@ -30,7 +30,7 @@ public class FuncionesUtilidades {
                 correcte = true;
             } else {
                 scan.next();
-                System.out.println("El número no és un decimal, torna a introduir-lo: ");
+                System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 22));
             }
         } while (correcte == false);
         return numero;
