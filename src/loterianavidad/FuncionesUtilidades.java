@@ -61,7 +61,7 @@ public class FuncionesUtilidades {
             if (scan.hasNextFloat()) {
                 numero = scan.nextFloat();
                 if(numero > DINERS_MAX || numero < DINERS_MIN || numero % 5 != 0){
-                    System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 4));
+                    System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 43));
                     
                 }
                 else{
