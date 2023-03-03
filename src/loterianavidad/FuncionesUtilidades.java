@@ -42,13 +42,13 @@ public class FuncionesUtilidades {
         return numero;
     }
     
+    
     /**
      * Demana entrades per consola fins que se li dona un número decimal que estigui dins del interval i multiple de 5.
      * 
      * @param missatge Missatge per demanar el Diner
      * @return El diner aportat per l'usuari
      */
-    
     public static float LeerDinero(String missatge) {
         float numero = 0;
         final float DINERS_MIN = 5;
@@ -75,6 +75,7 @@ public class FuncionesUtilidades {
         return numero;
     }
     
+    
     /**
      * Demana entrades per consola fins que se li dona un número enter que estigui dins del nostre interval.
      *
@@ -98,6 +99,7 @@ public class FuncionesUtilidades {
         } while (correcte == false);
         return numero;
     }
+    
     
     /**
      * Demana entrades per consola fins que se li dona un número enter que estigui dins del nostre interval.
@@ -131,6 +133,14 @@ public class FuncionesUtilidades {
         return numero;
     }
     
+    
+    /**
+     * Obre l'arxiu que volem amb un nom específic, en el cas que no existeixi el crea
+     * 
+     * @param nomFichero  Nom de l'arxiu que volem obrir o crear
+     * @param crear Creem l'arxiu en el cas que no existeixi
+     * @return Un objecte de tipus file amb l'arxiu que volem obrir
+     */
     public static File AbrirFichero(String nomFichero, boolean crear) {
         File result = new File(nomFichero);
 
@@ -150,6 +160,18 @@ public class FuncionesUtilidades {
         return result;
     }
     
+    
+    /**
+     * Obre l'arxiu especificat amb el mateix nom en el cas que existeixi, en el cas que no existeixi, 
+     * però el boolean és verdadera es crea un arxiu amb el nom especificat, en el cas que les dues 
+     * coses siguin falses es retorna NULL. Per ultim si el boolean "blnAnyadir" en aquest cas 
+     * s'escriurà al final de l'arxiu en comptes de sobreescriure'l
+     * 
+     * @param nomFichero Nom de l'arxiu que volem obrir o crear
+     * @param crear Creem l'arxiu en el cas que no existeixi
+     * @param blnAnyadir Paràmetre per veure si les dades s'han d'afegir a l'arxiu
+     * @return Un objectiu de tipus DataOutputStream que permet escriure a l'arxiu específic.
+     */
     public static DataOutputStream AbrirFicheroEscrituraBinario(String nomFichero, boolean crear, boolean blnAnyadir) {
         DataOutputStream dos = null;
         File f = AbrirFichero(nomFichero, crear);
@@ -169,6 +191,15 @@ public class FuncionesUtilidades {
         return dos;
     }
     
+    
+    /**
+     * Obre l'arxiu específic en mode de lectura binària amb el nom específic. Si l'arxiu no existeix i el boolean "crear" 
+     * és cert, crea un arxiu amb bel nom especificat. Si l'arxiu no existeix i el boolean és fals et retorna NULL.
+     * 
+     * @param nomFichero Nom de l'arxiu que volem obrir o crear
+     * @param crear Creem l'arxiu en el cas que no existeixi
+     * @return Un objectiu de tipus DataOutputStream que permet escriure a l'arxiu específic.
+     */
     public static DataInputStream AbrirFicheroLecturaBinario(String nomFichero, boolean crear) {
         DataInputStream dis = null;
         File f = AbrirFichero(nomFichero, crear);
@@ -188,6 +219,13 @@ public class FuncionesUtilidades {
         return dis;
     }
 
+    
+    /**
+     * 
+     * @param nomFitxer
+     * @param mode
+     * @return 
+     */
     public static RandomAccessFile AbrirAccesoDirecto(String nomFitxer, String mode){
         RandomAccessFile raf = null;
         try {
