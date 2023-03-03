@@ -95,7 +95,7 @@ public class LoteriaNavidad {
         NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
         int[] premis = new int[PREMISIMPORTANTS];
         
-        int any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 10));
+        int any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 11));
         String anySorteig = CARPETA + any + ".bin";
         if(Colles.existeixColla(anySorteig)){
             //para los mensajes, usar una funcion que lea lineas, i donde tiene que imprimir un mensaje llamar
