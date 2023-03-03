@@ -19,13 +19,13 @@ public class FuncionsIdiomes {
      * Funció menu per a mostar la selecció d'idioma
      */
     
-    static String nomFitxer, idioma="./idiomes/";
+    static String idioma="./idiomes/";
     
     public static String MenuIdiomes() {
 
         String nomFitxer;
 
-        File carpeta = new File("./idiomes");
+        File carpeta = new File("./idiomes/");
         String [] llista = carpeta.list();
 
         for(int i=0;i<llista.length;i++){
@@ -36,6 +36,19 @@ public class FuncionsIdiomes {
         nomFitxer = scan.nextLine();
 
         idioma+=nomFitxer;
+        
+        boolean valid = false;
+        while(!valid){
+            File f = new File(idioma);
+            if(f.exists()){
+                valid = true;
+            }
+            else{
+                System.out.println("ERROR! Opció no vàlida, trona a introduir-la: ");
+                nomFitxer = scan.nextLine();
+                idioma = idioma.substring(0, 10) + nomFitxer;
+            }
+        }
 
         return idioma;
     }
