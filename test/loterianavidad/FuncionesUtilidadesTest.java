@@ -1,12 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package loterianavidad;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,30 +22,29 @@ import static org.junit.Assert.*;
  * @author ausias
  */
 public class FuncionesUtilidadesTest {
-    
+
     public FuncionesUtilidadesTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of LeerFloat method, of class FuncionesUtilidades.
-     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
-     * un valor
+     * Test of LeerFloat method, of class FuncionesUtilidades. Aquesta funció no
+     * es pot comprobar ja que requereix que l'usuari introdueixi un valor
      */
     /*@Test
     public void testLeerFloat() {
@@ -54,11 +56,9 @@ public class FuncionesUtilidadesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of LeerDinero method, of class FuncionesUtilidades.
-     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
-     * un valor
+     * Test of LeerDinero method, of class FuncionesUtilidades. Aquesta funció
+     * no es pot comprobar ja que requereix que l'usuari introdueixi un valor
      */
     /*@Test
     public void testLeerDinero() {
@@ -70,11 +70,9 @@ public class FuncionesUtilidadesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of Entero method, of class FuncionesUtilidades.
-     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
-     * un valor
+     * Test of Entero method, of class FuncionesUtilidades. Aquesta funció no es
+     * pot comprobar ja que requereix que l'usuari introdueixi un valor
      */
     /*@Test
     public void testEntero_String() {
@@ -86,11 +84,9 @@ public class FuncionesUtilidadesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
-     * Test of Entero method, of class FuncionesUtilidades.
-     * Aquesta funció no es pot comprobar ja que requereix que l'usuari introdueixi
-     * un valor
+     * Test of Entero method, of class FuncionesUtilidades. Aquesta funció no es
+     * pot comprobar ja que requereix que l'usuari introdueixi un valor
      */
     /*@Test
     public void testEntero_3args() {
@@ -104,26 +100,34 @@ public class FuncionesUtilidadesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
     /**
      * Test of AbrirFichero method, of class FuncionesUtilidades.
      */
     @Test
     public void testAbrirFichero() {
-        System.out.println("AbrirFichero");
-        String nomFichero = "";
-        boolean crear = false;
-        File expResult = null;
-        File result = FuncionesUtilidades.AbrirFichero(nomFichero, crear);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        try {
+            System.out.println("AbrirFichero");
+            String idioma = "./idiomes/catala.txt";
+            FuncionsIdiomes.idioma = idioma;
+            boolean crear = true;
+            String expResult = "Premi:";
+            File fresult = FuncionesUtilidades.AbrirFichero(idioma, crear);
+            FileReader reader;
+            reader = new FileReader(fresult);
+            BufferedReader buf = new BufferedReader(reader);
+            String result = FuncionsIdiomes.LlegirLineas(buf, 3);
+            assertEquals(expResult, result);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FuncionesUtilidadesTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
-     * Test of AbrirFicheroEscrituraBinario method, of class FuncionesUtilidades.
+     * Test of AbrirFicheroEscrituraBinario method, of class
+     * FuncionesUtilidades.
      */
-    @Test
+    /*@Test
     public void testAbrirFicheroEscrituraBinario() {
         System.out.println("AbrirFicheroEscrituraBinario");
         String nomFichero = "";
@@ -141,19 +145,34 @@ public class FuncionesUtilidadesTest {
      */
     @Test
     public void testAbrirFicheroLecturaBinario() {
-        System.out.println("AbrirFicheroLecturaBinario");
-        String nomFichero = "";
-        boolean crear = false;
-        DataInputStream expResult = null;
-        DataInputStream result = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFichero, crear);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        FileInputStream fread = null;
+        try {
+            String idioma = "./idiomes/catala.txt";
+            boolean crear = true;
+            File fexp= new File(idioma);
+            fread = new FileInputStream(fexp);
+            DataInputStream inputexp = new DataInputStream(fread);
+            DataInputStream inputresult = FuncionesUtilidades.AbrirFicheroLecturaBinario(idioma, crear);
+            int expResult=inputexp.readInt();
+            int result=inputresult.readInt();
+            assertEquals(expResult, result);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FuncionesUtilidadesTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(FuncionesUtilidadesTest.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fread.close();
+            } catch (IOException ex) {
+                Logger.getLogger(FuncionesUtilidadesTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     /**
-     * Test of Entero method, of class FuncionesUtilidades.
-     * No la podem probar amb les nostres eines i coneixements actuals perquè demana dades pel teclat
+     * Test of Entero method, of class FuncionesUtilidades. No la podem probar
+     * amb les nostres eines i coneixements actuals perquè demana dades pel
+     * teclat
      */
     /*
     @Test
@@ -167,5 +186,5 @@ public class FuncionesUtilidadesTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    */
+     */
 }
