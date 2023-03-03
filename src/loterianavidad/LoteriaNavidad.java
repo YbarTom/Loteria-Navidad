@@ -5,7 +5,6 @@
 package loterianavidad;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.util.Scanner;
 import static loterianavidad.FuncionesSorteo.GeneradorNumeros;
 import static loterianavidad.FuncionesSorteo.GeneradorPremis;
@@ -43,9 +42,8 @@ public class LoteriaNavidad {
     public static void main(String[] args) {
         
         String opcio;
-        String idioma;
         //llamada de funciones idioma
-        opcio=FuncionsIdiomes.MenuIdiomes();
+        opcio = FuncionsIdiomes.MenuIdiomes();
         buf = FuncionsIdiomes.ObrirArxiu(opcio);
         
         mostrarMenu();
@@ -62,50 +60,14 @@ public class LoteriaNavidad {
     }
     
     public static void gestionarMenu(int opcio){
-        NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
-        int[] premis = new int[PREMISIMPORTANTS];
-        
         FuncionesGuardar.crearCarpetaSorteos();
-        
-        int any;
-        String anySorteig;
-        
         while(opcio != 0){
             switch (opcio) {
                 case 1:
-                    any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 11));
-                    GeneradorNumeros(VectorPremi);
-                    GeneradorPremis(VectorPremi, premis);
-                    anySorteig = CARPETA + any + ".bin";
-                    FuncionesGuardar.escribirSorteo(VectorPremi, anySorteig);
+                    generarSorteig();
                     break;
                 case 2:
-                    any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 10));
-                    anySorteig = CARPETA + any + ".bin";
-                    File f = new File(anySorteig);
-                    if(f.exists()){
-                        //para los mensajes, usar una funcion que lea lineas, i donde tiene que imprimir un mensaje llamar
-                        //a la funcion con el indice de la linea donde esta localizado el mensaje
-                        String missatge=FuncionsIdiomes.LlegirLineas(buf, 1);
-                        
-                        FuncionesGuardar.leerSorteo(anySorteig, VectorPremi, premis);
-                        FuncionesSorteo.mostrarPremisGrans(VectorPremi);
-                        int boleto = FuncionesUtilidades.Entero(missatge, NUMERO_MIN, NUMERO_MAX);
-                        while (boleto != -1) {
-                            int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
-
-                            boolean esNum = FuncionesComprobacion.demanarNumero();
-                            
-                            System.out.println(FuncionsIdiomes.LlegirLineas(buf, 3) + FuncionesComprobacion.premiFinal(premi, esNum));
-
-                            boleto = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 2));
-                        }
-                    }
-                    else{
-                        System.out.println(FuncionsIdiomes.LlegirLineas(buf, 12));
-                    }
-                    
-                    
+                    comprovarNumero();
                     break;
                 case 3:
                     Colles.gestionarOpcions();
@@ -115,6 +77,46 @@ public class LoteriaNavidad {
                     break;
             }
             opcio = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 14));
+        }
+    }
+    
+    public static void generarSorteig(){
+        NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
+        int[] premis = new int[PREMISIMPORTANTS];
+        
+        int any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 11));
+        GeneradorNumeros(VectorPremi);
+        GeneradorPremis(VectorPremi, premis);
+        String anySorteig = CARPETA + any + ".bin";
+        FuncionesGuardar.escribirSorteo(VectorPremi, anySorteig);
+    }
+    
+    public static void comprovarNumero(){
+        NumPremiat VectorPremi[] = new NumPremiat[TOTPREMS];
+        int[] premis = new int[PREMISIMPORTANTS];
+        
+        int any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 10));
+        String anySorteig = CARPETA + any + ".bin";
+        if(Colles.existeixColla(anySorteig)){
+            //para los mensajes, usar una funcion que lea lineas, i donde tiene que imprimir un mensaje llamar
+            //a la funcion con el indice de la linea donde esta localizado el mensaje
+            String missatge=FuncionsIdiomes.LlegirLineas(buf, 1);
+
+            FuncionesGuardar.leerSorteo(anySorteig, VectorPremi, premis);
+            FuncionesSorteo.mostrarPremisGrans(VectorPremi);
+            int boleto = FuncionesUtilidades.Entero(missatge, NUMERO_MIN, NUMERO_MAX);
+            while (boleto != -1) {
+                int premi = FuncionesComprobacion.comprovacioGeneral(boleto, premis, VectorPremi);
+
+                boolean esNum = FuncionesComprobacion.demanarNumero();
+
+                System.out.println(FuncionsIdiomes.LlegirLineas(buf, 3) + FuncionesComprobacion.premiFinal(premi, esNum));
+
+                boleto = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(buf, 2));
+            }
+        }
+        else{
+            System.out.println(FuncionsIdiomes.LlegirLineas(buf, 12));
         }
     }
 
