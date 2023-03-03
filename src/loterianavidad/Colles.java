@@ -306,7 +306,7 @@ public class Colles {
     
     /**
      * Escriu la posició d'un membre al fitxer d'indexs.
-     * @param raf Canal d'escritura/lectura que ens permetrà saber la posició per guardarla.
+     * @param raf Canal d'accés directe que ens permetrà saber la posició per guardarla.
      * @param nomFitx El path a l'arxiu d'indexs on tenim la posició dels diferents membres.
      */
     public static void afegirMembreIndex(RandomAccessFile raf, String nomFitx){
@@ -383,6 +383,9 @@ public class Colles {
         return premi;
     }
     
+    /**
+     * Demana una colla, comprova si en aquesta colla s'han guanyat premis, els assigna i els mostra.
+     */
     public static void demanarDadesComprovar(){
         System.out.print("Introdueix la colla que vols comprovar: ");
         String nomColla = scan.nextLine();
@@ -413,6 +416,11 @@ public class Colles {
         }
     }
     
+    /**
+     * Assigna a cada membre el premi que li corresponent per part de la colla.
+     * @param nomFitxIndex El path al fitxer on guardem les posicions de cada membre.
+     * @param nomFitxColla El path al fitxer on guardem la informació de la colla.
+     */
     public static void assignarPremisCorresponents(String nomFitxIndex, String nomFitxColla){
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxIndex, true);
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxColla, "rw");
@@ -439,6 +447,11 @@ public class Colles {
         FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
+    /**
+     * Agafa tots els diners guanyats per cada membre i els assigna al total de la colla.
+     * @param nomFitxIndex El path al fitxer on guardem les posicions de cada membre.
+     * @param nomFitxColla El path al fitxer on guardem la informació de la colla.
+     */
     public static void acumularPremisColla(String nomFitxIndex, String nomFitxColla){
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxIndex, true);
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxColla, "rw");
@@ -462,6 +475,11 @@ public class Colles {
         FuncionesUtilidades.cerrarAccesoDirecto(raf);
     }
     
+    /**
+     * Escriu un premi a un arxiu.
+     * @param raf Canal d'accés directe per escriure el premi.
+     * @param premi El premi que volem escriure
+     */
     public static void escribirPremio(RandomAccessFile raf, float premi){
         try {
             raf.writeFloat(premi);
@@ -470,6 +488,11 @@ public class Colles {
         }
     }
     
+    /**
+     * Llegir l'import jugat d'un jugador.
+     * @param raf Canal d'accés directe per llegir les dades.
+     * @return L'import jugat llegit.
+     */
     public static float importJugat(RandomAccessFile raf){
         float importJugador = 0;
         
@@ -482,6 +505,13 @@ public class Colles {
         return importJugador;
     }
     
+    /**
+     * Llegeix el número amb el que juga un membre trobat a una posició específica.
+     * @param raf Canal d'accés directe per llegir.
+     * @param rafIndex Canal d'accés directe per llegir el fitxer d'índexs on 
+     * guardem les posicions dels membres.
+     * @return El número del membre.
+     */
     public static int numeroJugador(RandomAccessFile raf, RandomAccessFile rafIndex){
         int numero;
         
@@ -498,6 +528,11 @@ public class Colles {
         return numero;
     }
     
+    /**
+     * Llegeix l'any del sorteig en que participa la colla.
+     * @param nomFitxer El path al fitxer on es troba la informació de la colla.
+     * @return L'any del sorteig en que participa la colla.
+     */
     public static int anySorteigColla(String nomFitxer){
         int anyFinal = 0;
         
