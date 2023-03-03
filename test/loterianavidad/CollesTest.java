@@ -280,19 +280,6 @@ public class CollesTest {
         fail("The test case is a prototype.");
     }*/
 
-    /**
-     * Test of llegirPremis method, of class Colles.
-     */
-    @Test
-    public void testLlegirPremis() {
-        System.out.println("llegirPremis");
-        String nomFitxAny = "";
-        int[] premisGrans = null;
-        LoteriaNavidad.NumPremiat[] llistaPremis = null;
-        Colles.llegirPremis(nomFitxAny, premisGrans, llistaPremis);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of comprovarPremi method, of class Colles.
@@ -390,8 +377,10 @@ public class CollesTest {
 
     /**
      * Test of anySorteigColla method, of class Colles.
+     * no la podem comprobar ja que necessitariem un fitxer per a testejar funcions.
+     * i llavors cridariem a funcions que demanen dades per teclat a l'usuari
      */
-    @Test
+    /*@Test
     public void testAnySorteigColla() {
         System.out.println("anySorteigColla");
         String nomFitxer = "";
@@ -400,6 +389,6 @@ public class CollesTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
     
 }

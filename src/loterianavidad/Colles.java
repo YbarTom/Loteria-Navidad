@@ -344,7 +344,7 @@ public class Colles {
      * @param premisGrans L'array on guardarem els premis grans (premis >= 60000) 
      * @param llistaPremis Array on guardarem tots els números premiats amb el seu corresponent premi.
      */
-    public static void llegirPremis(String nomFitxAny, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis){
+    /*public static void llegirPremis(String nomFitxAny, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis){
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxAny, true);
         for(int i = 0; i < LoteriaNavidad.TOTPREMS; ++i){
             llistaPremis[i] = new LoteriaNavidad.NumPremiat();
@@ -364,7 +364,7 @@ public class Colles {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
         FuncionesUtilidades.CerrarLecturaBinario(dis);
-    }
+    }*/
     
     /**
      * Comprova la quantitat guanyada de premi d'un cert número.
@@ -378,7 +378,8 @@ public class Colles {
         LoteriaNavidad.NumPremiat VectorPremi[] = new LoteriaNavidad.NumPremiat[TOTPREMS];
         int[] premis = new int[PREMISIMPORTANTS];
         
-        llegirPremis(nomFitxAny, premis, VectorPremi);
+        
+        FuncionesGuardar.leerSorteo(nomFitxAny, VectorPremi, premis);
         
         premi = FuncionesComprobacion.comprovacioGeneral(numero, premis, VectorPremi);
         

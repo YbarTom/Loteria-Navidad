@@ -33,6 +33,7 @@ public class FuncionesGuardar {
         } catch (IOException ex) {
             Logger.getLogger(FuncionesGuardar.class.getName()).log(Level.SEVERE, null, ex);
         }
+        FuncionesUtilidades.CerrarLecturaBinario(dis);
     }
     
     public static void guardarGrans(int numero, int premi, int[] premisGrans){
