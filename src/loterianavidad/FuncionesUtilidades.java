@@ -221,10 +221,11 @@ public class FuncionesUtilidades {
 
     
     /**
+     * Obre un arxiu en mode d'accés directe amb el nom i el mode especificat
      * 
-     * @param nomFitxer
-     * @param mode
-     * @return 
+     * @param nomFitxer Nom del fitxer que volem obrir
+     * @param mode Mode en el qual s'obrirà l'arxiu
+     * @return Un objecte de tipus RandomAccesFile que permet accedir directament a l'arxiu especificat
      */
     public static RandomAccessFile AbrirAccesoDirecto(String nomFitxer, String mode){
         RandomAccessFile raf = null;
@@ -236,6 +237,12 @@ public class FuncionesUtilidades {
         return raf;
     }
     
+    
+    /**
+     * Tanca un objecte de tipus DataOutputStream per escriure en binari
+     * 
+     * @param dos L'objecte DataOutputStream que es vol tancar
+     */
     public static void CerrarEscrituraBinario(DataOutputStream dos) {
         try {
             dos.flush();
@@ -245,6 +252,12 @@ public class FuncionesUtilidades {
         }
     }
     
+    
+    /**
+     * Tanca un objecte de tipus DataOutputStream per llegir en binari
+     * 
+     * @param dis L'objecte DataOutputStream que es vol tancar
+     */
     public static void CerrarLecturaBinario(DataInputStream dis) {
         try {
             dis.close();
@@ -253,6 +266,12 @@ public class FuncionesUtilidades {
         }
     }
     
+    
+    /**
+     * Tanca l'objecte de tipus RandomAccesFile per l'acces directe
+     * 
+     * @param raf L'objecte DataOutputStream que es vol tancar
+     */
     public static void cerrarAccesoDirecto(RandomAccessFile raf){
         try {
             raf.close();
