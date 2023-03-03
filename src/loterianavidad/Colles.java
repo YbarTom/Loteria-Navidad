@@ -42,7 +42,7 @@ public class Colles {
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 18));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 19));
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 20));
-        System.out.println("4. Afegir un membre a una colla");
+        System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 23));
     }
     
     /**
@@ -93,14 +93,14 @@ public class Colles {
      */
     public static void crearColla(){
         crearCarpetaColles();
-        System.out.print("Introdueix el nom de la colla: ");
+        System.out.print(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 24));
         String nom = scan.nextLine();
         String nomFitxer = NOM_CARPETA + nom + ".bin";
         if(!existeixColla(nomFitxer)){
             demanarDadesColla(nomFitxer);
         }
         else{
-            System.out.println("ERROR! La colla ja existeix");
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 25));
         }
     }
     
@@ -109,7 +109,7 @@ public class Colles {
      * mostra un missatge d'error i no fa res.
      */
     public static void esborrarColla(){
-        System.out.print("Introdueix el nom de la colla: ");
+        System.out.print(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 24));
         String nom = scan.nextLine();
         String nomFitxer = NOM_CARPETA + nom + ".bin";
         String nomIndex = nomFitxer + ".index";
@@ -120,7 +120,7 @@ public class Colles {
             index.delete();
         }
         else{
-            System.out.println("ERROR! La colla no existeix");
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 26));
         }
     }
     
@@ -132,7 +132,7 @@ public class Colles {
         DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxer, true);
         try {
             mostrarInfoColla(dis);
-            System.out.println("Info Membres: ");
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 27));
             while(dis.available() > 0){
                 mostrarInfoMembre(dis);
             }
@@ -149,11 +149,11 @@ public class Colles {
      */
     public static void mostrarInfoColla(DataInputStream dis){
         try {
-            System.out.println("Info Colla: ");
-            System.out.println("Any: " + dis.readInt());
-            System.out.println("Membres: " + dis.readInt());
-            System.out.println("Diners: " + dis.readFloat());
-            System.out.println("Premi: " + dis.readFloat());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 28));
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 29) + dis.readInt());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 30) + dis.readInt());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 31) + dis.readFloat());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 3) + dis.readFloat());
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -166,11 +166,11 @@ public class Colles {
      */
     public static void mostrarInfoMembre(DataInputStream dis){
         try {
-            System.out.println("Nom: " + dis.readUTF());
-            System.out.println("Numero: " + dis.readInt());
-            System.out.println("Diners: " + dis.readFloat());
-            System.out.println("Premi del seu número: " + dis.readFloat());
-            System.out.println("Premi corresponent per la colla: " + dis.readFloat());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 32) + dis.readUTF());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 33) + dis.readInt());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 31) + dis.readFloat());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 34) + dis.readFloat());
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 35) + dis.readFloat());
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -184,7 +184,7 @@ public class Colles {
         Colla coll = new Colla();
         coll.nMembres = 0;
         
-        int any = FuncionesUtilidades.Entero("Introdueix l'any de la colla: ");
+        int any = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 36));
         String anySorteig = CARPETA + any + ".bin";
         File f = new File(anySorteig);
         if(f.exists()){
@@ -193,7 +193,7 @@ public class Colles {
             coll.premiTotal = 0;
             afegirDades(coll, nomFitxer);
         } else {
-            System.out.println("ERROR! No s'ha fet sorteig d'aquest any, primer l'has de fer");
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 37));
         }
     }
     
@@ -233,7 +233,7 @@ public class Colles {
      * Demana la informació d'un membre i l'introdueix a la colla seleccionada.
      */
     public static void afegirMembre(){
-        System.out.println("Introdueix el nom de la colla a la que pertany: ");
+        System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 38));
         String nomColla = scan.nextLine();
         String nomFitxer = NOM_CARPETA + nomColla + ".bin";
         if(existeixColla(nomFitxer)){
@@ -243,7 +243,7 @@ public class Colles {
             sumarImport(nomFitxer, mem);
         }
         else{
-            System.out.println("La colla no existeix");
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 26));
         }
     }
     

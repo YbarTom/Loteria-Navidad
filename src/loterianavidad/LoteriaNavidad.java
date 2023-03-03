@@ -58,7 +58,7 @@ public class LoteriaNavidad {
         System.out.println(FuncionsIdiomes.LlegirLineas(buf, 8));
         System.out.println(FuncionsIdiomes.LlegirLineas(buf, 9));
         System.out.println(FuncionsIdiomes.LlegirLineas(buf, 10));
-        System.out.println("3. Gestionar colles");
+        System.out.println(FuncionsIdiomes.LlegirLineas(buf,21));
     }
     
     public static void gestionarMenu(int opcio){
