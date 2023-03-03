@@ -14,13 +14,14 @@ import static loterianavidad.LoteriaNavidad.scan;
  * @author ausias
  */
 public class FuncionsIdiomes {
-
-    /**
-     * Funció menu per a mostar la selecció d'idioma
-     */
     
     static String idioma="./idiomes/";
     
+    
+    /**
+     * Funció menu per a mostar la selecció d'idioma.
+     * @return El path a l'arxiu d'idioma seleccionat.
+     */
     public static String MenuIdiomes() {
 
         String nomFitxer;
@@ -53,6 +54,11 @@ public class FuncionsIdiomes {
         return idioma;
     }
 
+    /**
+     * Obre un canal de lectura d'un arxiu de text.
+     * @param idioma El path a l'arxiu de l'idioma.
+     * @return El canal de lectura vinculat a l'arxiu.
+     */
     public static BufferedReader ObrirArxiu(String idioma) {
 
         BufferedReader buffer = null;
@@ -68,6 +74,12 @@ public class FuncionsIdiomes {
         return buffer;
     }
 
+    /**
+     * Llegeix certa línea d'un arxiu de text i ho retorna com a String.
+     * @param buf El canal de lectura vinculat a l'arxiu de l'idioma.
+     * @param linea La línia de l'arxiu que volem llegir.
+     * @return La línia llegida a l'arxiu en format String.
+     */
     public static String  LlegirLineas(BufferedReader buf, int linea) {
         String linia="";
         try {
@@ -92,6 +104,11 @@ public class FuncionsIdiomes {
         return linia;
     }
     
+    /**
+     * Reiniciar el canal de lectura de l'arxiu.
+     * @param buf El canal de lectura.
+     * @return El canal de lectura reiniciat.
+     */
     public static BufferedReader TancarObrirBuf(BufferedReader buf){
         try {
             
