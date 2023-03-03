@@ -35,3 +35,8 @@ Premi del seu número:
 Premi corresponent per la colla: 
 Introdueix l'any de la colla: 
 ERROR! No s'ha fet sorteig d'aquest any, primer l'has de fer
+Introdueix el nom de la colla a la que pertany: 
+Introdueix el numero que juga: 
+Introdueix els diners que juga
+Introdueix el nom: 
+Introdueix la colla que vols comprovar: 

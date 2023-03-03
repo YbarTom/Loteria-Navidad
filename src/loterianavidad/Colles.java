@@ -326,10 +326,10 @@ public class Colles {
      */
     public static Membre demanarDadesMembre(){
         Membre mem = new Membre(); 
-        System.out.print("Introdueix el nom: ");
+        System.out.print(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 41));
         mem.nom = scan.nextLine();
-        mem.numero = FuncionesUtilidades.Entero("Introdueix el numero que juga: ", LoteriaNavidad.NUMERO_MIN, LoteriaNavidad.NUMERO_MAX);
-        mem.diners = FuncionesUtilidades.LeerFloat("Introdueix els diners que juga");
+        mem.numero = FuncionesUtilidades.Entero(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 39), LoteriaNavidad.NUMERO_MIN, LoteriaNavidad.NUMERO_MAX);
+        mem.diners = FuncionesUtilidades.LeerFloat(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 40));
         mem.premiGuanyat = 0;
         mem.premiCorresponent = 0;
         
@@ -384,7 +384,7 @@ public class Colles {
     }
     
     public static void demanarDadesComprovar(){
-        System.out.print("Introdueix la colla que vols comprovar: ");
+        System.out.print(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 42));
         String nomColla = scan.nextLine();
         String nomFitxerColla = NOM_CARPETA + nomColla + ".bin";
         String nomFitxerIndex = nomFitxerColla + ".index";
@@ -409,7 +409,7 @@ public class Colles {
             mostrarDadesColla(nomFitxerColla);
         }
         else{
-            System.out.println("ERROR! Aquesta colla no existeix");
+            System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 26));
         }
     }
     
