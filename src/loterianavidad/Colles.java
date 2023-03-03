@@ -232,7 +232,7 @@ public class Colles {
     }
     
     /**
-     * Demana la informació d'un membre i l'introdueix a la colla seleccionada.
+     * Demana la informació d'un membre i l'introdueix a la colla seleccionada
      */
     public static void afegirMembre(){
         System.out.println(FuncionsIdiomes.LlegirLineas(LoteriaNavidad.buf, 38));
