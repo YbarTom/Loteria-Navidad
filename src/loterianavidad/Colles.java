@@ -17,7 +17,9 @@ public class Colles {
     static final String NOM_CARPETA = "./colles/";
     
     static final int IMPORT_NUMERO = 200;
-    
+    static final int BYTE = 4;
+    static final int BYTES2 = 8;
+    static final int BYTES3 = 12;
     
     public static class Colla{
         int nMembres;
@@ -255,9 +257,9 @@ public class Colles {
     public static void sumarImport(String nomFitxer, Membre mem){
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxer, "rw");
         try {
-            raf.seek(8);
+            raf.seek(BYTES2);
             float importFinal = raf.readFloat() + mem.diners;
-            raf.seek(8);
+            raf.seek(BYTES2);
             raf.writeFloat(importFinal);
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
@@ -272,10 +274,10 @@ public class Colles {
     public static void sumarMembre(String nomFitxerColla){
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
         try {
-            raf.seek(4);
+            raf.seek(BYTE);
             int nMembres = raf.readInt();
             ++nMembres;
-            raf.seek(4);
+            raf.seek(BYTE);
             raf.writeInt(nMembres);
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
@@ -426,7 +428,7 @@ public class Colles {
         RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxColla, "rw");
         
         try {
-            raf.seek(8);
+            raf.seek(BYTES2);
             float dinersJugatsTotals = raf.readFloat();
             float premiTotal = raf.readFloat();
             float premiPerEuro = premiTotal/dinersJugatsTotals;
@@ -434,10 +436,10 @@ public class Colles {
                 long posicio = dis.readLong();
                 raf.seek(posicio);
                 raf.readUTF();
-                raf.seek(raf.getFilePointer()+4);
+                raf.seek(raf.getFilePointer()+BYTE);
                 float importJugat = raf.readFloat();
                 float premiCorresponent = premiPerEuro*importJugat;
-                raf.seek(raf.getFilePointer()+4);
+                raf.seek(raf.getFilePointer()+BYTE);
                 raf.writeFloat(premiCorresponent);
             }
         } catch (IOException ex) {
@@ -462,11 +464,11 @@ public class Colles {
                 long posicion = dis.readLong();
                 raf.seek(posicion);
                 raf.readUTF();
-                raf.seek(raf.getFilePointer()+8);
+                raf.seek(raf.getFilePointer()+BYTES2);
                 premiTotal += raf.readFloat();
-                raf.seek(raf.getFilePointer()+4);
+                raf.seek(raf.getFilePointer()+BYTE);
             }
-            raf.seek(12);
+            raf.seek(BYTES3);
             raf.writeFloat(premiTotal);
         } catch (IOException ex) {
             Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
