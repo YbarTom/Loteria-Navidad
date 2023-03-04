@@ -339,34 +339,6 @@ public class Colles {
     }
     
     /**
-     * Llegeix els premis d'un sorteig i els carrega als arrays corresponents.
-     * @param nomFitxAny El path al arxiu on tenim guardats els premis que ens interessen.
-     * @param premisGrans L'array on guardarem els premis grans (premis >= 60000) 
-     * @param llistaPremis Array on guardarem tots els números premiats amb el seu corresponent premi.
-     */
-    /*public static void llegirPremis(String nomFitxAny, int[] premisGrans, LoteriaNavidad.NumPremiat[] llistaPremis){
-        DataInputStream dis = FuncionesUtilidades.AbrirFicheroLecturaBinario(nomFitxAny, true);
-        for(int i = 0; i < LoteriaNavidad.TOTPREMS; ++i){
-            llistaPremis[i] = new LoteriaNavidad.NumPremiat();
-            try {
-                int numero = dis.readInt();
-                int premi = dis.readInt();
-                llistaPremis[i].numero = numero;
-                llistaPremis[i].premi = premi;
-                FuncionesGuardar.guardarGrans(numero, premi, premisGrans);
-            } catch (IOException ex) {
-                Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        try {
-            dis.close();
-        } catch (IOException ex) {
-            Logger.getLogger(Colles.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        FuncionesUtilidades.CerrarLecturaBinario(dis);
-    }*/
-    
-    /**
      * Comprova la quantitat guanyada de premi d'un cert número.
      * @param nomFitxAny El path al fitxer on es contenen els premis que volem.
      * @param numero El número que volem comprovar.
