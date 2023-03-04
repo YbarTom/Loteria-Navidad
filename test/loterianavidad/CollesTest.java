@@ -6,6 +6,7 @@ package loterianavidad;
 
 import java.io.DataInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import static loterianavidad.Colles.NOM_CARPETA;
 import static loterianavidad.Colles.anySorteigColla;
@@ -363,14 +364,17 @@ public class CollesTest {
      */
     @Test
     public void testNumeroJugador() {
-        System.out.println("numeroJugador");
-        RandomAccessFile raf = null;
-        RandomAccessFile rafIndex = null;
-        int expResult = 0;
+
+        String nomFitxerColla = NOM_CARPETA + "rupamito" + ".bin";
+        String nomFitxerIndex = nomFitxerColla + ".index";
+        RandomAccessFile raf = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerColla, "rw");
+        RandomAccessFile rafIndex = FuncionesUtilidades.AbrirAccesoDirecto(nomFitxerIndex, "r");
+
+        int expResult=49308;
+        
         int result = Colles.numeroJugador(raf, rafIndex);
+        
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
